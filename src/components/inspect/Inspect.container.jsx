@@ -1,18 +1,40 @@
 
-import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tab';
-import Tab from '@material-ui/core/Tab';
+import React, {Fragment, Component} from 'react';
 import InspectProductComponent from './inspect-product/inspect-product.component';
-import { UsageComponent } from './inspect-usage/inspect-usage.component';
+import InspectUsageComponent from './inspect-usage/inspect-usage.component';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 
-const InspectContainer = () => (
-  <Paper>
-    <Tabs>
-      <Tab label="Inspect Product" component={InspectProductComponent}/>
-      <Tab label="Inspect Usage" component={UsageComponent} />
-    </Tabs>
-  </Paper>
-);
+class InspectContainer extends Component {
+  state = {
+    expanded: false
+  }
+
+  handleExpand = () => {
+    this.setState(state => ({ expanded: !state.expanded }))
+  }
+
+  render() {
+    return(
+      <BrowserRouter>
+        <Route path="/inspect">
+          <Fragment>
+            <ul>
+              <li>
+                <Link to="/inspect/product">Product</Link>
+              </li>
+              <li>
+                <Link to="/inspect/usage">Usage</Link>
+              </li>
+            </ul>
+            <Switch>
+              <Route path="/inspect/product" component={InspectProductComponent} />
+              <Route path="/inspect/usage" component={InspectUsageComponent} />
+            </Switch>
+          </Fragment>
+        </Route>
+      </BrowserRouter>
+    )
+  }
+};
 
 export default InspectContainer;

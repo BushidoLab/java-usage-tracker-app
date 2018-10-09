@@ -1,5 +1,4 @@
-import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -11,43 +10,53 @@ import classnames from 'classnames';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import injectSheet from 'react-jss';
 import { styles } from '../inspect.styles';
+import { MuiThemeProvider } from 'material-ui/styles';
 
-const InspectProductComponent = ({ expanded, handleExpand, classes }) => (
-  <MuiThemeProvider>
-    <Card>
-      <CardHeader title="Product Information" subheader="Showing licensing information"/>
-      <CardContent>
-        <Typography>
-          Version: 1.8.081
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <IconButton
-        className={classnames(classes.expand, {
-          [classes.expandOpen]: expanded })}
-        onClick={handleExpand}
-        aria-label="Show more">
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+class InspectProductCard extends Component {
+  state = { expanded: false };
+
+  handleExpand = () => {
+    this.setState(state => ({ expanded: !state.expanded }));
+  };
+
+  render() {
+    const {classes} = this.props;
+
+    return (
+      <MuiThemeProvider>
+        <Card className={classes.card}>
+          <CardHeader 
+          title="Product Details" 
+          subheader="Device Information"
+          className={classes.header}
+          />
           <CardContent>
-            <Typography>
-              Sample Text 1
+            <Typography paragraph>
+              Product version: 18.0_181
             </Typography>
-            <Typography>
-              Sample Text 2
+            <Typography paragraph>
+              App name: Java Advanced Desktop
             </Typography>
-            <Typography>
-              Sample Text 3
+            <Typography paragraph>
+              Users: 129
             </Typography>
-            <Typography>
-              Sample Text 4
+            <Typography paragraph>
+              User type: NUP
+            </Typography>
+            <Typography paragraph>
+              First use: 01/15/2018
+            </Typography>
+            <Typography paragraph>
+              Last use: 09/10/2018
+            </Typography>
+            <Typography paragraph>
+              Last report: 06/15/2018
             </Typography>
           </CardContent>
-      </Collapse>
-    </Card>
-  </MuiThemeProvider>
-)
+        </Card>
+      </MuiThemeProvider>
+    )
+  }
+}
 
-export default injectSheet(styles)(InspectProductComponent);
+export default injectSheet(styles)(InspectProductCard);

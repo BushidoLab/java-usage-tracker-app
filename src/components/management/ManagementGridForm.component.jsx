@@ -1,9 +1,10 @@
 import React from 'react';
 import { Input, Button } from "@material-ui/core";
 import { styles } from "./ManagementGrid.styles";
+import TextField from '@material-ui/core/TextField';
 import injectSheet from "react-jss";
-import LicenseRadio from "./LicenseRadio.component";
-import LicenseTypeRadio from './LicenseTypeRadio.component';
+import LicenseRadio from "./license-radio";
+import LicenseTypeRadio from './license-type-radio';
 
 const ManagementGridForm = ({
     classes,
@@ -24,79 +25,90 @@ const ManagementGridForm = ({
           <LicenseRadio/>
           <LicenseTypeRadio/>
         </div>
-        <Input
-          type="number"
-          name="quantity"
-          placeholder="Quantity"
-          value={quantity}
-          onChange={handleChange}
-          className={classes.textField}
-          required
-        />
+        <label>
+          Quantity
+          <TextField
+            type="number"
+            name="quantity"
+            placeholder="Quantity"
+            value={quantity}
+            onChange={handleChange}
+            className={classes.textField}
+            variant="outlined"
+            required
+          />
+        </label>
 
-        <Input
+        <TextField
           type="number"
           name="listFee"
           placeholder="List Fee"
           value={listFee}
           onChange={handleChange}
           className={classes.textField}
+          variant="outlined"
           required
         />
 
-        <Input
+        <TextField
           type="number"
           name="discount"
           placeholder="Discount"
           value={discount}
           onChange={handleChange}
           className={classes.textField}
+          variant="outlined"
           required
         />
 
-        <Input
+        <TextField
           type="number"
           name="netFee"
           placeholder="Net Fee"
           value={netFee}
           onChange={handleChange}
           className={classes.textField}
+          variant="outlined"
         />
 
-        <Input
+        <TextField
           type="number"
           name="productSupportFee"
           placeholder="Product Support Fee"
           value={productSupportFee}
           onChange={handleChange}
           className={classes.textField}
+          variant="outlined"
         />
 
-        <Input
+        <TextField
           type="number"
           name="softwareUpdateFee"
           placeholder="Software Update Fee"
           value={softwareUpdateFee}
           onChange={handleChange}
           className={classes.textField}
+          variant="outlined"
         />
 
-        <Input
+        <TextField
           type="number"
           name="otherFees"
           placeholder="Other Fees"
           value={otherFees}
           onChange={handleChange}
           className={classes.textField}
+          variant="outlined"
         />
 
-        <Input
+        <TextField
           type="number"
           name="CDPackFee"
           placeholder="CD Pack Fee"
           value={CDPackFee}
           onChange={handleChange}
           className={classes.textField}
+          variant="outlined"
         />
 
         <Button type="submit" variant="raised">
@@ -105,15 +117,5 @@ const ManagementGridForm = ({
       </form>
     </div>
   )
-
-  this.handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  this.handleSubmit = e => {
-    e.preventDefault();
-  }
 
 export default injectSheet(styles)(ManagementGridForm);
