@@ -3,22 +3,19 @@ import NavBarComponent from './NavBar.component';
 
 class NavBarContainer extends Component {
     state = {
-        anchorEl: null,
+        value: 'O',
     };
 
-    handleClick = ({ currentTarget }) => this.setState({ anchorEl: currentTarget });
-
-    handleClose = _ => this.setState({ anchorEl: null });
+    handleChange = (event, value) => this.setState({ value });
 
     render() {
         const { classes } = this.props;
-        const { anchorEl } = this.state;
+        const { value } = this.state;
         return (
             <NavBarComponent
                 classes={classes}
-                anchorEl={anchorEl}
-                handleClick={this.handleClick}
-                handleClose={this.handleClose}
+                handleChange={this.handleChange}
+                value={value}
             />
         );
     }
