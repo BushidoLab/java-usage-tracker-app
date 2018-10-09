@@ -7,6 +7,6 @@ import Route from './route_component';
 export default _ => (
     <Switch>
         <Route path="/management" component={Management} />
-        <Route path="/inspect" component={Inspect} />
+        <Route exact path="/inspect" component={Inspect} />
     </Switch>
 );
