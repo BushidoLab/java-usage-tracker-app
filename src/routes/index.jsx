@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Management } from './Management';
-import { Inspect } from './Inspect';
-import Audit from '../components/audit/audit.component';
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+// import { Management } from './Management';
+// import { Inspect } from './Inspect';
+// import Audit from '../components/audit/audit.component';
 // import Route from './route_component';
 
 // export default _ => (

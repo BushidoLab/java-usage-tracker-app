@@ -12,5 +12,11 @@ export const styles = {
     width: "90%",
     margin: "20px, 5%",
     padding: "10px"
+  },
+  button: {
+    margin: '10px'
+  },
+  submit: {
+    float: 'right',
   }
 };

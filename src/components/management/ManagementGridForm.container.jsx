@@ -37,7 +37,7 @@ class ManagementGridForm extends Component {
 
     return (
       <div>
-        <Button onClick={this.handleOpen} color="primary" variant="outlined">Add</Button>
+        <Button onClick={this.handleOpen} color="primary" variant="outlined" className={classes.button}>Add new license</Button>
         <Modal
         open={this.state.open}
         onClose={this.handleClose}
@@ -133,8 +133,18 @@ class ManagementGridForm extends Component {
                   className={classes.textField}
                   variant="outlined"
                 />
+
+                <Input
+                  type="number"
+                  name="UnitPrice"
+                  placeholder="Unit Price"
+                  value={this.state.UnitPrice}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                />
               </div>
-              <Button type="submit" variant="contained">
+              <Button type="submit" variant="contained" className={classes.submit}>
                 Submit
               </Button>
             </Paper>

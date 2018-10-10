@@ -16,5 +16,8 @@ export const styles = {
   link: {
     color: 'white',
     textDecoration: 'none',
+  },
+  title: {
+    textAlign: 'center'
   }
 };

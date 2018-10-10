@@ -6,7 +6,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import ApolloClient from './graphql/ApolloClient';
 import { Dashboard } from './pages';
-import Routes from './routes';
 import './App.css';
 
 const generateClassName = createGenerateClassName();
