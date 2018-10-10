@@ -8,7 +8,6 @@ const Dashboard = ({ children, classes }) => (
     <div>
         <div className={classes.root}>
             <AppBarContainer/>
-            {/* <NavBarContainer /> */}
         </div>
         <div>{children}</div>
     </div>

@@ -22,10 +22,10 @@ const ManagementGridComponent = ({ columnDefs, rowData, gridOptions }) => (
             <AgGridReact
                 enableSorting
                 enableFilter
-                columnDefs={columnDefs}
-                rowData={rowData}
                 enableColResize
                 rowSelection="multiple"
+                rowData={rowData}
+                columnDefs={columnDefs}
                 gridOptions={gridOptions}
             />
         </div>

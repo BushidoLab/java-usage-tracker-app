@@ -12,5 +12,9 @@ export const styles = {
   popper: {
     zIndex: 1,
     overflow: 'auto'
+  },
+  link: {
+    color: 'white',
+    textDecoration: 'none',
   }
 };

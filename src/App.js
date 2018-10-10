@@ -22,7 +22,6 @@ const App = _ => (
                 <Router>
                     <Switch>
                         <Dashboard>
-                            {/* <Routes /> */}
                         </Dashboard>
                     </Switch>
                 </Router>

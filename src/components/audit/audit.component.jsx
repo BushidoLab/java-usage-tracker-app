@@ -2,38 +2,15 @@ import React, { Component } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import 'ag-grid-enterprise';
+import injectSheet from 'react-jss';
+import { styles } from './audit.styles';
 
-class Audit extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      columnDefs: [
-        {headerName: "Device Name", label: "deviceName"},
-        {headerName: "IP", label: "IP"},
-        {headerName: "Processor", label: "processor"},
-        {headerName: "Cores", label: "cores"},
-        {headerName: "Publisher", label: "publisher"},
-        {headerName: "Category", label: "category"},
-        {headerName: "Product", label: "product"},
-        {headerName: "App Name", label: "appName"},
-        {headerName: "User Count", label: "userCount"},
-        {headerName: "Operating System", label: "operatingSystem"},
-        {headerName: "Virtual Machine", label: "virtualMachine"},
-      ],
-      rowData: [
-        {},
-        {},
-        {}
-      ]
-    }
-  }
-
-  render() {
-    return (
-      <div 
-        className="ag-theme-balham"
-        style={{ 
+const AuditComponent = ({ columnDefs, rowData, gridOptions }) => (
+  <div>
+    <div 
+      className="ag-theme-balham"
+      style={{ 
         height: '300px', 
         width: '98%',
         marginLeft: '1%',
@@ -41,14 +18,18 @@ class Audit extends Component {
         marginTop: '30px',
         marginBottom: '30px',
       }} 
-      >
-          <AgGridReact
-              columnDefs={this.state.columnDefs}
-              rowData={this.state.rowData}>
-          </AgGridReact>
-      </div>
-      );
-  }
-}
+    >
+        <AgGridReact
+          enableColResize
+          enableSorting
+          enableFilter
+          rowSelection="multiple"
+          rowData={rowData}
+          columnDefs={columnDefs}
+          gridOptions={gridOptions}>
+        </AgGridReact>
+    </div>
+  </div>
+);
 
-export default Audit;
+export default injectSheet(styles)(AuditComponent);

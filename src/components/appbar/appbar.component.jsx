@@ -57,10 +57,10 @@ const AppBarComponent = ({
                     <ClickAwayListener onClickAway={handleClose}>
                         <div>
                           <MenuList open={open}>
-                            <MenuItem onClick={handleClose}><Link to="/">Home</Link></MenuItem>
-                            <MenuItem onClick={handleClose}><Link to="/management">Manage</Link></MenuItem>
-                            <MenuItem onClick={handleClose}><Link to="/inspect">Inspect</Link></MenuItem>
-                            <MenuItem onClick={handleClose}><Link to="/audit">Audit</Link></MenuItem>
+                            <MenuItem onClick={handleClose}><Link to="/" className={classes.link}>Home</Link></MenuItem>
+                            <MenuItem onClick={handleClose}><Link to="/management" className={classes.link}>Manage</Link></MenuItem>
+                            <MenuItem onClick={handleClose}><Link to="/inspect" className={classes.link}>Inspect</Link></MenuItem>
+                            <MenuItem onClick={handleClose}><Link to="/audit" className={classes.link}>Audit</Link></MenuItem>
                           </MenuList>
                         </div>
                     </ClickAwayListener>
