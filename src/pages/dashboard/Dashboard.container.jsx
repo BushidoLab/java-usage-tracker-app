@@ -1,12 +1,14 @@
 import React from 'react';
 import injectSheet from 'react-jss';
-import NavBarContainer from '../../components/navbar/NavBar.container';
+// import NavBarContainer from '../../components/navbar/NavBar.container';
+import AppBarContainer from "../../components/appbar/appbar.container";
 import { styles } from './Dashboard.styles';
 
 const Dashboard = ({ children, classes }) => (
     <div>
         <div className={classes.root}>
-            <NavBarContainer />
+            <AppBarContainer/>
+            {/* <NavBarContainer /> */}
         </div>
         <div>{children}</div>
     </div>

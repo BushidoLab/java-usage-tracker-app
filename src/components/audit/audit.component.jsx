@@ -36,7 +36,10 @@ class Audit extends Component {
         style={{ 
         height: '300px', 
         width: '98%',
-        margin: '0 1%'
+        marginLeft: '1%',
+        marginRight: '1%',
+        marginTop: '30px',
+        marginBottom: '30px',
       }} 
       >
           <AgGridReact

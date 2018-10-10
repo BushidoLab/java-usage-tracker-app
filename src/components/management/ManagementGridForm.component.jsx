@@ -2,6 +2,7 @@ import React from 'react';
 import { Input, Button } from "@material-ui/core";
 import { styles } from "./ManagementGrid.styles";
 import TextField from '@material-ui/core/TextField';
+import Modal from '@material-ui/core/Modal';
 import injectSheet from "react-jss";
 import LicenseRadio from "./license-radio";
 import LicenseTypeRadio from './license-type-radio';
@@ -17,7 +18,9 @@ const ManagementGridForm = ({
     otherFees,
     CDPackFee,
     handleSubmit,
-    handleChange
+    handleChange,
+    handleOpen,
+    handleClose
   }) => (
     <div className={classes.formContainer}>
       <form onSubmit={handleSubmit} autoComplete="off" className={classes.formContainer}>
@@ -25,19 +28,16 @@ const ManagementGridForm = ({
           <LicenseRadio/>
           <LicenseTypeRadio/>
         </div>
-        <label>
-          Quantity
-          <TextField
-            type="number"
-            name="quantity"
-            placeholder="Quantity"
-            value={quantity}
-            onChange={handleChange}
-            className={classes.textField}
-            variant="outlined"
-            required
-          />
-        </label>
+        <TextField
+          type="number"
+          name="quantity"
+          placeholder="Quantity"
+          value={quantity}
+          onChange={handleChange}
+          className={classes.textField}
+          variant="outlined"
+          required
+        />
 
         <TextField
           type="number"

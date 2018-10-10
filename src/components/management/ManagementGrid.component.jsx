@@ -15,6 +15,8 @@ const ManagementGridComponent = ({ columnDefs, rowData, gridOptions }) => (
                 width: '98%',
                 marginLeft: '1%',
                 marginRight: '1%',
+                marginTop: '30px',
+                marginBottom: '30px'
             }}
         >
             <AgGridReact

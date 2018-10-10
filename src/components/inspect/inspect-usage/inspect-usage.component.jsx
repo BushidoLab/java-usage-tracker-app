@@ -6,11 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from 'material-ui/IconButton';
-import classnames from 'classnames';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import injectSheet from 'react-jss';
-import { styles } from '../inspect.styles';
 import { MuiThemeProvider } from 'material-ui/styles';
+import injectSheet from 'react-jss';
+import classnames from 'classnames';
+import { styles } from '../inspect.styles';
 
 class InspectUsageCard extends Component {
   state = { expanded: false };

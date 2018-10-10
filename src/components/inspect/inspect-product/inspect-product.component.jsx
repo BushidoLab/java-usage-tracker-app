@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from 'material-ui/IconButton';
-import classnames from 'classnames';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import injectSheet from 'react-jss';
 import { styles } from '../inspect.styles';
 import { MuiThemeProvider } from 'material-ui/styles';

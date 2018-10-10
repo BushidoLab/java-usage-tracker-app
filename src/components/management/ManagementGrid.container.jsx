@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import ManagementGridComponent from './ManagementGrid.component';
-import ManagementGridForm from './ManagementGridForm.container';
-import {Router, Route, Link, Switch} from 'react-router-dom';
+import ManagementGridFormContainer from './ManagementGridForm.container';
 
 class ManagementGridContainer extends Component {
     state = {
@@ -38,14 +37,7 @@ class ManagementGridContainer extends Component {
                     rowData={rowData}
                     gridOptions={gridOptions}
                 />
-                <Route>
-                    <div>
-                    <Link to="/management/add">Add</Link>
-                    <Switch>
-                        <Route path="/management/add" component={ManagementGridForm}/>
-                    </Switch>
-                    </div>
-                </Route>
+                <ManagementGridFormContainer/>
             </Fragment>
         );
     }

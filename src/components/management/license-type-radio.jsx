@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radio, FormLabel, FormControlLabel, RadioGroup, FormControl, withStyles, Paper } from "@material-ui/core";
+import { Radio, FormLabel, FormControlLabel, RadioGroup, FormControl, withStyles } from "@material-ui/core";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const styles = {
