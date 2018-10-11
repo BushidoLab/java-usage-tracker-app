@@ -17,9 +17,11 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                         id="emailInput"
                         name="email"
                         label="Email"
+                        placeholder="Email"
+                        required
                         error={handleError}
                         onChange={handleChange}
-                        helperText={errorInputText}
+                        // helperText={errorInputText}
                         value={emailValue}
                     />
                     <Input
@@ -27,6 +29,8 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                         name="password"
                         label="Password"
                         type="password"
+                        placeholder="password"
+                        required
                     />
                 </div>
                 <div className={classes.submitRow}>
@@ -38,7 +42,7 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                     </Button>
                     <Button
                         className={classes.submitBtn}
-                        variant="raised"
+                        variant="contained"
                         type="submit"
                     >
                         Sign In

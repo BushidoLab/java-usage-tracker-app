@@ -17,6 +17,5 @@ export const styles = {
     margin: '10px'
   },
   submit: {
-    float: 'right',
   }
 };

@@ -35,6 +35,7 @@ export const styles = theme => ({
         height: '100%',
         justifyContent: 'flex-start',
         alignItems: 'center',
+        background: 'gray',
     },
     inputRow: {
         display: 'flex',

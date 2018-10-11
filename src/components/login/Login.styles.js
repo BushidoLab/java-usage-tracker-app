@@ -22,12 +22,13 @@ export const styles = theme => ({
         marginBottom: 5
     },
     loginComponent: {
-        background: '#fff',
         boxShadow: '0 0 4px 0 rgba(60,69,73,0.25)',
         borderRadius: 5,
         margin: 'auto',
         width: 390,
         height: 250,
+        marginTop: 30,
+        background: 'gray'
     },
     loginWrapper: { height: '100%' },
     inputRow: {
@@ -71,5 +72,8 @@ export const styles = theme => ({
             color: '#D64958',
             padding: '2px 5px',
         },
+    },
+    forgotPasswordBtn: {
+        textAlign: 'center'
     },
 });

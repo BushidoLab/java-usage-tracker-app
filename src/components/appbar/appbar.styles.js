@@ -1,16 +1,17 @@
-export const styles = {
+export const styles = theme => ({
   root: {
     flexGrow: 1,
   },
   grow: {
     flexGrow: 1,
+    color: 'white',
   },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
   },
   popper: {
-    zIndex: 1,
+    zIndex: 10,
     overflow: 'auto'
   },
   link: {
@@ -20,4 +21,4 @@ export const styles = {
   title: {
     textAlign: 'center'
   }
-};
+});

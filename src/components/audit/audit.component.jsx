@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
-import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css';
 import 'ag-grid-enterprise';
 import injectSheet from 'react-jss';
 import { styles } from './audit.styles';
@@ -10,7 +9,7 @@ import { styles } from './audit.styles';
 const AuditComponent = ({ columnDefs, rowData, gridOptions }) => (
   <div>
     <div 
-      className="ag-theme-balham-dark"
+      className="ag-theme-balham"
       style={{ 
         height: '400px', 
         width: '98%',

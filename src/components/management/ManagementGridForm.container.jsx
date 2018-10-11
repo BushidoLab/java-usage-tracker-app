@@ -144,7 +144,11 @@ class ManagementGridForm extends Component {
                   variant="outlined"
                 />
               </div>
-              <Button type="submit" variant="contained" className={classes.submit}>
+              <Button
+               type="submit"
+               variant="contained"
+               color="secondary"
+               className={classes.submit}>
                 Submit
               </Button>
             </Paper>

@@ -7,30 +7,32 @@ class AuditContainer extends Component {
   state = {
     gridOptions: {
       columnDefs: [
-        {headerName: "Device Name", label: "deviceName"},
-        {headerName: "IP", label: "IP"},
-        {headerName: "Processor", label: "processor"},
-        {headerName: "Cores", label: "cores"},
-        {headerName: "Publisher", label: "publisher"},
-        {headerName: "Category", label: "category"},
-        {headerName: "Product", label: "product"},
-        {headerName: "App Name", label: "appName"},
-        {headerName: "User Count", label: "userCount"},
-        {headerName: "Operating System", label: "operatingSystem"},
-        {headerName: "Virtual Machine", label: "virtualMachine"},
+        {headerName: "Device", children: [
+          {headerName: "Device Name", label: "deviceName"},
+          {headerName: "IP", label: "IP"},
+        ]},
+        {headerName: "Processor", children: [
+          {headerName: "Processor", label: "processor"},
+          {headerName: "Cores", label: "cores"},
+        ]},
+        {headerName: "Product", children: [
+          {headerName: "Publisher", label: "publisher"},
+          {headerName: "Category", label: "category"},
+          {headerName: "Product", label: "product"},
+        ]},
+        {headerName: "Usage", children: [
+          {headerName: "App Name", label: "appName"},
+          {headerName: "User Count", label: "userCount"},
+        ]},
+        {headerName: "Operating Environment", children: [
+          {headerName: "Operating System", label: "operatingSystem"},
+          {headerName: "Virtual Machine", label: "virtualMachine"},
+        ]}
       ],
       rowData: [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
+        {},{},{},{},{},{},{},{},{},{},
+        {},{},{},{},{},{},{},{},{},{},
+        {},{},{},{},{},{},{},{},{},{},
       ],
     },
   }

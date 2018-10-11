@@ -7,26 +7,24 @@ class AppBarContainer extends Component {
     anchorEl: null
   }
 
-  handleToggle = event => {
-    const currentTarget = event;
-    this.setState(state => ({
-      open: !state.open,
-      anchorEl: currentTarget
-    }));
-  }
-
-  handleClose = () => {
-    this.setState(state => ({ open: false }));
+  handleMenu = event => {
+    this.setState({ anchorEl: event.currentTarget });
   };
+
+  handleClickAway = () => {
+    this.setState({ open: false, anchorEl: null })
+  }
 
   render() {
     const { classes } = this.props;
-    const { open, anchorEl } = this.state;
+    const { anchorEl } = this.state;
+    const open = Boolean(anchorEl);
 
     return (
       <AppBarComponent
-        handleToggle = {this.handleToggle}
-        handleClose = {this.handleClose}
+        handleClick = {this.handleClick}
+        handleMenu = {this.handleMenu}
+        handleClickAway = {this.handleClickAway}
         open={open}
         classes={classes}
         anchorEl={anchorEl}
