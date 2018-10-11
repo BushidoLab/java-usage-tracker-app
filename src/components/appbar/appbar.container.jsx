@@ -4,8 +4,9 @@ import AppBarComponent from './appbar.component';
 class AppBarContainer extends Component {
   state = {
     open: false,
-    anchorEl: null
-  }
+    anchorEl: null,
+    value: 0,
+  };
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -13,11 +14,15 @@ class AppBarContainer extends Component {
 
   handleClickAway = () => {
     this.setState({ open: false, anchorEl: null })
-  }
+  };
+
+  handleClick = (event, value) => {
+    this.setState({ value });
+  };
 
   render() {
     const { classes } = this.props;
-    const { anchorEl } = this.state;
+    const { anchorEl, value } = this.state;
     const open = Boolean(anchorEl);
 
     return (
@@ -28,6 +33,7 @@ class AppBarContainer extends Component {
         open={open}
         classes={classes}
         anchorEl={anchorEl}
+        value={value}
       />
     )
   }

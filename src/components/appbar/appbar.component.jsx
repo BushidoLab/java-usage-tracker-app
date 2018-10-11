@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+// Material-ui imports
 import AppBar from '@material-ui/core/AppBar';
 import { styles } from './appbar.styles';
 import injectSheet from "react-jss";
@@ -11,24 +14,36 @@ import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+
+// Component imports
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import { Management } from '../../routes/Management';
 import { Inspect } from '../../routes/Inspect';
 import { Audit } from '../../routes/Audit';
 import LoginComponent from '../login/Login.component';
 import SignUp from '../sign_up/SignUp.component';
-// import Button from '@material-ui/core/Button';
-// import MenuIcon from '@material-ui/icons/Menu';
-// import Grow from '@material-ui/core/Grow';
-// import Paper from '@material-ui/core/Paper';
-// import Popper from '@material-ui/core/Popper';
+
+
+function TabContainer(props) {
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 const AppBarComponent = ({
   classes,
   handleMenu,
+  handleClick,
   handleClickAway,
   open,
-  anchorEl
+  anchorEl,
+  value,
 }) => {
 return (
 <Router>
@@ -38,13 +53,15 @@ return (
         <Typography variant="h6" color="inherit" className={classes.grow}>
           VeraTrust
         </Typography>
+
+        
         {/* Tab router menu */}
         <div className="App">
         <Route
           path="/"
-          render={({ location }) => (
+          render={() => (
             <div>
-              <Tabs>
+              <Tabs value={value} onChange={handleClick}>
                 <Tab label="Home" component={Link} to="/" />
                 <Tab label="Audit" component={Link} to="/audit" />
                 <Tab label="Inspect" component={Link} to="/inspect" />
@@ -78,18 +95,24 @@ return (
                         horizontal: 'right',
                       }}
                 open={open}>
-                <MenuItem>
-                <Link to="/login" className={classes.link}>Log in</Link>
-                </MenuItem>
-                <MenuItem>
-                <Link to="/signup" className={classes.link}>Sign up</Link>
-                </MenuItem>
+                <Link to="/login" className={classes.link}>
+                  <MenuItem>
+                      Log in
+                  </MenuItem>
+                </Link>
+                <Link to="/signup" className={classes.link}>
+                  <MenuItem>
+                      Sign up
+                  </MenuItem>
+                </Link>
               </Menu>
             </div>
           </ClickAwayListener>
         </div>
       </Toolbar>
     </AppBar>
+
+    {/* Routes component setup */}
     <Switch>
       <Route exact path="/" />
       <Route path="/management" component={Management} />
