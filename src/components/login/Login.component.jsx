@@ -21,6 +21,7 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                         required
                         error={handleError}
                         onChange={handleChange}
+                        className={classes.email}
                         // helperText={errorInputText}
                         value={emailValue}
                     />

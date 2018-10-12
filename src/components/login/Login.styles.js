@@ -28,7 +28,7 @@ export const styles = theme => ({
         width: 390,
         height: 250,
         marginTop: 30,
-        background: 'gray'
+        background: 'rgb(95,95,95)'
     },
     loginWrapper: { height: '100%' },
     inputRow: {
@@ -38,7 +38,9 @@ export const styles = theme => ({
         height: '50%',
         '& input': { color: theme.palette.grey[500] },
         '& [class*="Input-inputWrapper"]': { paddingLeft: 0 },
-        '& [class*="Input-input"]': { width: '282px' }
+        '& [class*="Input-input"]': { width: '282px' },
+        margin: 20,
+        marginTop: 50,
     },
     submitRow: {
         display: 'flex',
@@ -47,6 +49,9 @@ export const styles = theme => ({
         marginTop: 40,
         '& button': { fontWeight: 'unset' },
         '& button:first-child': { paddingLeft: 0, textTransform: 'capitalize'}
+    },
+    submitBtn: {
+        marginBottom: 50
     },
     formContainer: {
         display: 'flex',
@@ -74,6 +79,7 @@ export const styles = theme => ({
         },
     },
     forgotPasswordBtn: {
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: 50
     },
 });
