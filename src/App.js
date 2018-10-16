@@ -11,7 +11,10 @@ import './App.css';
 const generateClassName = createGenerateClassName();
 const AppTheme = createMuiTheme({ 
     palette: { type: 'dark' }, 
-    typography: { useNextVariants: true }
+    typography: { 
+        useNextVariants: true,
+        fontFamily: ['Roboto'] 
+    }
  });
 
 const App = _ => (

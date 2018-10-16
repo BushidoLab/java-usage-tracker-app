@@ -18,6 +18,7 @@ class InspectContainer extends Component {
       <BrowserRouter>
         <Route path="/inspect">
           <Fragment>
+            <br/>
             <ul>
               <li>
                 <Link to="/inspect/product">Product</Link>

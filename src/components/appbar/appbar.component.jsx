@@ -39,7 +39,7 @@ return (
     <AppBar position="static" className={classes.root}>
       <Toolbar>
         <Typography variant="h6" color="inherit" className={classes.grow}>
-          <img src={Logo} className={classes.logo}/>
+          <img src={Logo} alt="Veratrust: Inspect, Verify, Validate and Trust" className={classes.logo}/>
         </Typography>
 
         
