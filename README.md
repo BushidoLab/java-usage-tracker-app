@@ -1,3 +1,23 @@
+# Java Usage Tracker App
+
+## Introduction
+This project contains the web app used to display and manage Java Usage Tracker information. Initial configuration was created using the [create-react-app](https://github.com/facebook/create-react-app) package. Technologies used in this project are React, Apollo Client and GraphQL. It's purpose is to connect a GraphQL server which provides data from a
+[MongoDB](https://www.mongodb.com/) database containing all the authentication, pricing and form's information needed for the website.
+
+## What does it do?
+- Uses Apollo Client to connect to our GraphQL server
+- Uses GraphQL resolvers to query and write data
+- Reads data from a OABCS instance containing all relevant Java usage tracking information
+- Reads and writes to our MongoDB using GraphQL queries and mutations
+- Displays Java Usage Tracker information
+- Records a users Java license information
+- Massages previous data to display information relevant to the software auditing process like if a user is over or under licensed for a specific product
+
+## How to use?
+- Run `npm install` to install all necessary dependecies
+- Run `npm start` to start development server
+
+## Create React App README
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
