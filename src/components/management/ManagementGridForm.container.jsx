@@ -7,20 +7,50 @@ import injectSheet from "react-jss";
 import LicenseRadio from "./license-radio";
 import LicenseTypeRadio from './license-type-radio';
 import Modal from '@material-ui/core/Modal';
+// import ApolloClient from '../../graphql/ApolloClient';
+import { manageForm } from '../../graphql/mutations/manage';
 
 class ManagementGridForm extends Component {
   state = {
-    open: false
+    open: false,
+    license: String(),
+    licenseType: String(),
+    quantity: Number(),
+    listFee: Number(),
+    discount: Number(),
+    netFee: Number(),
+    productSupportFee: Number(),
+    softwareUpdateFee: Number(),
+    otherFees: Number(),
+    CDPackFee: Number(),
+    unitPrice: Number()
   }
 
-  handleChange = e => {
+  handleChange = ({ target: { value, name }}) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [name]: value,
     })
   }
   
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
+    const license = e.target.license.value;
+    const licenseType = this.state.licenseType;
+    const quantity = e.target.quantity.value;
+    const listFee = e.target.listFee.value;
+    const discount = e.target.discount.value;
+    const netFee = e.target.netFee.value;
+    const productSupportFee = e.target.productSupportFee.value;
+    const softwareUpdateFee = e.target.softwareUpdateFee.value;
+    const otherFees = e.target.otherFees.value;
+    const CDPackFee = e.target.CDPackFee.value;
+    const unitPrice = e.target.unitPrice.value;
+    const { client } = this.props;
+
+    const {data: {manageForm} } = await client.mutate({
+      mutation: manageForm,
+      variables: { license, licenseType, quantity, listFee, discount, netFee, productSupportFee, softwareUpdateFee, otherFees, CDPackFee, unitPrice }
+    })
   }
 
   handleOpen = () => {
@@ -136,9 +166,9 @@ class ManagementGridForm extends Component {
 
                 <Input
                   type="number"
-                  name="UnitPrice"
+                  name="unitPrice"
                   placeholder="Unit Price"
-                  value={this.state.UnitPrice}
+                  value={this.state.unitPrice}
                   onChange={this.handleChange}
                   className={classes.textField}
                   variant="outlined"
@@ -148,6 +178,7 @@ class ManagementGridForm extends Component {
                type="submit"
                variant="contained"
                color="secondary"
+               onSubmit={this.handleSubmit}
                className={classes.submit}>
                 Submit
               </Button>

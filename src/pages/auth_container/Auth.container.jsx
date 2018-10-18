@@ -81,7 +81,7 @@ class LoginContainer extends Component {
         const { history } = this.props;
         sessionStorage.setItem('authToken', token);
         this.setState({ loggedIn: !!token });
-        history.push('/management');
+        history.push('/');
     };
 
     render() {

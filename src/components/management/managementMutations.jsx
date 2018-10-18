@@ -1,4 +1,5 @@
-import { manageForm } from '../../graphql/mutations/mutations';
+import React from 'react';
+import { manageForm } from '../../graphql/mutations/manage';
 import { Mutation } from 'react-apollo';
 
 const AddManagement = ({}) => {
@@ -26,3 +27,5 @@ const AddManagement = ({}) => {
     </Mutation>
   )
 }
+
+export default AddManagement;

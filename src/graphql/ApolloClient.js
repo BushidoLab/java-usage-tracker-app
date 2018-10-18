@@ -41,8 +41,4 @@ const httpUri = 'http://localhost:4000';
 //   };
 // });
 
-<<<<<<< HEAD
 export default new ApolloClient({ uri: httpUri });
-=======
-export default new ApolloClient({ uri: httpUri });
->>>>>>> as/jut3
