@@ -6,7 +6,7 @@ export const Audit = Loadable({
     loader: _ => import('../components/audit/audit.container'),
     loading: _ => (
         <div>
-            <LinearLoader/>
+            <LinearLoader />
         </div>
     ),
 });
