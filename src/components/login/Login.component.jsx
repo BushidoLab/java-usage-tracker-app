@@ -3,8 +3,6 @@ import injectSheet from 'react-jss';
 import { Input, Button } from '@material-ui/core';
 import { styles } from './Login.styles';
 
-//**LOGIN COMPONENT HAS NOT BEEN WIRED INTO APP
-
 const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText, handleClick, emailValue, forgotPassword, errorMessages = [] }) => (
     <div className={classes.loginComponent}>
         <div className={classes.loginWrapper}>
@@ -16,7 +14,6 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                     <Input
                         id="emailInput"
                         name="email"
-                        label="Email"
                         placeholder="Email"
                         required
                         error={handleError}
@@ -28,10 +25,10 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                     <Input
                         id="passwordInput"
                         name="password"
-                        label="Password"
                         type="password"
                         placeholder="password"
                         required
+                        onChange={handleChange}
                     />
                 </div>
                 <div className={classes.submitRow}>
