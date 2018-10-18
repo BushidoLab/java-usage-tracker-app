@@ -45,6 +45,7 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                         className={classes.submitBtn}
                         variant="contained"
                         type="submit"
+                        color="primary"
                     >
                         Sign In
                     </Button>
@@ -52,8 +53,8 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
             </form>
         </div>
         <div className={classes.footer}>
-            <h5>Don't have an account?</h5>
-            <Button onClick={handleClick}>Sign Up</Button>
+            <h5 className={classes.footerText}>Don't have an account?</h5>
+            <Button onClick={handleClick}  color="primary" variant="contained">Sign Up</Button>
         </div>
     </div>
 );

@@ -1,10 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-
-// Material-ui imports
-import AppBar from '@material-ui/core/AppBar';
-import { styles } from './appbar.styles';
 import injectSheet from "react-jss";
+import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,6 +13,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 // Component imports
+import { styles } from './appbar.styles';
 import { Management } from '../../routes/Management';
 import { Inspect } from '../../routes/Inspect';
 import { Audit } from '../../routes/Audit';

@@ -67,10 +67,10 @@ const SignUp = ({
                     />
                 </div>
                 <div className={classes.submitRow}>
-                    <Button type="submit" variant="contained">
+                    <Button type="submit" variant="contained" color="primary">
                         Submit
                     </Button>
-                    <Button variant="contained" onClick={cancelSignUp}>
+                    <Button variant="contained" color="primary" onClick={cancelSignUp}>
                         Cancel
                     </Button>
                 </div>

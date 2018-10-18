@@ -37,7 +37,7 @@ class ManagementGridForm extends Component {
 
     return (
       <div>
-        <Button onClick={this.handleOpen} color="primary" variant="outlined" className={classes.button}>Add new license</Button>
+        <Button onClick={this.handleOpen} color="primary" variant="contained" className={classes.button}>Add new license</Button>
         <Modal
         open={this.state.open}
         onClose={this.handleClose}

@@ -28,7 +28,7 @@ export const styles = theme => ({
         width: 390,
         height: 250,
         marginTop: 30,
-        background: 'rgb(95,95,95)'
+        background: 'rgb(240,240,240)'
     },
     loginWrapper: { height: '100%' },
     inputRow: {
@@ -80,6 +80,10 @@ export const styles = theme => ({
     },
     forgotPasswordBtn: {
         textAlign: 'center',
-        marginBottom: 50
+        marginBottom: 50,
     },
+    footerText: {
+        color: 'black',
+        margin: '30px'
+    }
 });
