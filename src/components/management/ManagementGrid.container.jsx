@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import { compose, withApollo, graphql } from 'react-apollo';
+import { withRouter } from 'react-router-dom';
 import ManagementGridComponent from './ManagementGrid.component';
 import ManagementGridFormContainer from './ManagementGridForm.container';
+import { getManagement } from '../../graphql/queries/manage';
 
 class ManagementGridContainer extends Component {
     state = {
@@ -28,6 +31,15 @@ class ManagementGridContainer extends Component {
         },
     };
 
+    handleQuery = async e => {
+        e.preventDefault();
+        const { client } = this.props;
+        const data = await client.query({
+            query: getManagement,
+        })
+        console.log(data);
+    }
+
     render() {
         const { gridOptions, gridOptions: { columnDefs, rowData } } = this.state;
         return (
@@ -36,6 +48,7 @@ class ManagementGridContainer extends Component {
                     columnDefs={columnDefs}
                     rowData={rowData}
                     gridOptions={gridOptions}
+                    handleQuery={this.handleQuery}
                 />
                 <ManagementGridFormContainer/>
             </Fragment>
@@ -43,4 +56,11 @@ class ManagementGridContainer extends Component {
     }
 }
 
-export default ManagementGridContainer;
+
+const enhancer = compose(
+    withApollo,
+    withRouter,
+    graphql(`query {getManagement}`),
+)
+
+export default enhancer(ManagementGridContainer);

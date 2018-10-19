@@ -6,7 +6,9 @@ class AppBarContainer extends Component {
         value: 0,
     }
 
-    handleClick = (event, value) => this.setState({ value });
+    handleClick = (event, value) => {
+        this.setState({ value })
+    };
 
     render() {
         const { classes } = this.props;

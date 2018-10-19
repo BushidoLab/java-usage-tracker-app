@@ -28,8 +28,8 @@ const AuditComponent = ({ columnDefs, rowData, gridOptions }) => (
           rowSelection="multiple"
           rowData={rowData}
           columnDefs={columnDefs}
-          gridOptions={gridOptions}>
-        </AgGridReact>
+          gridOptions={gridOptions}
+        />
     </div>
   </div>
 );

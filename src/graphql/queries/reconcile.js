@@ -1,11 +1,11 @@
 import gql from 'graphql-tag';
 
-export const manageForm = gql `
-  mutation manageForm(
-    $license: String!,
-    $licenseType: String!,
-    $quantity: Int!,
-    $listFee: Float!,
+export const management = gql`
+  query management(
+    $license: String,
+    $licenseType: String,
+    $quantity: Int,
+    $listFee: Float,
     $discount: Float,
     $netFee: Float,
     $productSupportFee:Float,
@@ -14,7 +14,7 @@ export const manageForm = gql `
     $cdPackFee: Float,
     $unitPrice: Float
   ) {
-    manageForm(
+    management(
       license: $license,
       licenseType: $licenseType,
       quantity: $quantity,
@@ -30,8 +30,22 @@ export const manageForm = gql `
       license
       licenseType
       quantity
-      listFee
-      discount
+      netFee
+      unitPrice
     }
+  }
+
+  query getLogCount(
+    $channel: String!,
+    $chaincode: String!,
+    $chaincodeVer: String!,
+    $args: [String!]
+  ) {
+    getLogCount(
+      channel: $channel,
+      chaincode: $chaincode,
+      chaincodeVer: $chaincodeVer,
+      args: $args
+    )
   }
 `;
