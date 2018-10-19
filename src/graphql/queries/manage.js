@@ -14,18 +14,6 @@ export const getManagement = gql`
     $cdPackFee: Float,
     $unitPrice: Float
   ) {
-    getManagement(
-      # license: $license,
-      # licenseType: $licenseType,
-      # quantity: $quantity,
-      # listFee: $listFee,
-      # discount: $discount,
-      # netFee: $netFee,
-      # productSupportFee: $productSupportFee,
-      # softwareUpdateFee: $softwareUpdateFee,
-      # otherFees: $otherFees,
-      # cdPackFee: $cdPackFee,
-      # unitPrice: $unitPrice
-    )
+    getManagement
   }
 `;

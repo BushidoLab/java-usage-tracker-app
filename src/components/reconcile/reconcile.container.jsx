@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import { compose, withApollo, graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import ReconcileComponent from './reconcile.component';
+// import { getLogCount } from '../../graphql/queries/logs';
 
 class ReconcileContainer extends Component {
   state = {
@@ -29,6 +32,16 @@ class ReconcileContainer extends Component {
       ],
     },
   }
+
+  // logCount = async e => {
+  //   e.preventDefault();
+  //   const { client } = this.props;
+  //   const data = await client.query({
+  //     query: getLogCount,
+  //     variables: { channel: "default", chaincode: "end2end-05", chaincodeVer: "v1.0", args: ["oracle"]}
+  //   })
+  //   console.log(data);
+  // }
 
   differenceFunction = (params) => {
     // const licenses = await client.query({
@@ -60,10 +73,16 @@ class ReconcileContainer extends Component {
           columnDefs={columnDefs}
           rowData={rowData}
           gridOptions={gridOptions}
+          logCount={this.logCount}
         />
       </div>
       );
   }
 }
 
-export default ReconcileContainer;
+const enhancer = compose(
+  withApollo,
+  // graphql(gql`query {getLogCount { channel: "default", chaincode: "end2end-05", chaincodeVer: "v1.0", args: ["oracle"] }}`)
+)
+
+export default enhancer(ReconcileContainer);

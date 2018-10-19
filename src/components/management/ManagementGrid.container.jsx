@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import ManagementGridComponent from './ManagementGrid.component';
 import ManagementGridFormContainer from './ManagementGridForm.container';
 import { getManagement } from '../../graphql/queries/manage';
+import { price } from '../../graphql/queries/price';
 
 class ManagementGridContainer extends Component {
     state = {
@@ -31,13 +32,23 @@ class ManagementGridContainer extends Component {
         },
     };
 
-    handleQuery = async e => {
-        e.preventDefault();
+    getManagement = async e => {
         const { client } = this.props;
         const data = await client.query({
             query: getManagement,
         })
         console.log(data);
+        return data;
+    }
+
+    getPrice = async e => {
+        const { client } = this.props;
+        const data = await client.query({
+            query: price,
+            variables: { name: this.rowData.description.value }
+        })
+        console.log(data);
+        return data;
     }
 
     render() {
@@ -48,7 +59,7 @@ class ManagementGridContainer extends Component {
                     columnDefs={columnDefs}
                     rowData={rowData}
                     gridOptions={gridOptions}
-                    handleQuery={this.handleQuery}
+                    getManagement={this.getManagement}
                 />
                 <ManagementGridFormContainer/>
             </Fragment>
@@ -60,7 +71,7 @@ class ManagementGridContainer extends Component {
 const enhancer = compose(
     withApollo,
     withRouter,
-    graphql(`query {getManagement}`),
+    // graphql(`query: {getPrice}`),
 )
 
 export default enhancer(ManagementGridContainer);

@@ -6,7 +6,7 @@ import 'ag-grid-enterprise';
 import injectSheet from 'react-jss';
 import { styles } from './audit.styles';
 
-const AuditComponent = ({ columnDefs, rowData, gridOptions }) => (
+const AuditComponent = ({ columnDefs, rowData, gridOptions, getLogs }) => (
   <div>
     <div 
       className="ag-theme-balham"
@@ -29,6 +29,7 @@ const AuditComponent = ({ columnDefs, rowData, gridOptions }) => (
           rowData={rowData}
           columnDefs={columnDefs}
           gridOptions={gridOptions}
+          getLogs={getLogs}
         />
     </div>
   </div>

@@ -7,12 +7,7 @@ export const getLogCount = gql`
     $chaincodeVer: String!,
     $args: [String!]
   ) {
-    getLogCount(
-      channel: $channel,
-      chaincode: $chaincode,
-      chaincodeVer: $chaincodeVer,
-      args: $args
-    )
+    getLogCount
   }
 }`;
 
@@ -23,12 +18,7 @@ export const getLog = gql`
     $chaincodeVer: String!,
     $args: [String!]
   ) {
-    getLog(
-      channel: $channel,
-      chaincode: $chaincode,
-      chaincodeVer: $chaincodeVer,
-      args: $args
-    )
+    getLog
   }`;
 
 
@@ -39,7 +29,7 @@ export const getAllLogs = gql`
     $chaincodeVer: String!,
     $args: [String!]
   ) {
-    getLog(
+    getAllLogs(
       channel: $channel,
       chaincode: $chaincode,
       chaincodeVer: $chaincodeVer,

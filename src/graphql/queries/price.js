@@ -1,25 +1,15 @@
 import gql from 'graphql-tag';
 
 export const price = gql`
-  query price(
+  query getPrice(
     $name: String!,
     $NUP: String,
     $NUPSupport: String,
     $Processor: String,
     $ProcessorSupport: String
   ) {
-    price(
-      name: $name,
-      NUP: $NUP,
-      NUPSupport: $NUPSupport,
-      Processor: $Processor,
-      ProcessorSupport: $ProcessorSupport
-    ) {
-      name
-      NUP
-      NUPSupport
-      Processor
-      ProcessorSupport
+    getPrice {
+      price
     }
   }
 `;

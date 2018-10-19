@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 import { compose, withApollo, graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
-import ManagementGridFormComponent from './ManagementGridForm.component';
 import { manageForm } from '../../graphql/mutations/manage';
+import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
+import Modal from '@material-ui/core/Modal';
+import injectSheet from "react-jss";
+import LicenseRadio from "./license-radio";
+import LicenseTypeRadio from './license-type-radio';
+import Paper from "@material-ui/core/Paper";
+import { styles } from './ManagementGrid.styles';
 
 class ManagementGridForm extends Component {
   state = {
     open: false,
-    license: String(),
-    licenseType: String(),
-    quantity: Number(),
-    listFee: Number(),
-    discount: Number(),
-    netFee: Number(),
-    productSupportFee: Number(),
-    softwareUpdateFee: Number(),
-    otherFees: Number(),
-    CDPackFee: Number(),
-    unitPrice: Number()
+    license: "",
+    licenseType: "",
+    quantity: "",
+    listFee: "",
+    discount: "",
+    netFee: "",
+    productSupportFee: "",
+    softwareUpdateFee: "",
+    otherFees: "",
+    CDPackFee: "",
+    unitPrice: "",
   }
 
   handleChange = ({ target: { value, name }}) => {
@@ -31,10 +38,12 @@ class ManagementGridForm extends Component {
     const { license, licenseType, quantity, listFee, discount,  netFee, productSupportFee, softwareUpdateFee, otherFees, CDPackFee, unitPrice } = this.state;
     const { client } = this.props;
 
-    manageForm = await client.mutate({
+    const data = await client.mutate({
       mutation: manageForm,
       variables: { license, licenseType, quantity, listFee, discount, netFee, productSupportFee, softwareUpdateFee, otherFees, CDPackFee, unitPrice }
     })
+    console.log(data);
+    return data;
   }
 
   handleOpen = () => {
@@ -47,23 +56,132 @@ class ManagementGridForm extends Component {
   }
 
   render() {
+    const { classes, client } = this.props;
     return (
-      <ManagementGridFormComponent 
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-        handleOpen={this.handleOpen}
-        handleClose={this.handleClose}
+      <div>
+        <Button onClick={this.handleOpen} color="primary" variant="contained" className={classes.button}>Add new license</Button>
+        <Modal
         open={this.state.open}
-        quantity
-        listFee
-        discount
-        netFee
-        productSupportFee
-        softwareUpdateFee
-        otherFees
-        CDPackFee
-        unitPrice
-        />
+        onClose={this.handleClose}
+        >
+          <div className={classes.formContainer}>
+          <form onSubmit={this.handleSubmit} autoComplete="off" className={classes.formContainer}>
+            <div className={classes.licenses}>
+              <LicenseRadio
+                license={this.license}
+              />
+              <LicenseTypeRadio
+                licenseType={this.licenseType}
+              />
+            </div>
+            <Paper className={classes.fields}>
+              <div className={classes.inputFields}>
+                <Input
+                  type="number"
+                  name="quantity"
+                  placeholder="Quantity"
+                  value={this.quantity}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                />
+
+                <Input
+                  type="number"
+                  name="listFee"
+                  placeholder="List Fee"
+                  value={this.listFee}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                />
+
+                <Input
+                  type="number"
+                  name="discount"
+                  placeholder="Discount"
+                  value={this.discount}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                />
+
+                <Input
+                  type="number"
+                  name="netFee"
+                  placeholder="Net Fee"
+                  value={this.netFee}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                />
+
+                <Input
+                  type="number"
+                  name="productSupportFee"
+                  placeholder="Product Support Fee"
+                  value={this.productSupportFee}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                />
+
+                <Input
+                  type="number"
+                  name="softwareUpdateFee"
+                  placeholder="Software Update Fee"
+                  value={this.softwareUpdateFee}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                />
+
+                <Input
+                  type="number"
+                  name="otherFees"
+                  placeholder="Other Fees"
+                  value={this.otherFees}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                />
+
+                <Input
+                  type="number"
+                  name="CDPackFee"
+                  placeholder="CD Pack Fee"
+                  value={this.CDPackFee}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                />
+
+                <Input
+                  type="number"
+                  name="unitPrice"
+                  placeholder="Unit Price"
+                  value={this.unitPrice}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                />
+              </div>
+              <Button
+              type="submit"
+              variant="contained"
+              color="secondary"
+              onSubmit={this.handleSubmit}
+              className={classes.submit}>
+                Submit
+              </Button>
+            </Paper>
+          </form>
+        </div>
+      </Modal>
+    </div>
     );
   }
 }
@@ -71,7 +189,7 @@ class ManagementGridForm extends Component {
 const enhancer = compose(
   withApollo,
   withRouter,
-  graphql(manageForm)
+  // graphql(`mutation {manageForm: {license, licenseType, quantity, listFee, discount}}`)
 );
 
-export default enhancer(ManagementGridForm);
+export default injectSheet(styles)(enhancer(ManagementGridForm));

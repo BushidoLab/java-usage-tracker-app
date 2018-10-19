@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const manageForm = gql `
-  mutation manageForm(
+  mutation manage(
     $license: String!,
     $licenseType: String!,
     $quantity: Int!,
@@ -14,7 +14,7 @@ export const manageForm = gql `
     $cdPackFee: Float,
     $unitPrice: Float
   ) {
-    manageForm(
+    manage(
       license: $license,
       licenseType: $licenseType,
       quantity: $quantity,

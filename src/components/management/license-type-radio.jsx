@@ -22,7 +22,7 @@ const styles = {
 
 class LicenseTypeRadio extends React.Component {
   state = {
-    value: 'NUP'
+    value: 'Processor'
   }
 
   handleChange = e => {
