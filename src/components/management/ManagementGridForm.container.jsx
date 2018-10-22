@@ -27,6 +27,10 @@ class ManagementGridForm extends Component {
     unitPrice: "",
   }
 
+  handleRadioChange = radioValue => this.setState({ license: radioValue })
+
+  handleLicenseTypeChange = licenseTypeValue => this.setState({ licenseType: licenseTypeValue })
+
   handleChange = ({ target: { value, name }}) => {
     this.setState({
       [name]: value,
@@ -34,7 +38,7 @@ class ManagementGridForm extends Component {
   }
   
   handleSubmit = async e => {
-    e.preventDefault();
+    // e.preventDefault();
     const { license, licenseType, quantity, listFee, discount,  netFee, productSupportFee, softwareUpdateFee, otherFees, CDPackFee, unitPrice } = this.state;
     const { client } = this.props;
 
@@ -68,12 +72,10 @@ class ManagementGridForm extends Component {
           <form onSubmit={this.handleSubmit} autoComplete="off" className={classes.formContainer}>
             <div className={classes.licenses}>
               <LicenseRadio
-                name="license"
-                value={this.state.value}
-                onChange={this.handleChange}
+                onChange={this.handleRadioChange}
               />
               <LicenseTypeRadio
-                value={this.licenseType}
+                onChange={this.handleLicenseTypeChange}
               />
             </div>
             <Paper className={classes.fields}>

@@ -10,6 +10,7 @@ class LicenseTypeRadio extends React.Component {
 
   handleChange = e => {
     this.setState({ value: e.target.value })
+    this.props.onChange(e.target.value);
   }
 
   render () {
@@ -21,7 +22,7 @@ class LicenseTypeRadio extends React.Component {
           <FormControl component="fieldset" className={classes.formControl}>
             <FormLabel>License Type</FormLabel>
             <RadioGroup 
-              name="license-type"
+              name="licenseType"
               aria-label="License Type"
               className={classes.group}
               value={this.state.value}
