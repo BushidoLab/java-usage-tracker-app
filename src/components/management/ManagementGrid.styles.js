@@ -8,14 +8,30 @@ export const styles = {
     margin: "10px"
   },
   formContainer: {
-    display: "block",
-    width: "90%",
-    margin: "20px, 5%",
+    margin: "0, auto",
     padding: "10px"
   },
   button: {
     margin: '10px'
   },
   submit: {
+    float: 'right',
+    marginTop: -50,
+    marginRight: 50
+  },
+  root: {
+    display: "flex",
+    color: 'black'
+  },
+  formControl: {
+    margin: "10px"
+  },
+  group: {
+    margin: "10px"
+  },
+  paper: {
+    float: "left",
+    width: "45%",
+    margin: "10px, 2.5%"
   }
 };

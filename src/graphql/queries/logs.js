@@ -7,9 +7,14 @@ export const getLogCount = gql`
     $chaincodeVer: String!,
     $args: [String!]
   ) {
-    getLogCount
+    getLogCount(
+      channel: $channel
+      chaincode: $chaincode
+      chaincodeVer: $chaincodeVer
+      args: $args
+    )
   }
-}`;
+`;
 
 export const getLog = gql`
   query getLog(

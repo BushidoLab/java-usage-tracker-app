@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
-import { compose, withApollo, graphql } from 'react-apollo';
+import { compose, withApollo, Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import ReconcileComponent from './reconcile.component';
-// import { getLogCount } from '../../graphql/queries/logs';
+import { getManagement } from '../../graphql/queries/manage';
+import { getLogCount } from '../../graphql/queries/logs';
 
 class ReconcileContainer extends Component {
   state = {
@@ -33,16 +34,6 @@ class ReconcileContainer extends Component {
     },
   }
 
-  // logCount = async e => {
-  //   e.preventDefault();
-  //   const { client } = this.props;
-  //   const data = await client.query({
-  //     query: getLogCount,
-  //     variables: { channel: "default", chaincode: "end2end-05", chaincodeVer: "v1.0", args: ["oracle"]}
-  //   })
-  //   console.log(data);
-  // }
-
   differenceFunction = (params) => {
     // const licenses = await client.query({
     //   query: getLogCount,
@@ -69,6 +60,30 @@ class ReconcileContainer extends Component {
     const { gridOptions, gridOptions: { columnDefs, rowData } } = this.state;
     return (
       <div>
+        <Query
+         query={getLogCount}
+         variables={{channel: 'default', chaincode: 'end2end-05', chaincodeVer: '1.0', args: ["oracle"]}}
+        >
+          {({loading, error, data}) => {
+            if (loading) return null;
+            if (error) return `Error: ${error.message}`
+            console.log(data.getLogCount)
+            return (
+              data.getLogCount
+            )
+          }}
+        </Query>
+        <Query query={getManagement}>
+          {({ loading, error, data }) => {
+              if (loading) return null;
+              if (error) return `Error: ${error.message}`
+              return (
+                  Object.values(data.getManagement).map(form => {
+                      console.log(form);
+                  })
+              )
+          }}
+        </Query>
         <ReconcileComponent
           columnDefs={columnDefs}
           rowData={rowData}
@@ -81,8 +96,7 @@ class ReconcileContainer extends Component {
 }
 
 const enhancer = compose(
-  withApollo,
-  // graphql(gql`query {getLogCount { channel: "default", chaincode: "end2end-05", chaincodeVer: "v1.0", args: ["oracle"] }}`)
+  withApollo
 )
 
 export default enhancer(ReconcileContainer);

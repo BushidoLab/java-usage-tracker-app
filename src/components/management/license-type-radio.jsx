@@ -1,24 +1,7 @@
 import React from 'react';
 import { Radio, FormLabel, FormControlLabel, RadioGroup, FormControl, withStyles } from "@material-ui/core";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-const styles = {
-  root: {
-    display: "flex",
-    flex: "left"
-  },
-  formControl: {
-    margin: "10px"
-  },
-  group: {
-    margin: "10px"
-  },
-  paper: {
-    float: "right",
-    width: "45%",
-    margin: "10px, 2.5%"
-  }
-}
+import { styles } from './ManagementGrid.styles';
 
 class LicenseTypeRadio extends React.Component {
   state = {
@@ -44,8 +27,8 @@ class LicenseTypeRadio extends React.Component {
               value={this.state.value}
               onChange={this.handleChange}
             >
-              <FormControlLabel value="NUP" control={<Radio />} label="NUP"/>
               <FormControlLabel value="Processor" control={<Radio />} label="Processor"/>
+              <FormControlLabel value="NUP" control={<Radio />} label="NUP"/>
             </RadioGroup>
           </FormControl>
         </div>

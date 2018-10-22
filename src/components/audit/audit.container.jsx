@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import AuditComponent from './audit.component';
-// import { getAllLogs } from '../../graphql/queries/logs';
-import { compose, withApollo, graphql } from 'react-apollo';
+import { compose, withApollo, Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import { getAllLogs } from '../../graphql/queries/logs';
 
 class AuditContainer extends Component {
   state = {
@@ -34,8 +35,8 @@ class AuditContainer extends Component {
         ]}
       ],
       rowData: [
-        { id: 1, deviceName: "Server 1", IP: "192.168.0.1", processor: "Intel i7-8700k", cores: "6", publisher: "Intel", category: "Processor", product: "Java SE Advanced", appName: "JDK", userCount: "88", operatingSystem: "Windows", virtualMachine: null },
-        { id: 2, deviceName: "Server 2", IP: "192.155.0.0", processor: "Intel i7-6700", cores: "4", publisher: "Intel", category: "Processor", product: "Java SE Advanced", appName: "JDK", userCount: "88", operatingSystem: "Windows", virtualMachine: "VMWare" },
+        // { id: 1, deviceName: "Server 1", IP: "192.168.0.1", processor: "Intel i7-8700k", cores: "6", publisher: "Intel", category: "Processor", product: "Java SE Advanced", appName: "JDK", userCount: "88", operatingSystem: "Windows", virtualMachine: null },
+        // { id: 2, deviceName: "Server 2", IP: "192.155.0.0", processor: "Intel i7-6700", cores: "4", publisher: "Intel", category: "Processor", product: "Java SE Advanced", appName: "JDK", userCount: "88", operatingSystem: "Windows", virtualMachine: "VMWare" },
       ],
       onRowDoubleClicked: function() {
         console.log(this.rowData);
@@ -43,22 +44,9 @@ class AuditContainer extends Component {
     },
   };
 
-  // getLogs = async e => {
-  //   const { client } = this.props
-  //   e.preventDefault();
-
-  //   const data = await client.query({
-  //     query: getAllLogs,
-  //     variables: { channel: "default", chaincode: "end2end-05", chaincodeVer: "v1.0", args: ["oracle"]}
-  //   })
-  //   console.log(data);
-  //   return data
-  // }
-
   handleOpen = () => {
     this.setState({open: true})
   }
-
 
   handleClose = () => {
     this.setState({open: false})
@@ -68,11 +56,23 @@ class AuditContainer extends Component {
     const { gridOptions, gridOptions: { columnDefs, rowData } } = this.state;
     return (
       <div>
+        <Query
+         query={getAllLogs}
+         variables={{channel: 'default', chaincode: 'end2end-05', chaincodeVer: '1.0', args: ["oracle"]}}
+         >
+          {({ loading, error, data }) => {
+            if (loading) return null;
+            if (error) return `Error: ${error.message}`;
+            console.log(data.getAllLogs)
+            return (
+              Object.values(data.getAllLogs)
+            )
+          }}
+        </Query>
         <AuditComponent
           columnDefs={columnDefs}
           rowData={rowData}
           gridOptions={gridOptions}
-          getLogs={this.getLogs}
         />
       </div>
       );
@@ -80,9 +80,7 @@ class AuditContainer extends Component {
 }
 
 const enhancer = compose(
-  withApollo,
-  
-  // graphql()
+  withApollo
 )
 
 export default enhancer(AuditContainer);

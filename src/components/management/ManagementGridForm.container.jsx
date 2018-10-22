@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { compose, withApollo, graphql } from 'react-apollo';
-import { withRouter } from 'react-router-dom';
+import { withApollo } from 'react-apollo';
+// import { withRouter } from 'react-router-dom';
+import injectSheet from "react-jss";
+import Paper from "@material-ui/core/Paper";
 import { manageForm } from '../../graphql/mutations/manage';
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import Modal from '@material-ui/core/Modal';
-import injectSheet from "react-jss";
 import LicenseRadio from "./license-radio";
 import LicenseTypeRadio from './license-type-radio';
-import Paper from "@material-ui/core/Paper";
 import { styles } from './ManagementGrid.styles';
 
 class ManagementGridForm extends Component {
@@ -56,7 +56,7 @@ class ManagementGridForm extends Component {
   }
 
   render() {
-    const { classes, client } = this.props;
+    const { classes } = this.props;
     return (
       <div>
         <Button onClick={this.handleOpen} color="primary" variant="contained" className={classes.button}>Add new license</Button>
@@ -68,10 +68,12 @@ class ManagementGridForm extends Component {
           <form onSubmit={this.handleSubmit} autoComplete="off" className={classes.formContainer}>
             <div className={classes.licenses}>
               <LicenseRadio
-                license={this.license}
+                name="license"
+                value={this.state.value}
+                onChange={this.handleChange}
               />
               <LicenseTypeRadio
-                licenseType={this.licenseType}
+                value={this.licenseType}
               />
             </div>
             <Paper className={classes.fields}>
@@ -79,7 +81,7 @@ class ManagementGridForm extends Component {
                 <Input
                   type="number"
                   name="quantity"
-                  placeholder="Quantity"
+                  placeholder="Quantity"  
                   value={this.quantity}
                   onChange={this.handleChange}
                   className={classes.textField}
@@ -186,10 +188,4 @@ class ManagementGridForm extends Component {
   }
 }
 
-const enhancer = compose(
-  withApollo,
-  withRouter,
-  // graphql(`mutation {manageForm: {license, licenseType, quantity, listFee, discount}}`)
-);
-
-export default injectSheet(styles)(enhancer(ManagementGridForm));
+export default injectSheet(styles)(withApollo(ManagementGridForm));
