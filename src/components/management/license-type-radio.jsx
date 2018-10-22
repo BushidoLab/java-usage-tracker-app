@@ -5,7 +5,7 @@ import { styles } from './ManagementGrid.styles';
 
 class LicenseTypeRadio extends React.Component {
   state = {
-    value: 'Processor'
+    value: null
   }
 
   handleChange = e => {

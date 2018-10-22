@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withApollo } from 'react-apollo';
-// import { withRouter } from 'react-router-dom';
 import injectSheet from "react-jss";
 import Paper from "@material-ui/core/Paper";
 import { manageForm } from '../../graphql/mutations/manage';
@@ -14,17 +13,17 @@ import { styles } from './ManagementGrid.styles';
 class ManagementGridForm extends Component {
   state = {
     open: false,
-    license: "",
-    licenseType: "",
-    quantity: "",
-    listFee: "",
-    discount: "",
-    netFee: "",
-    productSupportFee: "",
-    softwareUpdateFee: "",
-    otherFees: "",
-    CDPackFee: "",
-    unitPrice: "",
+    license: String(),
+    licenseType: String(),
+    quantity: Number(),
+    listFee: Number(),
+    discount: Number(),
+    netFee: Number(),
+    productSupportFee: Number(),
+    softwareUpdateFee: Number(),
+    otherFees: Number(),
+    CDPackFee: Number(),
+    unitPrice: Number(),
   }
 
   handleRadioChange = radioValue => this.setState({ license: radioValue })
@@ -38,7 +37,7 @@ class ManagementGridForm extends Component {
   }
   
   handleSubmit = async e => {
-    // e.preventDefault();
+    e.preventDefault();
     const { license, licenseType, quantity, listFee, discount,  netFee, productSupportFee, softwareUpdateFee, otherFees, CDPackFee, unitPrice } = this.state;
     const { client } = this.props;
 
@@ -46,7 +45,8 @@ class ManagementGridForm extends Component {
       mutation: manageForm,
       variables: { license, licenseType, quantity, listFee, discount, netFee, productSupportFee, softwareUpdateFee, otherFees, CDPackFee, unitPrice }
     })
-    console.log(data);
+    console.log('DATA',data)
+    this.setState({ open: false })
     return data;
   }
 
