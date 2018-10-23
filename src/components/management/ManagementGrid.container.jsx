@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { compose, withApollo } from 'react-apollo';
+import { compose, withApollo, graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import ManagementGridComponent from './ManagementGrid.component';
@@ -24,30 +24,27 @@ class ManagementGridContainer extends Component {
                 { headerName: 'CD Pack Fee', field: 'CDPackFee', width: 150, editable: true },
                 { headerName: 'Total Fees', field: 'totalFees', width: 150, editable: true },
             ],
-            rowData: [
-                {},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
-            ],
+            rowData: [],
         },
     };
     
     render() {
         const { gridOptions, gridOptions: { columnDefs, rowData } } = this.state;
+        const { data: { getManagement } } = this.props;
         return (
             <Fragment>
-                <Query query={getManagement}>
-                {({ loading, error, data }) => {
+                {/* <Query query={getManagement}>
+                {async ({ loading, error, data: { getManagement } }) => {
+                    let formArr = [];
                     if (loading) return null;
                     if (error) return `Error: ${error.message}`
-                    return (
-                       Object.values(data.getManagement).map(form => {
-                            console.log(form)
-                       })
-                    )
+                    const rowData = await Object.values(getManagement).map(row => row)
+                    this.setState({ rowData })
                 }}
-                </Query>
+                </Query> */}
                 <ManagementGridComponent
                     columnDefs={columnDefs}
-                    rowData={rowData}
+                    rowData={getManagement}
                     gridOptions={gridOptions}
                 />
                 <ManagementGridFormContainer/>
@@ -59,7 +56,8 @@ class ManagementGridContainer extends Component {
 
 const enhancer = compose(
     withApollo,
-    withRouter
+    withRouter,
+    graphql(getManagement)
 )
 
 export default enhancer(ManagementGridContainer);

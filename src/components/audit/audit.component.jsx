@@ -30,6 +30,7 @@ const AuditComponent = ({ columnDefs, rowData, gridOptions }) => (
           columnDefs={columnDefs}
           gridOptions={gridOptions}
           allowContextMenuWithControlKey={true}
+          suppressLoadingOverlay={true}
         />
     </div>
   </div>

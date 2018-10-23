@@ -4,50 +4,61 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import AuditComponent from './audit.component';
 import { compose, withApollo, Query } from 'react-apollo';
 import { getAllLogs } from '../../graphql/queries/logs';
+import fetch from 'node-fetch';
 
 class AuditContainer extends Component {
   state = {
     open: false,
     gridOptions: {
       columnDefs: [
-        {headerName: "", checkboxSelection: true, width: 30 },
-        {headerName: "Device", children: [
-          {headerName: "Device Name", field: "deviceName", width: 160},
-          {headerName: "IP", field: "IP", width: 160},
-        ]},
-        {headerName: "Processor", children: [
-          {headerName: "Processor", field: "processor", width: 160},
-          {headerName: "Cores", field: "cores", width: 160},
-        ]},
-        {headerName: "Product", children: [
-          {headerName: "Publisher", field: "publisher", width: 160},
-          {headerName: "Category", field: "category", width: 160},
-          {headerName: "Product", field: "product", width: 160},
-        ]},
-        {headerName: "Usage", children: [
-          {headerName: "App Name", field: "appName", width: 160},
-          {headerName: "User Count", field: "userCount", width: 160},
-        ]},
-        {headerName: "Operating Environment", children: [
-          {headerName: "Operating System", field: "operatingSystem", width: 160},
-          {headerName: "Virtual Machine", field: "virtualMachine", width: 160},
-        ]}
+        // {headerName: "", checkboxSelection: true, width: 30 },
+        // {headerName: "Device", children: [
+        //   {headerName: "Device Name", field: "deviceName", width: 160},
+        //   {headerName: "IP", field: "IP", width: 160},
+        // ]},
+        // {headerName: "Processor", children: [
+        //   {headerName: "Processor", field: "processor", width: 160},
+        //   {headerName: "Cores", field: "cores", width: 160},
+        // ]},
+        // {headerName: "Product", children: [
+        //   {headerName: "Publisher", field: "publisher", width: 160},
+        //   {headerName: "Category", field: "category", width: 160},
+        //   {headerName: "Product", field: "product", width: 160},
+        // ]},
+        // {headerName: "Usage", children: [
+        //   {headerName: "App Name", field: "appName", width: 160},
+        //   {headerName: "User Count", field: "userCount", width: 160},
+        // ]},
+        // {headerName: "Operating Environment", children: [
+        //   {headerName: "Operating System", field: "operatingSystem", width: 160},
+        //   {headerName: "Virtual Machine", field: "virtualMachine", width: 160},
+        // ]}
+        {headerName: "Make", field: "make"},
+        {headerName: "Model", field: "model"},
+        {headerName: "Price", field: "price"},
       ],
-      rowData: [
-        {}
-      ],
-      componentDidMount() {
-        const { client } = this.props;
-    
-        client.query({
-          query: getAllLogs,
-          variables: {channel: "default", chaincode: "ProcessorChaincode", chaincodeVer: "1.0", args: ["oracle"]}
-        })
-        .then(result => result.data.getAllLogs.json())
-        .then(rowData => this.setState({rowData}))
-      },
     },
   };
+  
+  async componentDidMount() {
+    try { 
+      console.log(await fetch('https://api.myjson.com/bins/15psn9.json').json())
+    } catch (error) {
+      console.log(error)
+    }
+      //    .then(result => result.json())
+      //    .then(rowData => this.setState({rowData}))
+    }
+    // componentDidMount() {)
+    //   const { client } = this.props;
+  
+    //   client.query({
+    //     query: getAllLogs,
+    //     variables: {channel: "default", chaincode: "ProcessorChaincode", chaincodeVer: "1.0", args: ["oracle"]}
+    //   })
+    //   .then(result => result.data.getAllLogs)
+    //   .then(rowData => this.setState({rowData}))
+    // }
 
   handleOpen = () => {
     this.setState({open: true})

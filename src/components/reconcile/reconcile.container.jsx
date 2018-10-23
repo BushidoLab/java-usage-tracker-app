@@ -33,8 +33,8 @@ class ReconcileContainer extends Component {
     },
   }
 
-  differenceFunction = () => {
-
+  differenceFunction = (quantity, count) => {
+    return quantity.value - count.value;
   }
 
   totalFunction = () => {
