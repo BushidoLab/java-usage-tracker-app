@@ -9,6 +9,7 @@ import Modal from '@material-ui/core/Modal';
 import LicenseRadio from "./license-radio";
 import LicenseTypeRadio from './license-type-radio';
 import { styles } from './ManagementGrid.styles';
+import { price } from '../../graphql/queries/price';
 
 class ManagementGridForm extends Component {
   state = {
@@ -34,6 +35,16 @@ class ManagementGridForm extends Component {
     this.setState({
       [name]: value,
     })
+  }
+
+  handlePrice = () => {
+    const { client } = this.props;
+
+    const cost = client.query({
+      query: price,
+      variables: {name: this.state.license}
+    })
+    console.log(cost);
   }
   
   handleSubmit = async e => {

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import { compose, withApollo, Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import ReconcileComponent from './reconcile.component';
 import { getManagement } from '../../graphql/queries/manage';
 import { getLogCount } from '../../graphql/queries/logs';
@@ -11,14 +10,14 @@ class ReconcileContainer extends Component {
   state = {
     gridOptions: {
       columnDefs: [
-          {headerName: "Publisher", field: "publisher"},
-          {headerName: "Product Name", field: "productName"},
-          {headerName: "License Type", field: "licenseType"},
-          {headerName: "Quantity", field: "quantity"},
-          {headerName: "Inventory", field: "inventory"},
-          {headerName: "Supported", field: "supported"},
-          {headerName: "Difference", field: "difference", aggFunc: this.differenceFunction},
-          {headerName: "Amount", field: "amount", aggFunc: this.sumFunction, cellStyle: function(params) {
+          {headerName: "Publisher", field: "publisher", width: 230},
+          {headerName: "Product Name", field: "productName", width: 230},
+          {headerName: "License Type", field: "licenseType", width: 230},
+          {headerName: "Quantity", field: "quantity", width: 230},
+          {headerName: "Inventory", field: "inventory", width: 230},
+          {headerName: "Supported", field: "supported", width: 230},
+          {headerName: "Difference", field: "difference", width: 230, aggFunc: this.differenceFunction},
+          {headerName: "Amount", field: "amount", width: 230, aggFunc: this.totalFunction, cellStyle: function(params) {
             if (params.value < 0) {
               return {backgroundColor: 'red'}
             } else if (params.value > 0) {
@@ -34,26 +33,12 @@ class ReconcileContainer extends Component {
     },
   }
 
-  differenceFunction = (params) => {
-    // const licenses = await client.query({
-    //   query: getLogCount,
-    //   variables: { args: ["oracle"]}
-    // })
+  differenceFunction = () => {
 
-    // const management = await client.query({
-    //   query: management,
-    //   variables: { license, licenseType, quantity, listFee, discount, netFee, productSupportFee, softwareUpdateFee, otherFees, CDPackFee, unitPrice }
-    // })
-
-    // return parseInt(licenses) - parseInt(management.quantity);
   }
 
-  sumFunction = (params) => {
-    
-  }
+  totalFunction = () => {
 
-  updateData = data => {
-    this.setState({rowData: data})
   }
 
   render() {
@@ -62,25 +47,27 @@ class ReconcileContainer extends Component {
       <div>
         <Query
          query={getLogCount}
-         variables={{channel: 'default', chaincode: 'end2end-05', chaincodeVer: '1.0', args: ["oracle"]}}
+         variables={{channel: 'default', chaincode: 'NUPChaincode', chaincodeVer: '1.0', args: ["oracle"]}}
         >
           {({loading, error, data}) => {
             if (loading) return null;
             if (error) return `Error: ${error.message}`
-            console.log(data.getLogCount)
             return (
-              data.getLogCount
+              `Log count: ${data.getLogCount}`
             )
           }}
         </Query>
         <Query query={getManagement}>
           {({ loading, error, data }) => {
+              let formArr = [];  
               if (loading) return null;
               if (error) return `Error: ${error.message}`
+              Object.values(data.getManagement).map(form => {
+                formArr.push(form)
+              })
+              console.log(formArr)
               return (
-                  Object.values(data.getManagement).map(form => {
-                      console.log(form);
-                  })
+                  `Management forms: ${formArr.length}`
               )
           }}
         </Query>
@@ -88,7 +75,6 @@ class ReconcileContainer extends Component {
           columnDefs={columnDefs}
           rowData={rowData}
           gridOptions={gridOptions}
-          logCount={this.logCount}
         />
       </div>
       );

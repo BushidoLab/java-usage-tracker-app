@@ -2,28 +2,33 @@ export const styles = {
   root: {
     fontFamily: 'Roboto, open-sans',
     maxHeight: '80px',
-    background: '#002060',
+    background: '#FFFFFF',
   },
   grow: {
     flexGrow: 1,
-    color: 'white',
+    color: 'black',
   },
   link: {
-    color: 'white',
+    color: 'black',
     textDecoration: 'none',
   },
   title: {
     textAlign: 'center'
   },
   selected: {
-    color: 'white',
+    color: 'black',
     background: 'black'
   },
   logo: {
     height: '150px',
-    width: '250px',
+    width: '200px',
+    marginTop: 10
   },
   tabs: {
-    background: '#002060',
-  }
+    background: '#000000',
+    color: '#FFF'
+  },
+  tab: {
+    color: 'black',
+  },
 };

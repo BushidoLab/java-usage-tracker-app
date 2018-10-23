@@ -11,7 +11,7 @@ const ReconcileComponent = ({ columnDefs, rowData, gridOptions }) => (
     <div 
       className="ag-theme-balham"
       style={{ 
-        height: '400px', 
+        height: '500px', 
         width: '98%',
         marginLeft: '1%',
         marginRight: '1%',
@@ -24,7 +24,7 @@ const ReconcileComponent = ({ columnDefs, rowData, gridOptions }) => (
           enableSorting
           enableFilter
           pagination
-          paginationPageSize="10"
+          paginationPageSize="15"
           rowSelection="multiple"
           rowData={rowData}
           columnDefs={columnDefs}

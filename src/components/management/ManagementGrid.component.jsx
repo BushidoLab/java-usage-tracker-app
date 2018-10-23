@@ -6,12 +6,12 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import 'ag-grid-enterprise';
 import { styles } from './ManagementGrid.styles';
 
-const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, getManagement }) => (
+const ManagementGridComponent = ({ columnDefs, rowData, gridOptions }) => (
     <div>
         <div
             className="ag-theme-balham"
             style={{
-                height: '300px',
+                height: '500px',
                 width: '98%',
                 marginLeft: '1%',
                 marginRight: '1%',
@@ -20,14 +20,15 @@ const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, getManageme
             }}
         >
             <AgGridReact
+                enableColResize
                 enableSorting
                 enableFilter
-                enableColResize
+                pagination
+                paginationPageSize="15"
                 rowSelection="multiple"
                 rowData={rowData}
                 columnDefs={columnDefs}
                 gridOptions={gridOptions}
-                getManagement={getManagement}
             />
         </div>
     </div>

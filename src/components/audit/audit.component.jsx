@@ -6,7 +6,7 @@ import 'ag-grid-enterprise';
 import injectSheet from 'react-jss';
 import { styles } from './audit.styles';
 
-const AuditComponent = ({ columnDefs, rowData, gridOptions, getLogs }) => (
+const AuditComponent = ({ columnDefs, rowData, gridOptions }) => (
   <div>
     <div 
       className="ag-theme-balham"
@@ -24,12 +24,12 @@ const AuditComponent = ({ columnDefs, rowData, gridOptions, getLogs }) => (
           enableSorting
           enableFilter
           pagination
-          paginationPageSize="10"
+          paginationPageSize="15"
           rowSelection="multiple"
           rowData={rowData}
           columnDefs={columnDefs}
           gridOptions={gridOptions}
-          getLogs={getLogs}
+          allowContextMenuWithControlKey={true}
         />
     </div>
   </div>
