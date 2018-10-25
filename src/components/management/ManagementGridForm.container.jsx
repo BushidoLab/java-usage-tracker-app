@@ -23,7 +23,7 @@ class ManagementGridForm extends Component {
     productSupportFee: Number(),
     softwareUpdateFee: Number(),
     otherFees: Number(),
-    CDPackFee: Number(),
+    cdPackFee: Number(),
     unitPrice: Number(),
   }
 
@@ -48,15 +48,13 @@ class ManagementGridForm extends Component {
   }
   
   handleSubmit = async e => {
-    e.preventDefault();
-    const { license, licenseType, quantity, listFee, discount,  netFee, productSupportFee, softwareUpdateFee, otherFees, CDPackFee, unitPrice } = this.state;
+    const { license, licenseType, quantity, listFee, discount,  netFee, productSupportFee, softwareUpdateFee, otherFees, cdPackFee, unitPrice } = this.state;
     const { client } = this.props;
 
     const data = await client.mutate({
       mutation: manageForm,
-      variables: { license, licenseType, quantity, listFee, discount, netFee, productSupportFee, softwareUpdateFee, otherFees, CDPackFee, unitPrice }
+      variables: { license, licenseType, quantity, listFee, discount, netFee, productSupportFee, softwareUpdateFee, otherFees, cdPackFee, unitPrice }
     })
-    console.log('DATA',data)
     this.setState({ open: false })
     return data;
   }
@@ -166,9 +164,9 @@ class ManagementGridForm extends Component {
 
                 <Input
                   type="number"
-                  name="CDPackFee"
+                  name="cdPackFee"
                   placeholder="CD Pack Fee"
-                  value={this.CDPackFee}
+                  value={this.cdPackFee}
                   onChange={this.handleChange}
                   className={classes.textField}
                   variant="outlined"

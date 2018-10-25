@@ -1,3 +1,9 @@
+#Todo
+- Update manage fields on mongodb when cell is edited
+- Add NUP license support to audit and reconcile view
+- Add account button
+  - 
+
 # Java Usage Tracker App
 
 ## Introduction

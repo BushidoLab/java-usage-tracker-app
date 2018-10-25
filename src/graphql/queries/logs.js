@@ -1,18 +1,8 @@
 import gql from 'graphql-tag';
 
 export const getLogCount = gql`
-  query getLogCount(
-    $channel: String!,
-    $chaincode: String!,
-    $chaincodeVer: String!,
-    $args: [String!]
-  ) {
-    getLogCount(
-      channel: $channel
-      chaincode: $chaincode
-      chaincodeVer: $chaincodeVer
-      args: $args
-    )
+  query getLogCount {
+    getLogCount
   }
 `;
 
@@ -28,17 +18,13 @@ export const getLog = gql`
 
 
 export const getAllLogs = gql`
-  query getAllLogs(
-    $channel: String!,
-    $chaincode: String!,
-    $chaincodeVer: String!,
-    $args: [String!]
-  ) {
-    getAllLogs(
-      channel: $channel,
-      chaincode: $chaincode,
-      chaincodeVer: $chaincodeVer,
-      args: $args
-    )
+  query getAllLogs{
+    getAllLogs
+  }
+`;
+
+export const getAllProcLogs = gql`
+  query getAllProcLogs {
+    getAllProcLogs
   }
 `;

@@ -1,79 +1,41 @@
 import React, { Component } from 'react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
-import { compose, withApollo, Query } from 'react-apollo';
+import { compose, withApollo, graphql } from 'react-apollo';
 import ReconcileComponent from './reconcile.component';
-import { getManagement } from '../../graphql/queries/manage';
-import { getLogCount } from '../../graphql/queries/logs';
+import { getReconcile } from '../../graphql/queries/reconcile';
 
 class ReconcileContainer extends Component {
   state = {
     gridOptions: {
       columnDefs: [
-          {headerName: "Publisher", field: "publisher", width: 230},
-          {headerName: "Product Name", field: "productName", width: 230},
-          {headerName: "License Type", field: "licenseType", width: 230},
-          {headerName: "Quantity", field: "quantity", width: 230},
-          {headerName: "Inventory", field: "inventory", width: 230},
-          {headerName: "Supported", field: "supported", width: 230},
-          {headerName: "Difference", field: "difference", width: 230, aggFunc: this.differenceFunction},
-          {headerName: "Amount", field: "amount", width: 230, aggFunc: this.totalFunction, cellStyle: function(params) {
+          {headerName: "Product Name", field: "productName", width: 200},
+          {headerName: "License Type", field: "licenseType", width: 200},
+          {headerName: "Quantity", field: "quantity", width: 200},
+          {headerName: "Inventory", field: "inventory", width: 200},
+          {headerName: "Supported", field: "supported", width: 200},
+          {headerName: "Remaining licenses", field: "difference", width: 200},
+          {headerName: "Amount owed", field: "amount", width: 200, 
+          cellStyle: function(params) {
             if (params.value < 0) {
-              return {backgroundColor: 'red'}
+              return {backgroundColor: '#d16262'}
             } else if (params.value > 0) {
               return {backgroundColor: 'green'}
-            }
-          }},
+            }}
+          },
       ],
-      rowData: [
-        {},{},{},{},{},{},{},{},{},{},
-        {},{},{},{},{},{},{},{},{},{},
-        {},{},{},{},{},{},{},{},{},{},
-      ],
+      rowData: [],
     },
   }
 
-  differenceFunction = (quantity, count) => {
-    return quantity.value - count.value;
-  }
-
-  totalFunction = () => {
-
-  }
-
   render() {
-    const { gridOptions, gridOptions: { columnDefs, rowData } } = this.state;
+    const { gridOptions, gridOptions: { columnDefs } } = this.state;
+    const { data: {getReconcile} } = this.props;
     return (
       <div>
-        <Query
-         query={getLogCount}
-         variables={{channel: 'default', chaincode: 'NUPChaincode', chaincodeVer: '1.0', args: ["oracle"]}}
-        >
-          {({loading, error, data}) => {
-            if (loading) return null;
-            if (error) return `Error: ${error.message}`
-            return (
-              `Log count: ${data.getLogCount}`
-            )
-          }}
-        </Query>
-        <Query query={getManagement}>
-          {({ loading, error, data }) => {
-              let formArr = [];  
-              if (loading) return null;
-              if (error) return `Error: ${error.message}`
-              Object.values(data.getManagement).map(form => {
-                formArr.push(form)
-              })
-              console.log(formArr)
-              return (
-                  `Management forms: ${formArr.length}`
-              )
-          }}
-        </Query>
         <ReconcileComponent
           columnDefs={columnDefs}
-          rowData={rowData}
+          rowData={getReconcile}
           gridOptions={gridOptions}
         />
       </div>
@@ -82,7 +44,8 @@ class ReconcileContainer extends Component {
 }
 
 const enhancer = compose(
-  withApollo
+  withApollo,
+  graphql(getReconcile)
 )
 
 export default enhancer(ReconcileContainer);

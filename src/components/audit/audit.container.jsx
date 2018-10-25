@@ -1,64 +1,44 @@
 import React, { Component } from 'react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import { withRouter } from 'react-router-dom';
 import AuditComponent from './audit.component';
-import { compose, withApollo, Query } from 'react-apollo';
+import { compose, withApollo, graphql, Query } from 'react-apollo';
+import { getAllProcLogs } from '../../graphql/queries/logs';
 import { getAllLogs } from '../../graphql/queries/logs';
-import fetch from 'node-fetch';
 
 class AuditContainer extends Component {
   state = {
     open: false,
     gridOptions: {
       columnDefs: [
-        // {headerName: "", checkboxSelection: true, width: 30 },
-        // {headerName: "Device", children: [
-        //   {headerName: "Device Name", field: "deviceName", width: 160},
-        //   {headerName: "IP", field: "IP", width: 160},
-        // ]},
-        // {headerName: "Processor", children: [
-        //   {headerName: "Processor", field: "processor", width: 160},
-        //   {headerName: "Cores", field: "cores", width: 160},
-        // ]},
-        // {headerName: "Product", children: [
-        //   {headerName: "Publisher", field: "publisher", width: 160},
-        //   {headerName: "Category", field: "category", width: 160},
-        //   {headerName: "Product", field: "product", width: 160},
-        // ]},
-        // {headerName: "Usage", children: [
-        //   {headerName: "App Name", field: "appName", width: 160},
-        //   {headerName: "User Count", field: "userCount", width: 160},
-        // ]},
-        // {headerName: "Operating Environment", children: [
-        //   {headerName: "Operating System", field: "operatingSystem", width: 160},
-        //   {headerName: "Virtual Machine", field: "virtualMachine", width: 160},
-        // ]}
-        {headerName: "Make", field: "make"},
-        {headerName: "Model", field: "model"},
-        {headerName: "Price", field: "price"},
+        {headerName: "", checkboxSelection: true, width: 30 },
+        {headerName: "Device", children: [
+          {headerName: "Device Name", field: "hostname", width: 140},
+          {headerName: "IP", field: "IP", width: 140},
+        ]},
+        {headerName: "Processor", children: [
+          {headerName: "Processor", field: "model", width: 140},
+          {headerName: "Cores", field: "cores", width: 140},
+        ]},
+        {headerName: "Product", children: [
+          {headerName: "Publisher", field: "vendor", width: 140},
+          {headerName: "Category", field: "category", width: 140},
+          {headerName: "Product", field: "product", width: 140},
+        ]},
+        {headerName: "Usage", children: [
+          {headerName: "App Name", field: "appName", width: 140},
+          {headerName: "User Count", field: "userCount", width: 140},
+          {headerName: "Last used", field: "dateTime", width: 140}
+        ]},
+        {headerName: "Operating Environment", children: [
+          {headerName: "Operating System", field: "operatingSystem", width: 140},
+          {headerName: "Virtual Machine", field: "virtualMachine", width: 140},
+        ]}
       ],
+      rowData: []
     },
   };
-  
-  async componentDidMount() {
-    try { 
-      console.log(await fetch('https://api.myjson.com/bins/15psn9.json').json())
-    } catch (error) {
-      console.log(error)
-    }
-      //    .then(result => result.json())
-      //    .then(rowData => this.setState({rowData}))
-    }
-    // componentDidMount() {)
-    //   const { client } = this.props;
-  
-    //   client.query({
-    //     query: getAllLogs,
-    //     variables: {channel: "default", chaincode: "ProcessorChaincode", chaincodeVer: "1.0", args: ["oracle"]}
-    //   })
-    //   .then(result => result.data.getAllLogs)
-    //   .then(rowData => this.setState({rowData}))
-    // }
 
   handleOpen = () => {
     this.setState({open: true})
@@ -69,47 +49,35 @@ class AuditContainer extends Component {
   }
 
   render() {
-    const { gridOptions, gridOptions: { columnDefs, rowData } } = this.state;
+    const { gridOptions, gridOptions: { columnDefs } } = this.state;
+    const { data: { getAllProcLogs }} = this.props;
+    console.log(getAllProcLogs)
     return (
       <div>
-        <Query
-         query={getAllLogs}
-         variables={{channel: 'default', chaincode: 'ProcessorChaincode', chaincodeVer: '1.0', args: ["oracle"]}}
-         >
-          {({ loading, error, data }) => {
+        <Query query={getAllLogs}>
+          {({loading, error, data}) => {
             if (loading) return null;
-            if (error) return `Error: ${error.message}`;
-            console.log(data.getAllLogs)
+            if (error) return `Error: ${error}`
+            const nupLogs = data.getAllLogs
+            console.log(nupLogs)
             return (
-              Object.values(data.getAllLogs)
+              <AuditComponent
+              columnDefs={columnDefs}
+              rowData={[getAllProcLogs, nupLogs[0]]}
+              gridOptions={gridOptions}
+              />
             )
           }}
-        </Query>
-        <Query
-         query={getAllLogs}
-         variables={{channel: 'default', chaincode: 'NUPChaincode', chaincodeVer: '1.0', args: ["oracle"]}}
-         >
-          {({ loading, error, data }) => {
-            if (loading) return null;
-            if (error) return `Error: ${error.message}`;
-            console.log(data.getAllLogs)
-            return (
-              Object.values(data.getAllLogs)
-            )
-          }}
-        </Query>
-        <AuditComponent
-          columnDefs={columnDefs}
-          rowData={rowData}
-          gridOptions={gridOptions}
-        />
+        </Query>  
       </div>
       );
   }
 }
 
 const enhancer = compose(
-  withApollo
+  withApollo,
+  withRouter,
+  graphql(getAllProcLogs),
 )
 
 export default enhancer(AuditContainer);
