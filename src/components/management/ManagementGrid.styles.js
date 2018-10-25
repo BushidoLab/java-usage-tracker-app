@@ -35,8 +35,7 @@ export const styles = {
     margin: "10px, 2.5%"
   },
   header: {
-    margin: "10px",
+    textAlign: "center",
     fontFamily: "Roboto",
-    fontWeight: "500"
   }
 };

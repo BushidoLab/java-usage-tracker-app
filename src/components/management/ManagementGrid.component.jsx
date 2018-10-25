@@ -4,11 +4,12 @@ import injectSheet from 'react-jss';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import 'ag-grid-enterprise';
+import Typography from '@material-ui/core/Typography';
 import { styles } from './ManagementGrid.styles';
 
 const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
     <div>
-        <h1 className={classes.header}>Management</h1>
+        <Typography className={classes.header}><h1>Management</h1></Typography>
         <div
             className="ag-theme-balham"
             style={{

@@ -4,11 +4,12 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import 'ag-grid-enterprise';
 import injectSheet from 'react-jss';
+import Typography from '@material-ui/core/Typography';
 import { styles } from './reconcile.styles';
 
 const ReconcileComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
   <div>
-    <h1 className={classes.header}>Reconciliation</h1>
+    <Typography className={classes.header}><h1>Reconciliation</h1></Typography>
     <div 
       className="ag-theme-balham"
       style={{ 

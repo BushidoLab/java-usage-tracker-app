@@ -4,11 +4,12 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import 'ag-grid-enterprise';
 import injectSheet from 'react-jss';
+import Typography from '@material-ui/core/Typography';
 import { styles } from './audit.styles';
 
 const AuditComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
   <div>
-    <h1 className={classes.header}>Audit</h1>
+    <Typography className={classes.header}><h1>Audit</h1></Typography>
     <div 
       className="ag-theme-balham"
       style={{ 
@@ -25,7 +26,7 @@ const AuditComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
           enableSorting
           enableFilter
           pagination
-          paginationPageSize="15"
+          paginationPageSize="10"
           rowSelection="multiple"
           rowData={rowData}
           columnDefs={columnDefs}

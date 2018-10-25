@@ -1,7 +1,6 @@
 export const styles = {
   header: {
-    margin: "10px",
+    textAlign: "center",
     fontFamily: "Roboto",
-    fontWeight: "500"
   }
 }
