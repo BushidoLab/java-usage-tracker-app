@@ -30,5 +30,6 @@ export const styles = {
   },
   tab: {
     color: 'black',
+    fontFamily: 'Roboto'
   },
 };

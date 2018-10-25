@@ -6,8 +6,9 @@ import 'ag-grid-enterprise';
 import injectSheet from 'react-jss';
 import { styles } from './reconcile.styles';
 
-const ReconcileComponent = ({ columnDefs, rowData, gridOptions }) => (
+const ReconcileComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
   <div>
+    <h1 className={classes.header}>Reconciliation</h1>
     <div 
       className="ag-theme-balham"
       style={{ 

@@ -6,8 +6,9 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import 'ag-grid-enterprise';
 import { styles } from './ManagementGrid.styles';
 
-const ManagementGridComponent = ({ columnDefs, rowData, gridOptions }) => (
+const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
     <div>
+        <h1 className={classes.header}>Management</h1>
         <div
             className="ag-theme-balham"
             style={{

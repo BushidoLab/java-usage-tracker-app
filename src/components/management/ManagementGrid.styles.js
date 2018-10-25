@@ -33,5 +33,10 @@ export const styles = {
     float: "left",
     width: "45%",
     margin: "10px, 2.5%"
+  },
+  header: {
+    margin: "10px",
+    fontFamily: "Roboto",
+    fontWeight: "500"
   }
 };
