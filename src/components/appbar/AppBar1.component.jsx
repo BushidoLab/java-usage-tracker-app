@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import { styles } from './appbar.styles';
 import Logo from '../../assets/veratrust.png';
+import { signOut } from '../../services';
 
 const AppBarComponent = ({ classes, value, handleClick }) => (
     <AppBar position="static" className={classes.root}>
@@ -22,6 +23,7 @@ const AppBarComponent = ({ classes, value, handleClick }) => (
                 <Tab label="Manage" component={Link} to="/management" className={classes.tab} />
                 <Tab label="Reconcile" component={Link} to="/reconcile" className={classes.tab} />
                 <Tab label="Profile" component={Link} to="/profile" className={classes.tab} />
+                <Tab label="Sign Out" onClick={signOut} component={Link} to="/" className={classes.tab} />
             </Tabs>
         </Toolbar>
     </AppBar>
