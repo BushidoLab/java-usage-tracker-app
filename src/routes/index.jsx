@@ -14,5 +14,6 @@ export default _ => (
         <Route path="/inspect" exact component={Inspect} />
         <Route path="/reconcile" exact component={Reconcile} />
         <Route path="/profile" exact component={Profile} />
+        {/* <Route path="/" exact /> */}
     </Switch>
 );

@@ -29,7 +29,9 @@ const ReconcileComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
           rowSelection="multiple"
           rowData={rowData}
           columnDefs={columnDefs}
-          gridOptions={gridOptions}>
+          gridOptions={gridOptions}
+          suppressNoRowsOverlay={true}
+          >
         </AgGridReact>
     </div>
   </div>

@@ -1,8 +1,10 @@
 #Todo
 - Update manage fields on mongodb when cell is edited
-- Add NUP license support to audit and reconcile view
+- Delete management forms
 - Add account button
-  - 
+  - Dropdown with profile and sign out
+- Refresh button on audit and reconcile grids
+- User count reflects number of same devices
 
 # Java Usage Tracker App
 

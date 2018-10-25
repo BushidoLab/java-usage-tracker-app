@@ -19,10 +19,10 @@ const AppBarComponent = ({ classes, value, handleClick }) => (
             <Tabs value={value} onChange={handleClick}>
                 <Tab label="Home" component={Link} to="/"  className={classes.tab}/>
                 <Tab label="Audit" component={Link} to="/audit"  className={classes.tab}/>
-                <Tab label="Inspect" component={Link} to="/inspect" className={classes.tab} />
+                {/* <Tab label="Inspect" component={Link} to="/inspect" className={classes.tab} /> */}
                 <Tab label="Manage" component={Link} to="/management" className={classes.tab} />
                 <Tab label="Reconcile" component={Link} to="/reconcile" className={classes.tab} />
-                <Tab label="Profile" component={Link} to="/profile" className={classes.tab} />
+                {/* <Tab label="Profile" component={Link} to="/profile" className={classes.tab} /> */}
                 <Tab label="Sign Out" onClick={signOut} component={Link} to="/" className={classes.tab} />
             </Tabs>
         </Toolbar>

@@ -17,10 +17,6 @@ class AuditContainer extends Component {
           {headerName: "Device Name", field: "hostname", width: 140},
           {headerName: "IP", field: "IP", width: 140},
         ]},
-        {headerName: "Processor", children: [
-          {headerName: "Processor", field: "model", width: 140},
-          {headerName: "Cores", field: "cores", width: 140},
-        ]},
         {headerName: "Product", children: [
           {headerName: "Publisher", field: "vendor", width: 140},
           {headerName: "Category", field: "category", width: 140},
@@ -33,8 +29,12 @@ class AuditContainer extends Component {
         ]},
         {headerName: "Operating Environment", children: [
           {headerName: "Operating System", field: "operatingSystem", width: 140},
-          {headerName: "Virtual Machine", field: "virtualMachine", width: 140},
-        ]}
+          // {headerName: "Virtual Machine", field: "virtualMachine", width: 140},
+        ]},
+        {headerName: "Processor", children: [
+          {headerName: "Processor", field: "model", width: 140},
+          {headerName: "Cores", field: "cores", width: 140},
+        ]},
       ],
       rowData: []
     },
@@ -51,7 +51,6 @@ class AuditContainer extends Component {
   render() {
     const { gridOptions, gridOptions: { columnDefs } } = this.state;
     const { data: { getAllProcLogs }} = this.props;
-    console.log(getAllProcLogs)
     return (
       <div>
         <Query query={getAllLogs}>
@@ -59,11 +58,10 @@ class AuditContainer extends Component {
             if (loading) return null;
             if (error) return `Error: ${error}`
             const nupLogs = data.getAllLogs
-            console.log(nupLogs)
             return (
               <AuditComponent
               columnDefs={columnDefs}
-              rowData={[getAllProcLogs, nupLogs[0]]}
+              rowData={[getAllProcLogs, nupLogs]}
               gridOptions={gridOptions}
               />
             )
