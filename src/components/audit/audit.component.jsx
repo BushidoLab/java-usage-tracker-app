@@ -9,7 +9,7 @@ import { styles } from './audit.styles';
 
 const AuditComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
   <div>
-    <Typography className={classes.header}><h1>Audit</h1></Typography>
+    <Typography className={classes.header} variant="h4" gutterBottom>Audit</Typography>
     <div 
       className="ag-theme-balham"
       style={{ 

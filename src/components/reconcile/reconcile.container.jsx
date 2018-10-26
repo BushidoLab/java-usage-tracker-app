@@ -13,20 +13,22 @@ class ReconcileContainer extends Component {
           {headerName: "License Type", field: "licenseType", width: 220},
           {headerName: "Quantity", field: "quantity", width: 220},
           {headerName: "Inventory", field: "inventory", width: 220},
-          {headerName: "Supported", field: "supported", width: 220},
           {headerName: "Remaining licenses", field: "difference", width: 220},
+          {headerName: "Supported", field: "supported", width: 220, 
+          cellStyle: function(params) {
+            if (params.value === "No support" || params.value === "Expired") {
+              return { backgroundColor: '#d16262' }
+            }}
+          },
           {headerName: "Amount owed", field: "amount", width: 220, 
           cellStyle: function(params) {
-            if (params.value < 0) {
-              return {backgroundColor: '#d16262'}
-            } else if (params.value > 0) {
-              return {backgroundColor: 'green'}
+            if (params.value > 0) {
+              return { backgroundColor: '#d16262' }
             }}
           },
       ],
-      overlayLoadingTemplate: '<span>Please wait while the data is loading</span>',
-      overlayNoRowsTemplate: '<span>Please wait while the data is loading</span>',
-      rowData: [],
+      overlayLoadingTemplate: '<span>Loading...</span>',
+      overlayNoRowsTemplate: '<span>Loading...</span>',
     },
   }
 
@@ -39,8 +41,6 @@ class ReconcileContainer extends Component {
           columnDefs={columnDefs}
           rowData={getReconcile}
           gridOptions={gridOptions}
-          // overlayLoadingTemplate={this.state.gridOptions.overlayLoadingTemplate}
-          // overlayNoRowsTemplate={this.state.gridOptions.overlayNoRowsTemplate}
         />
       </div>
       );

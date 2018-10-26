@@ -5,11 +5,12 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import 'ag-grid-enterprise';
 import Typography from '@material-ui/core/Typography';
+import { Button } from '@material-ui/core';
 import { styles } from './ManagementGrid.styles';
 
 const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
     <div>
-        <Typography className={classes.header}><h1>Management</h1></Typography>
+        <Typography className={classes.header} variant="h4" gutterBottom>Management</Typography>
         <div
             className="ag-theme-balham"
             style={{

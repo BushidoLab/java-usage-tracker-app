@@ -7,7 +7,7 @@ export const manageForm = gql `
     $quantity: Int!,
     $listFee: Float!,
     $discount: Float,
-    $netFee: Float,
+    $supportDate: String,
     $productSupportFee:Float,
     $softwareUpdateFee: Float,
     $otherFees: Float,
@@ -20,7 +20,7 @@ export const manageForm = gql `
       quantity: $quantity,
       listFee: $listFee,
       discount: $discount,
-      netFee: $netFee,
+      supportDate: $supportDate,
       productSupportFee: $productSupportFee,
       softwareUpdateFee: $softwareUpdateFee,
       otherFees: $otherFees,
@@ -32,6 +32,18 @@ export const manageForm = gql `
       quantity
       listFee
       discount
+    }
+  }
+`;
+
+export const deleteManagement = gql`
+  mutation deleteManagement(
+    $id: String!
+  ) {
+    deleteManagement(
+      id: $id
+    ) {
+      id
     }
   }
 `;

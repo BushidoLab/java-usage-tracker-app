@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import { compose, withApollo, graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import AuditComponent from './audit.component';
-import { compose, withApollo, graphql } from 'react-apollo';
 import { getAllProcLogs } from '../../graphql/queries/logs';
 
 class AuditContainer extends Component {
@@ -36,7 +36,7 @@ class AuditContainer extends Component {
           // {headerName: "Virtual Machine", field: "virtualMachine", width: 130},
         ]},
       ],
-      rowData: []
+      overlayLoadingTemplate: '<span>Loading...</span>'
     },
   };
 

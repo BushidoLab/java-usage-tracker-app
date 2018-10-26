@@ -4,7 +4,6 @@
 - Add account button
   - Dropdown with profile and sign out
 - Refresh button on audit and reconcile grids
-- User count reflects number of same devices
 
 # Java Usage Tracker App
 

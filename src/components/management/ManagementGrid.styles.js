@@ -5,11 +5,17 @@ export const styles = {
   },
   textField: {
     padding: "10px",
-    margin: "10px"
+    margin: "10px",
+    width: "200px"
   },
   formContainer: {
     margin: "0, auto",
     padding: "10px"
+  },
+  deleteContainer: {
+    margin: "0, auto",
+    padding: "10px",
+    width: "500px"
   },
   button: {
     margin: '10px'
@@ -35,7 +41,19 @@ export const styles = {
     margin: "10px, 2.5%"
   },
   header: {
-    textAlign: "center",
+    margin: "20px 0 0 20px",
     fontFamily: "Roboto",
+    letterSpacing: "0.1px",
+    fontWeight: "100",
+  },
+  date: {
+    margin: "5px 10px",
+    padding: "10px",
+    width: "200px",
+  },
+  formheader: {
+    textAlign: "center",
+    margin: "10px",
+    padding: "10px"
   }
 };

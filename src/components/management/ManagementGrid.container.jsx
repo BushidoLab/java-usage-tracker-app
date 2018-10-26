@@ -23,8 +23,7 @@ class ManagementGridContainer extends Component {
                 { headerName: 'Net Fee', field: 'netFee', width: 130 },
                 // Add editable: true when we can manage cells updating
             ],
-            rowData: [],
-            // cellContextMenu: ,
+            overlayLoadingTemplate: '<span>Loading...</span>'
         },
     };
     
