@@ -13,7 +13,7 @@ export const styles = {
     padding: "10px"
   },
   deleteContainer: {
-    margin: "0, auto",
+    margin: "auto",
     padding: "10px",
     width: "500px"
   },
@@ -24,6 +24,11 @@ export const styles = {
     float: 'right',
     marginTop: -50,
     marginRight: 50
+  },
+  delete: {
+    float: 'right',
+    marginTop: '20px',
+    marginRight: 100
   },
   root: {
     display: "flex",

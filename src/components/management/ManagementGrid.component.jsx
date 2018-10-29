@@ -5,8 +5,8 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import 'ag-grid-enterprise';
 import Typography from '@material-ui/core/Typography';
-import { Button } from '@material-ui/core';
 import { styles } from './ManagementGrid.styles';
+import Upload from '../upload/upload';
 
 const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
     <div>
@@ -22,6 +22,7 @@ const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, classes }) 
                 marginBottom: '30px'
             }}
         >
+        <Upload/>
             <AgGridReact
                 enableColResize
                 enableSorting

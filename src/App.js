@@ -8,7 +8,12 @@ import ApolloClient from './graphql/ApolloClient';
 import { Auth } from './components/credentials/Auth';
 import { Dashboard, AuthContainer } from './pages';
 import Routes from './routes';
+import { LicenseManager } from "ag-grid-enterprise";
 import './App.css';
+
+// require('dotenv').config();
+// LicenseManager.setLicenseKey(process.env.AG_GRID_LICENSE);
+LicenseManager.setLicenseKey("Evaluation_License_Not_For_Production_Valid_Until5_January_2019__MTU0NjY0NjQwMDAwMA==14c2b7c7e69b514c1836f70b9f58c8ff");
 
 const generateClassName = createGenerateClassName();
 const AppTheme = createMuiTheme({ 

@@ -9,7 +9,7 @@ import { styles } from './reconcile.styles';
 
 const ReconcileComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
   <div>
-    <Typography className={classes.header} variant="h4" gutterBottom>Reconcile</Typography>
+    <Typography className={classes.header} variant="h4" gutterBottom>Deploy</Typography>
     <div 
       className="ag-theme-balham"
       style={{ 

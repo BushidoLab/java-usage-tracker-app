@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { withApollo } from 'react-apollo';
 import injectSheet from "react-jss";
 import Paper from "@material-ui/core/Paper";
-import { manageForm } from '../../graphql/mutations/manage';
-import { deleteManagement } from '../../graphql/mutations/manage';
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 import LicenseRadio from "./license-radio";
 import LicenseTypeRadio from './license-type-radio';
 import { styles } from './ManagementGrid.styles';
+import { manageForm, deleteManagement } from '../../graphql/mutations/manage';
 
 class ManagementGridForm extends Component {
   state = {
@@ -70,6 +70,10 @@ class ManagementGridForm extends Component {
 
   handleDeleteModal = () => {
     this.setState({deleteModal: true})
+  }
+
+  handleDeleteModalClose = () => {
+    this.setState({deleteModal: false})
   }
 
   handleClose = () => {
@@ -211,20 +215,31 @@ class ManagementGridForm extends Component {
 
       <Modal
         open={this.state.deleteModal}
-        onClose={this.handleClose}
+        onClose={this.handleDeleteModalClose}
       >
         <div className={classes.deleteContainer}>
           <form onSubmit={this.handleDelete} autoComplete="off" className={classes.deleteContainer}>
             <Paper>
+              <Typography className={classes.formContainer}>
+                Enter the management forms Order id of which you wish to delete
+              </Typography>
               <Input
                 type="string"
                 name="id"
                 placeholder="ID"
-                value={this.ID}
+                value={this.id}
                 onChange={this.handleChange}
                 className={classes.textField}
                 variant="outlined"
                 />
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                onSubmit={this.handleDelete}
+                className={classes.delete}>
+                Delete
+              </Button>
             </Paper>
           </form>
         </div>

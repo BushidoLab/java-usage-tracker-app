@@ -1,4 +1,4 @@
-#Todo
+# Todo
 - Update manage fields on mongodb when cell is edited
 - Delete management forms
 - Add account button
@@ -8,8 +8,12 @@
 # Java Usage Tracker App
 
 ## Introduction
-This project contains the web app used to display and manage Java Usage Tracker information. Initial configuration was created using the [create-react-app](https://github.com/facebook/create-react-app) package. Technologies used in this project are React, Apollo Client and GraphQL. It's purpose is to connect a GraphQL server which provides data from a
+This project contains the web app used to display and manage Java Usage Tracker information. Initial configuration was created using the [create-react-app](https://github.com/facebook/create-react-app) package. 
+
+Technologies used in this project are [React](https://reactjs.org/), [Apollo Client](https://www.apollographql.com/docs/react/) and [GraphQL](https://graphql.org/). It's purpose is to connect a GraphQL server which provides data from a
 [MongoDB](https://www.mongodb.com/) database containing all the authentication, pricing and form's information needed for the website.
+
+All data displayed on this app is gathered from our [GraphQL API](https://github.com/BushidoLab/java-usage-tracker-api) 
 
 ## What does it do?
 - Uses Apollo Client to connect to our GraphQL server
@@ -20,13 +24,13 @@ This project contains the web app used to display and manage Java Usage Tracker 
 - Records a users Java license information
 - Massages previous data to display information relevant to the software auditing process like if a user is over or under licensed for a specific product
 
-## How to use?
+## How to use
 - Run `npm install` to install all necessary dependecies
 - Run `npm start` to start development server
 
-## Create React App README
+## Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
+<!-- 
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
@@ -2510,4 +2514,4 @@ In the future, we might start automatically compiling incompatible third-party m
 
 ## Something Missing?
 
-If you have ideas for more “How To” recipes that should be on this page, [let us know](https://github.com/facebookincubator/create-react-app/issues) or [contribute some!](https://github.com/facebookincubator/create-react-app/edit/master/packages/react-scripts/template/README.md)
+If you have ideas for more “How To” recipes that should be on this page, [let us know](https://github.com/facebookincubator/create-react-app/issues) or [contribute some!](https://github.com/facebookincubator/create-react-app/edit/master/packages/react-scripts/template/README.md) -->
