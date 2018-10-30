@@ -33,6 +33,7 @@ const AppBarComponent = ({ classes, value, handleClick, anchorEl, openProfileTab
                     onClose={closeProfileTab}
                 >
                     <MenuItem onClick={closeProfileTab} component={Link} to="/profile">Profile</MenuItem>
+                    {/* <MenuItem onClick={Help} component={Link} to="/help">Help</MenuItem> */}
                     <MenuItem onClick={signOut} component={Link} to="/" >Logout</MenuItem>
                 </Menu>
             </Tabs>

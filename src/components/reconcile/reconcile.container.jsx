@@ -20,7 +20,7 @@ class DeployContainer extends Component {
               return { backgroundColor: '#d16262' }
             }}
           },
-          {headerName: "Total value", field: "amount", width: 220, valueFormatter: currencyFormatter,
+          {headerName: "Net value", field: "amount", width: 220, valueFormatter: currencyFormatter,
           cellStyle: function(params) {
             if (params.value < 0) {
               return { backgroundColor: '#d16262' }

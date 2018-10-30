@@ -32,7 +32,7 @@ class AuditContainer extends Component {
         ]},
         {headerName: "Operating Environment", children: [
           {headerName: "Operating System", field: "operatingSystem", width: 150},
-          // {headerName: "Virtual Machine", field: "virtualMachine", width: 130},
+          {headerName: "Virtual Machine", field: "virtualMachine", width: 130},
         ]},
       ],
       overlayLoadingTemplate: '<span>Loading...</span>',
@@ -44,7 +44,6 @@ class AuditContainer extends Component {
   handleModalClose = () => this.setState({ logModalOpen: false })
 
   handleRowDoubleClick = ({ data }) => {
-    console.log(data);
     this.setState({ 
       logModalOpen: true,
       modalData: data,

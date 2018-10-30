@@ -3,7 +3,7 @@ export const styles = {
     display: "inline-block",
     margin: "10px"
   },
-  textField: {
+  textField: { 
     padding: "10px",
     margin: "10px",
     width: "200px"
@@ -11,6 +11,11 @@ export const styles = {
   formContainer: {
     margin: "0, auto",
     padding: "10px"
+  },
+  formHeader: {
+    textAlign: 'center',
+    margin: '10px',
+    padding: '10px',
   },
   deleteContainer: {
     margin: "auto",

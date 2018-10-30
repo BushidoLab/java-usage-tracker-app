@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { uploadFile } from '../../graphql/mutations/manage';
+import { Mutation } from 'react-apollo';
 
 class Upload extends Component {
   constructor(props) {
@@ -18,27 +20,25 @@ class Upload extends Component {
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.fileName.value);
 
-    fetch('http://localhost:4000/upload', {
-      method: 'POST',
-      body: data,
-    }).then((response) => {
-      response.json().then((body) => {
-        console.log(body);
-        this.setState({ file: `http://localhost:4000/${body.file}`});
-      })
-    })
   }
 
   render() {
     return (
       <form>
         <div>
-          <input ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".csv" />
-        </div>
-        <div>
-          <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the name of the CSV file"/>
-        </div>
-        <div>
+          <Mutation mutation={uploadFile}>
+            {uploadFile => (
+              <input
+                type="file"
+                accept=".csv"
+                required
+                onChange={({ target: { validity, files: [file] } }) => {
+                  validity.valid && uploadFile({ variables: { file } });
+                }}
+              />
+            )}
+
+          </Mutation>
           <button>Upload</button>
         </div>
       </form>

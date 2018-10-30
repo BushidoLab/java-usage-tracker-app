@@ -53,6 +53,7 @@ class ManagementGridForm extends Component {
   }
 
   handleDelete = async e => {
+    e.preventDefault();
     const { id } = this.state;
     const { client } = this.props;
 
@@ -220,7 +221,7 @@ class ManagementGridForm extends Component {
         <div className={classes.deleteContainer}>
           <form onSubmit={this.handleDelete} autoComplete="off" className={classes.deleteContainer}>
             <Paper>
-              <Typography className={classes.formContainer}>
+              <Typography className={classes.formHeader}>
                 Enter the management forms Order id of which you wish to delete
               </Typography>
               <Input

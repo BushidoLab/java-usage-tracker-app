@@ -8,7 +8,7 @@ class ProfileContainer extends Component {
     lastName: String(),
     email: String(),
   }
-
+  
   componentWillMount() {
     const accountInfo = sessionStorage.getItem('acctInfo').split(' ');
     this.setState({

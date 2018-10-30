@@ -42,13 +42,20 @@ const AuditComponent = ({ columnDefs, rowData, gridOptions, classes, onRowDouble
           onClose={handleModalClose}
         >
           <div style={getModalStyle()} className={classes.paper} >
-            {modalData &&
-            <Fragment>
-              <Typography variant="h6" id="modal-title">{`Vendor: ${modalData.vendor}`}</Typography>
-              <Typography variant="h6" id="modal-title">{`Operating System: ${modalData.operatingSystem}`}</Typography>
-              <Typography variant="h6" id="modal-title">{`Model: ${modalData.model}`}</Typography>
-            </Fragment>
-            }
+            {modalData && 
+              <Fragment>
+                {modalData.category === "Processor" ?
+                <Fragment>
+                  <Typography variant="h6" id="modal-title">{`Vendor: ${modalData.vendor}`}</Typography>
+                  <Typography variant="h6" id="modal-title">{`Operating System: ${modalData.operatingSystem}`}</Typography>
+                  <Typography variant="h6" id="modal-title">{`Model: ${modalData.model}`}</Typography>
+                </Fragment>
+                :
+                <Fragment>
+                  <Typography variant="h6" id="modal-title">{`Vendor: ${modalData.deviceName}`}</Typography>
+                </Fragment>
+                }
+              </Fragment>}
           </div>
         </Modal>
         <AgGridReact
