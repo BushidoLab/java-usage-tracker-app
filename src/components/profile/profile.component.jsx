@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
 import { styles } from './profile.styles';
 
-const ProfileComponent = ({ classes }) => (
+const ProfileComponent = ({ classes, firstName, lastName, email }) => (
   <div>
     <Card className={classes.card}>
       <CardHeader
@@ -16,11 +16,10 @@ const ProfileComponent = ({ classes }) => (
       />
       <CardContent>
         <Typography paragraph>
-          Name: 
-          {/* ${firstName} ${lastName} */}
+          Name: {`${firstName} ${lastName}`}
         </Typography>
         <Typography paragraph>
-          Email:
+          Email:{` ${email}`}
         </Typography>
         <Typography paragraph>
 

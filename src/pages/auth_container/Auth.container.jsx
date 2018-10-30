@@ -79,7 +79,9 @@ class LoginContainer extends Component {
 
     authComplete = ({ token }) => {
         const { history } = this.props;
+        const { email, firstName, lastName } = this.state;
         sessionStorage.setItem('authToken', token);
+        sessionStorage.setItem('acctInfo', `${email} ${firstName} ${lastName}`);
         this.setState({ loggedIn: !!token });
         history.push('/');
     };

@@ -8,7 +8,6 @@ import { getAllProcLogs } from '../../graphql/queries/logs';
 
 class AuditContainer extends Component {
   state = {
-    open: false,
     gridOptions: {
       columnDefs: [
         {headerName: "", checkboxSelection: true, width: 30 },
@@ -36,20 +35,24 @@ class AuditContainer extends Component {
           // {headerName: "Virtual Machine", field: "virtualMachine", width: 130},
         ]},
       ],
-      overlayLoadingTemplate: '<span>Loading...</span>'
+      overlayLoadingTemplate: '<span>Loading...</span>',
+      logModalOpen: false,
+      modalData: {},
     },
   };
 
-  handleOpen = () => {
-    this.setState({open: true})
-  }
+  handleModalClose = () => this.setState({ logModalOpen: false })
 
-  handleClose = () => {
-    this.setState({open: false})
+  handleRowDoubleClick = ({ data }) => {
+    console.log(data);
+    this.setState({ 
+      logModalOpen: true,
+      modalData: data,
+    })
   }
 
   render() {
-    const { gridOptions, gridOptions: { columnDefs } } = this.state;
+    const { gridOptions, gridOptions: { columnDefs }, logModalOpen, modalData } = this.state;
     const { data: { getAllProcLogs }} = this.props;
     return (
       <div>
@@ -57,6 +60,10 @@ class AuditContainer extends Component {
         columnDefs={columnDefs}
         rowData={getAllProcLogs}
         gridOptions={gridOptions}
+        onRowDoubleClicked={this.handleRowDoubleClick}
+        logModalOpen={logModalOpen}
+        handleModalClose={this.handleModalClose}
+        modalData={modalData}
         />
       </div>
       );
