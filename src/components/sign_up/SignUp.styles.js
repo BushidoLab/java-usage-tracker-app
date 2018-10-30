@@ -24,17 +24,22 @@ export const styles = theme => ({
     signUpComponent: {
         background: '#fff',
         boxShadow: '0 0 4px 0 rgba(60,69,73,0.25)',
-        borderRadius: 5,
         width: 390,
         height: 280,
+        display: 'block',
+        margin: '30px auto',
     },
-    signUpWrapper: {height: '100%',},
+    signUpWrapper: {
+        height: '100%',
+    },
     signUpFormContainer: {
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
         justifyContent: 'flex-start',
         alignItems: 'center',
+        background: 'rgb(240,240,240)',
+        borderRadius: 5,
     },
     inputRow: {
         display: 'flex',

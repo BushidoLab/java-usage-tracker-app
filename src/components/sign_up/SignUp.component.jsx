@@ -34,6 +34,7 @@ const SignUp = ({
                         id="emailInput"
                         name="email"
                         label="Email"
+                        placeholder="Email"
                         onChange={handleChange}
                         error={errorInput}
                         helperText={errorInputText}
@@ -44,6 +45,7 @@ const SignUp = ({
                         name="password"
                         label="Password"
                         type="password"
+                        placeholder="Password"
                         error={passwordError}
                         helperText={passwordErrorText}
                     />
@@ -51,6 +53,7 @@ const SignUp = ({
                         id="firstNameInput"
                         name="firstName"
                         label="First Name"
+                        placeholder="First Name"
                         onChange={handleInputChange}
                         value={firstNameValue}
                     />
@@ -58,15 +61,16 @@ const SignUp = ({
                         id="lastNameInput"
                         name="lastName"
                         label="Last Name"
+                        placeholder="Last Name"
                         onChange={handleInputChange}
                         value={lastNameValue}
                     />
                 </div>
                 <div className={classes.submitRow}>
-                    <Button type="submit" variant="raised">
+                    <Button type="submit" variant="contained" color="primary">
                         Submit
                     </Button>
-                    <Button variant="raised" onClick={cancelSignUp}>
+                    <Button variant="contained" color="primary" onClick={cancelSignUp}>
                         Cancel
                     </Button>
                 </div>

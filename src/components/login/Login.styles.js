@@ -22,12 +22,13 @@ export const styles = theme => ({
         marginBottom: 5
     },
     loginComponent: {
-        background: '#fff',
         boxShadow: '0 0 4px 0 rgba(60,69,73,0.25)',
         borderRadius: 5,
         margin: 'auto',
         width: 390,
         height: 250,
+        marginTop: 30,
+        background: 'rgb(240,240,240)'
     },
     loginWrapper: { height: '100%' },
     inputRow: {
@@ -37,7 +38,9 @@ export const styles = theme => ({
         height: '50%',
         '& input': { color: theme.palette.grey[500] },
         '& [class*="Input-inputWrapper"]': { paddingLeft: 0 },
-        '& [class*="Input-input"]': { width: '282px' }
+        '& [class*="Input-input"]': { width: '282px' },
+        margin: 20,
+        marginTop: 50,
     },
     submitRow: {
         display: 'flex',
@@ -46,6 +49,9 @@ export const styles = theme => ({
         marginTop: 40,
         '& button': { fontWeight: 'unset' },
         '& button:first-child': { paddingLeft: 0, textTransform: 'capitalize'}
+    },
+    submitBtn: {
+        marginBottom: 50
     },
     formContainer: {
         display: 'flex',
@@ -72,4 +78,12 @@ export const styles = theme => ({
             padding: '2px 5px',
         },
     },
+    forgotPasswordBtn: {
+        textAlign: 'center',
+        marginBottom: 50,
+    },
+    footerText: {
+        color: 'black',
+        margin: '30px'
+    }
 });

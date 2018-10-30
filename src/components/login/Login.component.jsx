@@ -3,8 +3,6 @@ import injectSheet from 'react-jss';
 import { Input, Button } from '@material-ui/core';
 import { styles } from './Login.styles';
 
-//**LOGIN COMPONENT HAS NOT BEEN WIRED INTO APP
-
 const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText, handleClick, emailValue, forgotPassword, errorMessages = [] }) => (
     <div className={classes.loginComponent}>
         <div className={classes.loginWrapper}>
@@ -16,17 +14,21 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                     <Input
                         id="emailInput"
                         name="email"
-                        label="Email"
+                        placeholder="Email"
+                        required
                         error={handleError}
                         onChange={handleChange}
-                        helperText={errorInputText}
+                        className={classes.email}
+                        // helperText={errorInputText}
                         value={emailValue}
                     />
                     <Input
                         id="passwordInput"
                         name="password"
-                        label="Password"
                         type="password"
+                        placeholder="password"
+                        required
+                        onChange={handleChange}
                     />
                 </div>
                 <div className={classes.submitRow}>
@@ -38,8 +40,9 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                     </Button>
                     <Button
                         className={classes.submitBtn}
-                        variant="raised"
+                        variant="contained"
                         type="submit"
+                        color="primary"
                     >
                         Sign In
                     </Button>
@@ -47,8 +50,8 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
             </form>
         </div>
         <div className={classes.footer}>
-            <h5>Don't have an account?</h5>
-            <Button onClick={handleClick}>Sign Up</Button>
+            <h5 className={classes.footerText}>Don't have an account?</h5>
+            <Button onClick={handleClick}  color="primary" variant="contained">Sign Up</Button>
         </div>
     </div>
 );
