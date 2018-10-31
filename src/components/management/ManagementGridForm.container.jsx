@@ -11,6 +11,7 @@ import LicenseRadio from "./license-radio";
 import LicenseTypeRadio from './license-type-radio';
 import { styles } from './ManagementGrid.styles';
 import { manageForm, deleteManagement } from '../../graphql/mutations/manage';
+import Upload from '../upload/upload';
 
 class ManagementGridForm extends Component {
   state = {
@@ -85,6 +86,7 @@ class ManagementGridForm extends Component {
     const { classes } = this.props;
     return (
       <div>
+        <Upload/>        
         <Button onClick={this.handleOpen} color="primary" variant="contained" className={classes.button}>Add new license</Button>
         <Button onClick={this.handleDeleteModal} color="primary" variant="contained" className={classes.button}>Delete</Button>
 
@@ -213,7 +215,6 @@ class ManagementGridForm extends Component {
           </form>
         </div>
       </Modal>
-
       <Modal
         open={this.state.deleteModal}
         onClose={this.handleDeleteModalClose}

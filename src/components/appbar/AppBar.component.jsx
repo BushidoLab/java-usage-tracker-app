@@ -6,11 +6,13 @@ import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
-import { styles } from './appbar.styles';
-import Logo from '../../assets/veratrust.png';
-import { signOut } from '../../services';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { styles } from './appbar.styles';
+import Logo from '../../assets/veratrust.png';
+import HelpIcon from '../../assets/baseline-help_outline-24px.svg';
+import { signOut } from '../../services';
+import Help from '../help/help'
 
 const AppBarComponent = ({ classes, value, handleClick, anchorEl, openProfileTab, closeProfileTab }) => (
     <AppBar position="static" className={classes.root}>
@@ -21,10 +23,8 @@ const AppBarComponent = ({ classes, value, handleClick, anchorEl, openProfileTab
             <Tabs value={value} onChange={handleClick}>
                 <Tab label="Home" component={Link} to="/" className={classes.tab} />
                 <Tab label="Audit" component={Link} to="/audit" className={classes.tab} />
-                {/* <Tab label="Inspect" component={Link} to="/inspect" className={classes.tab} /> */}
                 <Tab label="Manage" component={Link} to="/management" className={classes.tab} />
                 <Tab label="Deploy" component={Link} to="/deploy" className={classes.tab} />
-                {/* <Tab label="Profile" component={Link} to="/profile" className={classes.tab} /> */}
                 <Tab aria-owns={anchorEl ? 'simple-menu' : null} label="Account" onClick={openProfileTab} className={classes.tab} />
                 <Menu
                     id="simple-menu"
@@ -33,10 +33,16 @@ const AppBarComponent = ({ classes, value, handleClick, anchorEl, openProfileTab
                     onClose={closeProfileTab}
                 >
                     <MenuItem onClick={closeProfileTab} component={Link} to="/profile">Profile</MenuItem>
-                    {/* <MenuItem onClick={Help} component={Link} to="/help">Help</MenuItem> */}
                     <MenuItem onClick={signOut} component={Link} to="/" >Logout</MenuItem>
                 </Menu>
             </Tabs>
+        <Typography
+          color="inherit"
+          aria-label="Open drawer"
+          component={Help}
+        >
+            <img src={HelpIcon} alt="Help" className={classes.helpIcon} />
+        </Typography>
         </Toolbar>
     </AppBar>
 );

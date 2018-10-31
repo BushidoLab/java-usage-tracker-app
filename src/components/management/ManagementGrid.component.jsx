@@ -6,7 +6,6 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import 'ag-grid-enterprise';
 import Typography from '@material-ui/core/Typography';
 import { styles } from './ManagementGrid.styles';
-import Upload from '../upload/upload';
 
 const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
     <div>
@@ -14,7 +13,7 @@ const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, classes }) 
         <div
             className="ag-theme-balham"
             style={{
-                height: '500px',
+                height: '400px',
                 width: '98%',
                 marginLeft: '1%',
                 marginRight: '1%',
@@ -22,12 +21,12 @@ const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, classes }) 
                 marginBottom: '30px'
             }}
         >
-        <Upload/>
             <AgGridReact
                 enableColResize
                 enableSorting
                 enableFilter
                 pagination
+                enableRangeSelection
                 paginationPageSize="15"
                 rowSelection="multiple"
                 rowData={rowData}

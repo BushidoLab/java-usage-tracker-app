@@ -26,6 +26,7 @@ const ReconcileComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
           enableSorting
           enableFilter
           pagination
+          enableRangeSelection
           paginationPageSize="15"
           rowSelection="multiple"
           rowData={rowData}
