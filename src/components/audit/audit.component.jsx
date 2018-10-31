@@ -25,6 +25,7 @@ function getModalStyle() {
 const AuditComponent = ({ columnDefs, rowData, gridOptions, classes, onRowDoubleClicked, logModalOpen, handleModalClose, modalData }) => (
   <div>
     <Typography className={classes.header} variant="h4" gutterBottom>Audit</Typography>
+    <Typography className={classes.subHeader} variant="body1" gutterBottom>Inspect all logs recorded logs from your Hyperledger Fabric channel</Typography>
     <div 
       className="ag-theme-balham"
       style={{ 

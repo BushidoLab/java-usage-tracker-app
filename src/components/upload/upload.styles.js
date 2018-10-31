@@ -10,8 +10,18 @@ export const styles = {
     float: 'left'
   },
   upload: {
-    position: 'relative',
     margin: 'auto',
     marginTop: '100px',
-  }
+  },
+  input: {
+    backgroundColor: "#32419A",
+    color: "#FFF",
+    margin: "0 auto",
+    textSize: "20px",
+    marginLeft: "100px"
+  },
+  header: {
+    textAlign: "center",
+    marginTop: "200px",
+  },
 }

@@ -82,7 +82,7 @@ class Help extends Component {
             <ExpansionPanel>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.heading}>Deploy</Typography>
-                <Typography className={classes.subHeading}>Understand what the deploy information means</Typography>
+                <Typography className={classes.subHeading}>Understand what this grid's information means</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <Typography>

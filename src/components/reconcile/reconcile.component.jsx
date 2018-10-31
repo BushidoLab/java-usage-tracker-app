@@ -10,6 +10,7 @@ import { styles } from './reconcile.styles';
 const ReconcileComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
   <div>
     <Typography className={classes.header} variant="h4" gutterBottom>Deploy</Typography>
+    <Typography className={classes.subHeader} variant="body1" gutterBottom>View how your owned licenses compare to your usage</Typography>
     <div 
       className="ag-theme-balham"
       style={{ 

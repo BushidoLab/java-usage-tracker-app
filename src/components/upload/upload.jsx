@@ -4,7 +4,7 @@ import injectSheet from "react-jss";
 import Button from "@material-ui/core/Button";
 import Modal from '@material-ui/core/Modal';
 import Paper from "@material-ui/core/Paper";
-import Input from '@material-ui/core/Input';
+import Typography from '@material-ui/core/Typography';
 import { styles } from './upload.styles';
 import { uploadFile } from '../../graphql/mutations/manage';
 
@@ -47,16 +47,18 @@ class Upload extends Component {
           onClose={this.handleClose}
         >
           <Paper className={classes.paper}>
+            <Typography variant="h6" className={classes.header}>Upload your CSV file</Typography>
             <form>
               <div>
                 <Mutation mutation={uploadFile}>
                   {uploadFile => (
-                    <Input
+                    <input
                       color="primary"
                       variant="contained"
                       type="file"
-                      accept="*.csv"
+                      accept=".csv"
                       required
+                      className={classes.input}
                       onChange={({ target: { validity, files: [file] } }) => {
                         validity.valid && uploadFile({ variables: { file } });
                       }}

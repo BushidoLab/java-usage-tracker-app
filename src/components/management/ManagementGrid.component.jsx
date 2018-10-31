@@ -10,6 +10,7 @@ import { styles } from './ManagementGrid.styles';
 const ManagementGridComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
     <div>
         <Typography className={classes.header} variant="h4" gutterBottom>Management</Typography>
+        <Typography className={classes.subHeader} variant="body1" gutterBottom>Manage your owned licenses by adding them manually or importing them through CSV</Typography>
         <div
             className="ag-theme-balham"
             style={{

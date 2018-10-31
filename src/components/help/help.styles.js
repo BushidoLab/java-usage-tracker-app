@@ -9,7 +9,7 @@ export const styles = {
     margin: '5px',
   },
   subHeading: {
-    color: '#D3D3D3',
+    color: '#AAA',
     margin: '5px',
     float: 'right'
   }
