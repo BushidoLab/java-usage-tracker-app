@@ -11,6 +11,7 @@ import LicenseRadio from "./license-radio";
 import LicenseTypeRadio from './license-type-radio';
 import { styles } from './ManagementGrid.styles';
 import { manageForm, deleteManagement } from '../../graphql/mutations/manage';
+// import UploadFile from '../upload/uploadFile';
 import Upload from '../upload/upload';
 
 class ManagementGridForm extends Component {

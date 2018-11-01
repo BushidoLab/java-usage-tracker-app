@@ -55,7 +55,7 @@ class Help extends Component {
             <Typography variant="h5" className={classes.header}>
               Help
             </Typography>
-            <ExpansionPanel>
+            <ExpansionPanel className={classes.expansionPanel}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.heading}>Audit</Typography>
                 <Typography className={classes.subHeading}>Get more detailed information about the audit grid</Typography>
@@ -67,19 +67,31 @@ class Help extends Component {
                 </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
-            <ExpansionPanel>
+            <ExpansionPanel className={classes.expansionPanel}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.heading}>Manage</Typography>
                 <Typography className={classes.subHeading}>Learn how to submit your purchased licenses</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                  sit amet blandit leo lobortis eget.
+                  If you wish to upload your Excel worksheet into the management grid form, the following headers are expected:
+                  <ul>
+                    <li>OrderID</li>
+                    <li>Description</li>
+                    <li>License Type</li>
+                    <li>Quantity</li>
+                    <li>List Fee</li>
+                    <li>Discount</li>
+                    <li>Support Fee</li>
+                    <li>Other Fees</li>
+                    <li>CD Pack Fee</li>
+                    <li>Net Fee</li>
+                  </ul>
+                  If you have payed for support please also include a Support Date field in YYYY-MM-DD format
                 </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
-            <ExpansionPanel>
+            <ExpansionPanel className={classes.expansionPanel}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.heading}>Deploy</Typography>
                 <Typography className={classes.subHeading}>Understand what this grid's information means</Typography>

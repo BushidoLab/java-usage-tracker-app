@@ -46,23 +46,7 @@ export const deleteManagement = gql`
   }
 `;
 
-export const uploadFile = gql`
-  mutation uploadFile($file: Upload!) {
-    uploadFile(file: $file) {
-      filename
-    }
-  }
-`;
-
 export const typeDefs = gql`
-  type File {
-    _id: ID!
-    path: String!
-    filename: String!
-    mimetype: String!
-    encoding: String!
-  }
-
   type Mutation {
     uploadFile(file: Upload!): File
   }

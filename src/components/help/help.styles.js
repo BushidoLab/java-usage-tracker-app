@@ -12,5 +12,8 @@ export const styles = {
     color: '#AAA',
     margin: '5px',
     float: 'right'
-  }
+  },
+  expansionPanel: {
+    width: '500px',
+  },
 }

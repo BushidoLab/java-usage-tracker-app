@@ -11,14 +11,12 @@ export const styles = {
   },
   upload: {
     margin: 'auto',
-    marginTop: '100px',
+    marginTop: '120px',
   },
   input: {
-    backgroundColor: "#32419A",
-    color: "#FFF",
     margin: "0 auto",
     textSize: "20px",
-    marginLeft: "100px"
+    marginLeft: "150px"
   },
   header: {
     textAlign: "center",
