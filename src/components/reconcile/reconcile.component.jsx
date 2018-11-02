@@ -34,8 +34,7 @@ const ReconcileComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
           columnDefs={columnDefs}
           gridOptions={gridOptions}
           suppressNoRowsOverlay={true}
-          >
-        </AgGridReact>
+        />
     </div>
   </div>
 );

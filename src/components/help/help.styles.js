@@ -16,4 +16,7 @@ export const styles = {
   expansionPanel: {
     width: '500px',
   },
+  manage: {
+    color: "#111",
+  },
 }

@@ -73,8 +73,8 @@ class Help extends Component {
                 <Typography className={classes.subHeading}>Learn how to submit your purchased licenses</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <Typography>
-                  If you wish to upload your Excel worksheet into the management grid form, the following headers are expected:
+                <div className={classes.manage}>
+                  <p>If you wish to upload your Excel worksheet into the management grid form, the following headers are expected:</p>
                   <ul>
                     <li>OrderID</li>
                     <li>Description</li>
@@ -88,7 +88,7 @@ class Help extends Component {
                     <li>Net Fee</li>
                   </ul>
                   If you have payed for support please also include a Support Date field in YYYY-MM-DD format
-                </Typography>
+                </div>
               </ExpansionPanelDetails>
             </ExpansionPanel>
             <ExpansionPanel className={classes.expansionPanel}>

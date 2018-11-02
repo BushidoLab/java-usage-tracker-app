@@ -13,8 +13,8 @@ class ProfileContainer extends Component {
     const accountInfo = sessionStorage.getItem('acctInfo').split(' ');
     this.setState({
       ...(accountInfo[0] && { email: accountInfo[0] }),
-      ...(accountInfo[1] && { email: accountInfo[1] }),
-      ...(accountInfo[2] && { email: accountInfo[2] }),
+      ...(accountInfo[1] && { firstName: accountInfo[1] }),
+      ...(accountInfo[2] && { lastName: accountInfo[2] }),
     })
   }
   
