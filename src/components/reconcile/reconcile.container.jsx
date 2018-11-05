@@ -3,7 +3,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import { compose, withApollo, graphql } from 'react-apollo';
 import ReconcileComponent from './reconcile.component';
-import { getReconcile, getEmail } from '../../graphql/queries/reconcile';
+import { getReconcile } from '../../graphql/queries/reconcile';
 
 class DeployContainer extends Component {
   state = {
@@ -32,17 +32,6 @@ class DeployContainer extends Component {
       overlayLoadingTemplate: '<span>Loading...</span>',
       overlayNoRowsTemplate: '<span>Loading...</span>',
     },
-  }
-
-  async componentWillMount() {
-    const { client } = this.props;
-    const accountInfo = sessionStorage.getItem('acctInfo');
-    const mail = await client.query({
-      query: getEmail,
-      variables: { email: accountInfo.trim() }
-    })
-    console.table(mail.data.getEmail)
-    return mail.data.getEmail.email;
   }
 
   render() {

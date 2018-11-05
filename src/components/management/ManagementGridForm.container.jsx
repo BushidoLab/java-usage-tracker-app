@@ -11,7 +11,6 @@ import LicenseRadio from "./license-radio";
 import LicenseTypeRadio from './license-type-radio';
 import { styles } from './ManagementGrid.styles';
 import { manageForm, deleteManagement } from '../../graphql/mutations/manage';
-// import UploadFile from '../upload/uploadFile';
 import Upload from '../upload/upload';
 
 class ManagementGridForm extends Component {
@@ -45,17 +44,17 @@ class ManagementGridForm extends Component {
   handleSubmit = async e => {
     const { license, licenseType, quantity, listFee, discount, supportDate, productSupportFee, softwareUpdateFee, otherFees, cdPackFee, unitPrice } = this.state;
     const { client } = this.props;
+    const user = sessionStorage.getItem('acctInfo').trim();
 
     const data = await client.mutate({
       mutation: manageForm,
-      variables: { license, licenseType, quantity, listFee, discount, supportDate, productSupportFee, softwareUpdateFee, otherFees, cdPackFee, unitPrice }
+      variables: { license, licenseType, quantity, listFee, discount, supportDate, productSupportFee, softwareUpdateFee, otherFees, cdPackFee, unitPrice, user }
     })
     this.setState({ open: false })
     return data;
   }
 
   handleDelete = async e => {
-    e.preventDefault();
     const { id } = this.state;
     const { client } = this.props;
 

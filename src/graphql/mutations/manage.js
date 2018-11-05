@@ -12,7 +12,8 @@ export const manageForm = gql `
     $softwareUpdateFee: Float,
     $otherFees: Float,
     $cdPackFee: Float,
-    $unitPrice: Float
+    $unitPrice: Float,
+    $user: String
   ) {
     manage(
       license: $license,
@@ -25,7 +26,8 @@ export const manageForm = gql `
       softwareUpdateFee: $softwareUpdateFee,
       otherFees: $otherFees,
       cdPackFee: $cdPackFee,
-      unitPrice: $unitPrice
+      unitPrice: $unitPrice,
+      user: $user
     ) {
       license
       licenseType
