@@ -46,24 +46,22 @@ class ManagementGridForm extends Component {
     const { client } = this.props;
     const user = sessionStorage.getItem('acctInfo').trim();
 
-    const data = await client.mutate({
+    await client.mutate({
       mutation: manageForm,
       variables: { license, licenseType, quantity, listFee, discount, supportDate, productSupportFee, softwareUpdateFee, otherFees, cdPackFee, unitPrice, user }
     })
     this.setState({ open: false })
-    return data;
   }
 
   handleDelete = async e => {
     const { id } = this.state;
     const { client } = this.props;
 
-    const data = await client.mutate({
+    await client.mutate({
       mutation: deleteManagement,
       variables: { id }
     })
     this.setState({ deleteModal: false })
-    return data;
   }
 
   handleOpen = () => {
@@ -103,6 +101,7 @@ class ManagementGridForm extends Component {
               />
               <LicenseTypeRadio
                 onChange={this.handleLicenseTypeChange}
+                license={this.state.license}
               />
             </div>
             <Paper className={classes.fields}>
@@ -128,17 +127,6 @@ class ManagementGridForm extends Component {
                   variant="outlined"
                   required
                 />
-
-                <Input
-                  type="number"
-                  name="discount"
-                  placeholder="Discount (%)"
-                  value={this.discount}
-                  onChange={this.handleChange}
-                  className={classes.textField}
-                  variant="outlined"
-                  required
-                />
   
                 <Input
                   type="number"
@@ -148,19 +136,6 @@ class ManagementGridForm extends Component {
                   onChange={this.handleChange}
                   className={classes.textField}
                   variant="outlined"
-                />
-                
-                <TextField
-                  name="supportDate"
-                  label="Product support date"
-                  type="date"
-                  defaultValue="2018-10-26"
-                  value={this.supportDate}
-                  onChange={this.handleChange}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  className={classes.date}
                 />
 
                 <Input
@@ -201,6 +176,29 @@ class ManagementGridForm extends Component {
                   onChange={this.handleChange}
                   className={classes.textField}
                   variant="outlined"
+                />
+
+                <Input
+                  type="number"
+                  name="discount"
+                  placeholder="Discount (%)"
+                  value={this.discount}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                />
+
+                <TextField
+                  name="supportDate"
+                  label="Product support date"
+                  type="date"
+                  value={this.supportDate}
+                  onChange={this.handleChange}
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  className={classes.date}
                 />
               </div>
               <Button

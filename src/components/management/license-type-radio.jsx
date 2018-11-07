@@ -14,8 +14,14 @@ class LicenseTypeRadio extends React.Component {
   }
 
   render () {
-    const { classes } = this.props;
+    const { classes, license } = this.props;
+    let button;
 
+    if (license === "Java SE Advanced Desktop") {
+      button = <FormControlLabel value="Processor" control={<Radio />} label="Processor" disabled/>
+    } else {
+      button = <FormControlLabel value="Processor" control={<Radio />} label="Processor"/>
+    }
     return (
       <MuiThemeProvider>
         <div className={classes.paper}>
@@ -28,7 +34,7 @@ class LicenseTypeRadio extends React.Component {
               value={this.state.value}
               onChange={this.handleChange}
             >
-              <FormControlLabel value="Processor" control={<Radio />} label="Processor"/>
+              {button}
               <FormControlLabel value="NUP" control={<Radio />} label="NUP"/>
             </RadioGroup>
           </FormControl>

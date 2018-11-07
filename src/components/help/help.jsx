@@ -11,6 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import injectSheet from 'react-jss';
 import { styles } from './help.styles';
 import HelpIcon from '../../assets/baseline-help_outline-24px.svg';
+import ContactForm from './contactForm';
 
 class Help extends Component {
   state = {
@@ -62,8 +63,9 @@ class Help extends Component {
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                  sit amet blandit leo lobortis eget.
+                  In the Audit view you can view all logs stored in your hyperledger fabric channel. All of this data is fetched directly from the blockchain and is gathered differently depeding on the product.
+                  <br/>
+                  Here you can double click a row to view a popup to see relevant information such as other entries of related to the same device.
                 </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
@@ -88,6 +90,8 @@ class Help extends Component {
                     <li>Net Fee</li>
                   </ul>
                   If you have payed for support please also include a Support Date field in YYYY-MM-DD format
+                  <br/>
+                  While filling out the management form the user email is tracked for the purpose of sending emails reminding to renew their support. If you would like this feature include a user email under a user header.
                 </div>
               </ExpansionPanelDetails>
             </ExpansionPanel>
@@ -98,12 +102,12 @@ class Help extends Component {
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                  sit amet blandit leo lobortis eget.
+                  In this view, each row represented in the management form is compared with the logs shown in the Audit tab and total amount over/under of licenses and its sum cost is displayed.
                 </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </div>
+          <ContactForm/>
         </Drawer>
       </div>
     )
