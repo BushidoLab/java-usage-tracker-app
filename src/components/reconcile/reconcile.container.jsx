@@ -37,7 +37,6 @@ class DeployContainer extends Component {
   render() {
     const { gridOptions, gridOptions: { columnDefs } } = this.state;
     const { data: {getReconcile} } = this.props;
-    console.log(getReconcile)
     return (
       <div>
         <ReconcileComponent

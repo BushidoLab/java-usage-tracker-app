@@ -25,7 +25,33 @@ export const styles = {
   },
   paper: {
     display: 'block',
-    margin: '30%, auto',
+    marginTop: '200px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     width: '300px'
+  },
+  formHeader: {
+    textAlign: 'center',
+    marginTop: '20px',
+    marginBottom: '10px',
+  },
+  textField: {
+    width: '200px',
+    marginLeft: '50px',
+    marginRight: '50px',
+  },
+  feedback: {
+    width: '250px',
+    marginLeft: '25px',
+    marginRight: '25px',
+    marginTop: '10px',
+  },
+  buttonGroup: {
+    display: 'block',
+    marginTop: '10px',
+    marginLeft: '60px',
+  },
+  send: {
+    margin: '10px',
   },
 }

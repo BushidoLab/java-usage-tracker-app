@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Fade from '@material-ui/core/Fade';
 import { styles } from './appbar.styles';
 import Logo from '../../assets/veratrust.png';
 import HelpIcon from '../../assets/baseline-help_outline-24px.svg';
@@ -31,6 +32,7 @@ const AppBarComponent = ({ classes, value, handleClick, anchorEl, openProfileTab
                     anchorEl={anchorEl}
                     open={Boolean(anchorEl)}
                     onClose={closeProfileTab}
+                    TransitionComponent={Fade}
                 >
                     <MenuItem onClick={closeProfileTab} component={Link} to="/profile">Profile</MenuItem>
                     <MenuItem onClick={signOut} component={Link} to="/" >Logout</MenuItem>
