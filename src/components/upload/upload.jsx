@@ -1,143 +1,75 @@
 import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
-import injectSheet from "react-jss";
-import { withApollo } from 'react-apollo';
-// import { GridOptionsWrapper } from 'ag-grid-community';
-// import XLSX from 'xlsx';
-import Button from "@material-ui/core/Button";
-import Modal from '@material-ui/core/Modal';
-import Paper from "@material-ui/core/Paper";
-import Typography from '@material-ui/core/Typography';
-import { styles } from './upload.styles';
-import { singleUpload } from '../../graphql/mutations/uploads';
+import { withApollo, compose } from 'react-apollo';
+import axios, { post } from 'axios';
+// import { singleUpload } from '../../graphql/mutations/uploads';
 
 class Upload extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      file: "",
-      open: false,
-    };
+        this.state = { file: null };
 
-    this.handleUpload = this.handleUpload.bind(this);
-  }
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.fileUpload = this.fileUpload.bind(this);
+    }
 
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
+    // onFormSubmit({ preventDefault }) {
+    //     const { file } = this.state;
+    //     preventDefault();
+    //     this.fileUpload(file).then(response => console.log(response.data));
+    // }
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
+    onChange(e) {
+        this.setState({ file: e.target.files[0] });
+        e.preventDefault();
+        this.fileUpload(e.target.files[0]).then(response => console.log(response.data));
+    }
 
-  handleUpload = async e => {
-    e.preventDefault();
-    const { file } = this.state;
-    const { client } = this.props;
+    // fileUpload(file) {
+    //     const url = 'http://localhost:4000/upload';
+    //     const formData = new FormData();
+    //     formData.append('file', file);
+    //     const token = sessionStorage.getItem('authToken');
+    //     const config = {
+    //         headers: {
+    //             'content-type': 'multipart/form-data',
+    //             authorization: token,
+    //             'Access-Control-Allow-Origin': '*',
+    //         },
+    //     };
+    //     return post(url, formData, config);
+    // }
 
-    const data = await client.mutate({
-      mutation: singleUpload,
-      variables: { file }
-    })
-
-    this.handleClose();
-    return data;
-  };
-
-  handleChange = (e) => {
-    this.setState({ file: e.target.value });
-    console.log(this.state.file);
-  }
-
-  // convertDataToWorkbook = params => {
-  //   const data = new Uint8Array(params);
-  //   let arr = [];
-
-  //   for (let i = 0; i !== data.length; ++i) {
-  //     arr[i] = String.fromCharCode(data[i]);
-  //   }
-  //   const bstr = arr.join("");
-
-  //   return XLSX.read(bstr, { type: "binary" })
-  // }
-
-  // populateGrid = (workbook) => {
-  //   // Data we need is in the first sheet
-  //   const headers = workbook.SheetNames[0];
-  //   const worksheet = workbook.Sheets[headers];
-
-  //   // The following columns are expected
-  //   const columns = {
-  //     'A': 'OrderID',
-  //     'B': 'Description',
-  //     'C': 'License Type',
-  //     'D': 'Quantity',
-  //     'E': 'List Fee',
-  //     'F': 'Discount',
-  //     'G': 'Support Fee',
-  //     'H': 'Other Fees',
-  //     'I': 'CD Pack Fee',
-  //     'J': 'Net Fee'
-  //   }
-
-  //   let rowData = [];
-  //   // Start at the second row - the first one is for headers
-  //   let rowIndex = 2;
-
-  //   // Iterate over worksheet pulling out the columns we are expecting
-  //   while (worksheet['A' + rowIndex]) {
-  //     let row = {};
-  //     Object.keys(columns).forEach(column => {
-  //       row[columns[column]] = worksheet[column + rowIndex].w;
-  //     });
-
-  //     rowData.push(row);
-  //     rowIndex++;
-  //   }
-
-  //   // Set imported rowData into the grid
-  //   GridOptionsWrapper.api.setRowData(rowData);
-  // }
-
-  render() {
-    const { classes } = this.props;
-    return (
-      <div>
-        <Button onClick={this.handleOpen} color="primary" variant="contained" className={classes.button}>Import CSV</Button>
-        
-        <Modal
-          open={this.state.open}
-          onClose={this.handleClose}
-        >
-          <Paper className={classes.paper}>
-            <Typography variant="h6" className={classes.header}>Upload your CSV file</Typography>
-            <form onSubmit={this.handleUpload}>
-              <div>
-                <Mutation mutation={singleUpload}>
-                  {singleUpload => (
-                  <div>
+    render() {
+        return (
+            <form onSubmit={this.onFormSubmit}>
+                <div>
+                    {/* <input ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".csv" /> */}
                     <input
-                      name="file"
-                      color="primary"
-                      variant="contained"
-                      type="file"
-                      accept=".csv"
-                      required
-                      className={classes.input}
-                      onChange={this.handleChange}
+                        type="file"
+                        accept=".csv"
+                        required
+                        onChange={this.onChange}
                     />
-                    </div>
-                  )}
-                </Mutation>
-                <Button className={classes.upload} color="primary" variant="contained" type="submit">Upload</Button>
-              </div>
+                </div>
+                <div>
+                    <input
+                        ref={ref => {
+                            this.fileName = ref;
+                        }}
+                        type="text"
+                        placeholder="Enter the name of the CSV file"
+                    />
+                </div>
+                <div>
+                    <button type="submit">Upload</button>
+                </div>
             </form>
-          </Paper>
-        </Modal>
-      </div>
-    )
-  }
+        );
+    }
 }
 
-export default injectSheet(styles)(withApollo(Upload));
+const enhancer = compose(withApollo);
+
+export default enhancer(Upload);
