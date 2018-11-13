@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 
+// GraphQL Mutation that writes a management object to mongoDB
 export const manageForm = gql `
   mutation manage(
     $license: String!,
