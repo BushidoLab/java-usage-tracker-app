@@ -18,7 +18,7 @@ const ProfileComponent = ({ classes, firstName, lastName, email }) => (
       />
       <CardContent>
         <Typography paragraph>
-          Name: {`${firstName} ${lastName}`}
+          Name: {`${firstName} ${lastName}`}I
         </Typography>
         <Typography paragraph>
           Email:{` ${email}`}
