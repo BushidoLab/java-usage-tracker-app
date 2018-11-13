@@ -10,6 +10,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { styles } from './audit.styles';
+import UploadToBlockchain from '../upload/uploadToBlockchain';
 
 function getModalStyle() {
   const top = 50;
@@ -59,7 +60,7 @@ const AuditComponent = ({ columnDefs, rowData, gridOptions, classes, onRowDouble
                     {modalData.logs.map((data, index) => (
                       <ListItem key={index}>
                         <Typography>Log #{index + 1}</Typography>
-                        <ListItemText secondary={["Date used: ", data.dateTime, " App: ", data.appName]} />
+                        <ListItemText secondary={["Date used: ", data.dateTime, "Category: ", data.category]} />
                       </ListItem>
                     ))}
                   </List>
@@ -83,6 +84,7 @@ const AuditComponent = ({ columnDefs, rowData, gridOptions, classes, onRowDouble
           onRowDoubleClicked={onRowDoubleClicked}
         />
     </div>
+    <UploadToBlockchain/>
   </div>
 );
 

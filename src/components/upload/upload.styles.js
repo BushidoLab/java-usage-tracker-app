@@ -11,7 +11,8 @@ export const styles = {
   },
   upload: {
     margin: 'auto',
-    marginTop: '120px',
+    marginTop: '50px',
+    marginLeft: '400px'
   },
   input: {
     margin: "0 auto",
@@ -21,5 +22,6 @@ export const styles = {
   header: {
     textAlign: "center",
     marginTop: "200px",
+    marginBottom: "50px"
   },
 }

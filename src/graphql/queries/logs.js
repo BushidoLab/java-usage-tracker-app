@@ -16,7 +16,7 @@ export const getLog = gql`
     getLog
   }`;
 
-
+// Queries getAllProcLogs and getallNUPLogs and pushes them into the same array then returns it
 export const getAllLogs = gql`
   query getAllLogs{
     getAllLogs
