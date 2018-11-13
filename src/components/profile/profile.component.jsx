@@ -25,14 +25,6 @@ const ProfileComponent = ({ classes, firstName, lastName, email }) => (
 
         </Typography>
       </CardContent>
-      <div>
-      <form method="POST" action="https://btcpay1.eastus.cloudapp.azure.com/api/v1/invoices">
-          <input type="hidden" name="storeId" value="4Uag4Medx7RHdxBoHNvXExcjRPtx2VvvPyptAid8mijX" />
-          <input type="hidden" name="price" value="10" />
-          <input type="hidden" name="currency" value="USD" />
-          <input type="image" src="https://btcpay1.eastus.cloudapp.azure.com/img/paybutton/pay.png" name="submit" alt="Pay with BtcPay, Self-Hosted Bitcoin Payment Processor" />
-      </form>
-      </div>
     </Card>
   </div>
 )
