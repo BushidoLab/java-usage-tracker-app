@@ -63,7 +63,7 @@ class Upload extends Component {
           onClose={this.handleClose}
         >
           <Paper className={classes.paper}>
-            <Typography variant="h6" className={classes.header}>Upload your CSV file</Typography>
+            <Typography variant="h6" className={classes.formHeader}>Upload your CSV file</Typography>
             <form onSubmit={this.onFormSubmit}>
               <div>
                   <div>

@@ -87,7 +87,6 @@ class ManagementGridForm extends Component {
         <Upload/>        
         <Button onClick={this.handleOpen} color="primary" variant="contained" className={classes.button}>Add new license</Button>
         <Button onClick={this.handleDeleteModal} color="primary" variant="contained" className={classes.button}>Delete</Button>
-
         <Modal
         open={this.state.open}
         onClose={this.handleClose}
@@ -95,7 +94,6 @@ class ManagementGridForm extends Component {
           <div className={classes.formContainer}>
           <form onSubmit={this.handleSubmit} autoComplete="off" className={classes.formContainer}>
             <div className={classes.licenses}>
-              
               <LicenseRadio
                 onChange={this.handleRadioChange}
               />
@@ -220,8 +218,8 @@ class ManagementGridForm extends Component {
         <div className={classes.deleteContainer}>
           <form onSubmit={this.handleDelete} autoComplete="off" className={classes.deleteContainer}>
             <Paper>
-              <Typography className={classes.formHeader}>
-                Enter the management forms Order id of which you wish to delete
+              <Typography variant="h6" className={classes.formHeader}>
+                Enter the Order Id of the form you wish to delete
               </Typography>
               <Input
                 type="string"

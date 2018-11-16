@@ -33,7 +33,7 @@ export const styles = {
   delete: {
     float: 'right',
     marginTop: '20px',
-    marginRight: 100
+    marginRight: '20px'
   },
   root: {
     display: "flex",
@@ -67,10 +67,4 @@ export const styles = {
     padding: "10px",
     width: "200px",
   },
-  formheader: {
-    textAlign: "center",
-    margin: "10px",
-    padding: "10px",
-    color: "#AAA"
-  }
 };

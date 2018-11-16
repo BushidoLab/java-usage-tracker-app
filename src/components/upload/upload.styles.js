@@ -11,17 +11,22 @@ export const styles = {
   },
   upload: {
     margin: 'auto',
-    marginTop: '50px',
+    marginTop: '30px',
     marginLeft: '400px'
   },
   input: {
     margin: "0 auto",
     textSize: "20px",
-    marginLeft: "150px"
+    marginLeft: "30%",
+    marginTop: "5%"
   },
   header: {
     textAlign: "center",
-    marginTop: "200px",
-    marginBottom: "50px"
+    margin: "10px"
   },
+  formHeader: {
+    textAlign: "center",
+    margin: "10px",
+    padding: "10px",
+  }
 }
