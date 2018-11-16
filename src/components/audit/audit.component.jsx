@@ -11,7 +11,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { styles } from './audit.styles';
-import UploadToBlockchain from '../upload/uploadToBlockchain';
+// import UploadToBlockchain from '../upload/uploadToBlockchain';
 
 function getModalStyle() {
   const top = 50;
@@ -65,7 +65,9 @@ class AuditComponent extends Component {
                 <Fragment>
                   <Typography variant="h6" id="modal-title">{`Vendor: ${modalData.vendor}`}</Typography>
                   <Typography variant="h6" id="modal-title">{`Operating System: ${modalData.operatingSystem}`}</Typography>
+                  <Typography variant="h6" id="modal-title">{`MAC Address: ${modalData.MAC}`}</Typography>
                   <Typography variant="h6" id="modal-title">{`Model: ${modalData.model}`}</Typography>
+                  <Typography variant="h6" id="modal-title">{`SubVendor: ${modalData.subVendor}`}</Typography>
                 </Fragment>
                 :
                 <Fragment>
@@ -76,7 +78,7 @@ class AuditComponent extends Component {
                     {modalData.logs.map((data, index) => (
                       <ListItem key={index}>
                         <Typography>Log #{index + 1}</Typography>
-                        <ListItemText secondary={["Date used: ", data.dateTime, "Category: ", data.category]} />
+                        <ListItemText secondary={["Date used: ", data.dateTime, "\n", " Process: ", data.process]} />
                       </ListItem>
                     ))}
                   </List>
@@ -86,7 +88,7 @@ class AuditComponent extends Component {
           </div>
       </div>
     </div>
-    <UploadToBlockchain/>
+    {/* <UploadToBlockchain/> */}
   </div>
 );
 
