@@ -18,7 +18,6 @@ class AuditContainer extends Component {
         {headerName: "Processor", children: [
           {headerName: "Processor", field: "model", width: 130},
           {headerName: "Cores", field: "cores", width: 80},
-          {headerName: "Subvendor", field: "subVendor", width: 100},
         ]},
         {headerName: "Usage", children: [
           {headerName: "App Name", field: "appName", width: 130},
