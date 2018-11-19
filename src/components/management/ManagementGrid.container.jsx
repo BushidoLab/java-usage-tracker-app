@@ -10,9 +10,13 @@ class ManagementGridContainer extends Component {
         gridOptions: {
             columnDefs: [
                 { headerName: 'Select', checkboxSelection: true, width: 40 },
-                { headerName: 'Order ID', field: '_id', width: 100 },
+                { headerName: 'Order Id', field: '_id', width: 100 },
+                { headerName: 'CSI Number', field: 'csi', width: 130 },
                 { headerName: 'Description', field: 'license', width: 200 },
+                { headerName: 'Vendor Name', field: 'vendor', width: 150 },
+                { headerName: 'Vendor Number', field: 'vendorNumber', width: 130 },
                 { headerName: 'License Type', field: 'licenseType', width: 150 },
+                { headerName: 'Version', field: 'version', width: 110 },
                 { headerName: 'Quantity', field: 'quantity', width: 130 },
                 { headerName: 'List Fee', field: 'listFee', width: 130, valueFormatter: currencyFormatter },
                 { headerName: 'Discount', field: 'discount', width: 130, valueFormatter: currencyFormatter, },

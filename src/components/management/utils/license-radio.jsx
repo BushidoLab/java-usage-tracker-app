@@ -1,7 +1,7 @@
 import React from 'react';
 import { Radio, FormLabel, FormControlLabel, RadioGroup, FormControl, withStyles } from "@material-ui/core";
 import { MuiThemeProvider } from 'material-ui/styles';
-import { styles } from './ManagementGrid.styles';
+import { styles } from '../ManagementGrid.styles';
 
 class LicenseRadio extends React.Component {
   state = {
@@ -10,7 +10,6 @@ class LicenseRadio extends React.Component {
 
   handleChange = e => {
     this.setState({ value: e.target.value })
-    this.props.onChange(e.target.value);
   }
 
   render () {

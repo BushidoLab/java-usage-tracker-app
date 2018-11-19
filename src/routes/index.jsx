@@ -8,9 +8,9 @@ import Route from './route_component';
 
 export default _ => (
     <Switch>
-        <Route path="/audit" exact component={Audit} />
-        <Route path="/management" exact component={Management} />
-        <Route path="/deploy" exact component={Deploy} />
+        <Route path="/deploy" exact component={Audit} />
+        <Route path="/entitlement" exact component={Management} />
+        <Route path="/reconcile" exact component={Deploy} />
         <Route path="/profile" exact component={Profile} />
     </Switch>
 );
