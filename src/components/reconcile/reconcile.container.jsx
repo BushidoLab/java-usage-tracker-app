@@ -5,27 +5,33 @@ import { compose, withApollo, graphql } from 'react-apollo';
 import ReconcileComponent from './reconcile.component';
 import { getReconcile } from '../../graphql/queries/reconcile';
 
-class DeployContainer extends Component {
+class ReconcileContainer extends Component {
   state = {
     gridOptions: {
       columnDefs: [
-          {headerName: "Product Name", field: "productName", width: 220},
-          {headerName: "License Type", field: "licenseType", width: 220},
-          {headerName: "Licenses owned", field: "quantity", width: 220},
-          {headerName: "Licenses used", field: "inventory", width: 220},
-          {headerName: "Left over licenses", field: "difference", width: 220},
-          {headerName: "Support expiry date", field: "supported", width: 220, 
+          {headerName: "Product Name", field: "productName", width: 180},
+          {headerName: "License Type", field: "licenseType", width: 180},
+          {headerName: "Version", field: "version", width: 180},
+          {headerName: "Licenses Owned", field: "quantity", width: 180},
+          {headerName: "Licenses Used", field: "inventory", width: 180},
+          {headerName: "Licenses Available", field: "difference", width: 180,
+          cellStyle: function(params) {
+            if (params.value < 0) {
+              return { backgroundColor: '#d16262' }
+            }}
+          },
+          {headerName: "Support Expiry Date", field: "supported", width: 180, 
           cellStyle: function(params) {
             if (params.value === "No support" || params.value === "Expired") {
               return { backgroundColor: '#d16262' }
             }}
           },
-          {headerName: "Net value", field: "amount", width: 220, valueFormatter: currencyFormatter,
+          {headerName: "Compliance Cost", field: "amount", width: 180, valueFormatter: currencyFormatter,
           cellStyle: function(params) {
             if (params.value < 0) {
-              return { backgroundColor: '#d16262' }
+              return { backgroundColor: '#6dc45e' }
             } else if (params.value > 0) {
-              return { backgroundColor: '#6dc45e'}
+              return { backgroundColor: '#d16262'}
             }}
           },
       ],
@@ -64,4 +70,4 @@ const enhancer = compose(
   graphql(getReconcile)
 )
 
-export default enhancer(DeployContainer);
+export default enhancer(ReconcileContainer);

@@ -23,7 +23,8 @@ export const styles = {
     width: "500px"
   },
   button: {
-    margin: '10px'
+    margin: '10px',
+    float: 'left'
   },
   submit: {
     float: 'right',

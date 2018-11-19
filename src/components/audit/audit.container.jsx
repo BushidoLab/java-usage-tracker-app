@@ -10,19 +10,20 @@ class AuditContainer extends Component {
   state = {
     gridOptions: {
       columnDefs: [
-        {headerName: "", checkboxSelection: true, width: 30 },
+        {headerName: "", field: "select", checkboxSelection: true, width: 30 },
         {headerName: "Device", children: [
           {headerName: "Device Name", field: "deviceName", width: 130},
           {headerName: "IP", field: "IP", width: 130},
+          {headerName: "MAC Address", field: "MAC"}
         ]},
         {headerName: "Processor", children: [
           {headerName: "Processor", field: "model", width: 130},
           {headerName: "Cores", field: "cores", width: 80},
         ]},
         {headerName: "Usage", children: [
-          {headerName: "App Name", field: "appName", width: 130},
+          {headerName: "Instance Name", field: "appName", width: 130},
           {headerName: "Users", field: "userCount", width: 80},
-          {headerName: "Last used", field: "dateTime", width: 130}
+          {headerName: "Last Used", field: "dateTime", width: 130}
         ]},
         {headerName: "Product", children: [
           {headerName: "Publisher", field: "vendor", width: 130},

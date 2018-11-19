@@ -6,20 +6,21 @@ import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import LicenseRadio from "./license-radio";
-import LicenseTypeRadio from './license-type-radio';
+import LicenseTypeRadio from './utils/license-type-radio';
 import { styles } from './ManagementGrid.styles';
-import { manageForm, deleteManagement } from '../../graphql/mutations/manage';
+import { manageForm } from '../../graphql/mutations/manage';
 import Upload from '../upload/upload';
+import Delete from './utils/delete-button';
+import LicenseDropdown from './utils/license-menu';
+import VendorMenu from './utils/vendor-menu';
 
 class ManagementGridForm extends Component {
   state = {
     open: false,
-    deleteModal: false,
-    id: String(),
     license: String(),
+    vendor: String(),
     licenseType: String(),
+    version: String(),
     quantity: Number(),
     listFee: Number(),
     discount: Number(),
@@ -28,10 +29,14 @@ class ManagementGridForm extends Component {
     softwareUpdateFee: Number(),
     otherFees: Number(),
     cdPackFee: Number(),
+    csi: Number(),
+    vendorNumber: String(),
     unitPrice: Number(),
   }
 
-  handleRadioChange = radioValue => this.setState({ license: radioValue })
+  handleLicenseChange = dropdownValue => this.setState({ license: dropdownValue });
+
+  handleVendorChange = vendorValue => this.setState({ vendor: vendorValue });
 
   handleLicenseTypeChange = licenseTypeValue => this.setState({ licenseType: licenseTypeValue })
 
@@ -42,38 +47,19 @@ class ManagementGridForm extends Component {
   }
 
   handleSubmit = async e => {
-    const { license, licenseType, quantity, listFee, discount, supportDate, productSupportFee, softwareUpdateFee, otherFees, cdPackFee, unitPrice } = this.state;
+    const { license, licenseType, vendor, version, quantity, listFee, discount, supportDate, productSupportFee, softwareUpdateFee, otherFees, cdPackFee, unitPrice, csi, vendorNumber } = this.state;
     const { client } = this.props;
     const user = sessionStorage.getItem('acctInfo').trim();
 
     await client.mutate({
       mutation: manageForm,
-      variables: { license, licenseType, quantity, listFee, discount, supportDate, productSupportFee, softwareUpdateFee, otherFees, cdPackFee, unitPrice, user }
+      variables: { license, licenseType, vendor, version, quantity, listFee, discount, supportDate, productSupportFee, softwareUpdateFee, otherFees, cdPackFee, unitPrice, csi, vendorNumber, user }
     })
     this.setState({ open: false })
   }
 
-  handleDelete = async e => {
-    const { id } = this.state;
-    const { client } = this.props;
-
-    await client.mutate({
-      mutation: deleteManagement,
-      variables: { id }
-    })
-    this.setState({ deleteModal: false })
-  }
-
   handleOpen = () => {
     this.setState({open: true})
-  }
-
-  handleDeleteModal = () => {
-    this.setState({deleteModal: true})
-  }
-
-  handleDeleteModalClose = () => {
-    this.setState({deleteModal: false})
   }
 
   handleClose = () => {
@@ -86,7 +72,7 @@ class ManagementGridForm extends Component {
       <div>
         <Upload/>        
         <Button onClick={this.handleOpen} color="primary" variant="contained" className={classes.button}>Add new license</Button>
-        <Button onClick={this.handleDeleteModal} color="primary" variant="contained" className={classes.button}>Delete</Button>
+        <Delete/>
         <Modal
         open={this.state.open}
         onClose={this.handleClose}
@@ -94,8 +80,11 @@ class ManagementGridForm extends Component {
           <div className={classes.formContainer}>
           <form onSubmit={this.handleSubmit} autoComplete="off" className={classes.formContainer}>
             <div className={classes.licenses}>
-              <LicenseRadio
-                onChange={this.handleRadioChange}
+              <LicenseDropdown
+                onClick={this.handleLicenseChange}
+              />
+              <VendorMenu
+                onClick={this.handleVendorChange}
               />
               <LicenseTypeRadio
                 onChange={this.handleLicenseTypeChange}
@@ -104,6 +93,17 @@ class ManagementGridForm extends Component {
             </div>
             <Paper className={classes.fields}>
               <div className={classes.inputFields}>
+                <Input
+                    type="string"
+                    name="version"
+                    placeholder="Version Number"  
+                    value={this.version}
+                    onChange={this.handleChange}
+                    className={classes.textField}
+                    variant="outlined"
+                    required
+                />
+
                 <Input
                   type="number"
                   name="quantity"
@@ -187,6 +187,28 @@ class ManagementGridForm extends Component {
                   required
                 />
 
+                <Input
+                  type="number"
+                  name="csi"
+                  placeholder="CSI Number"
+                  value={this.csi}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                />
+
+                <Input
+                  type="string"
+                  name="vendorNumber"
+                  placeholder="Vendor Number"
+                  value={this.vendorNumber}
+                  onChange={this.handleChange}
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                />
+
                 <TextField
                   name="supportDate"
                   label="Product support date"
@@ -211,38 +233,7 @@ class ManagementGridForm extends Component {
           </form>
         </div>
       </Modal>
-      <Modal
-        open={this.state.deleteModal}
-        onClose={this.handleDeleteModalClose}
-      >
-        <div className={classes.deleteContainer}>
-          <form onSubmit={this.handleDelete} autoComplete="off" className={classes.deleteContainer}>
-            <Paper>
-              <Typography variant="h6" className={classes.formHeader}>
-                Enter the Order Id of the form you wish to delete
-              </Typography>
-              <Input
-                type="string"
-                name="id"
-                placeholder="ID"
-                value={this.id}
-                onChange={this.handleChange}
-                className={classes.textField}
-                variant="outlined"
-                />
-              <Button
-                type="submit"
-                variant="contained"
-                color="secondary"
-                onSubmit={this.handleDelete}
-                className={classes.delete}>
-                Delete
-              </Button>
-            </Paper>
-          </form>
-        </div>
-
-      </Modal>
+      
     </div>
     );
   }

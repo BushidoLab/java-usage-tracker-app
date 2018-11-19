@@ -1,7 +1,7 @@
 import React from 'react';
 import { Radio, FormLabel, FormControlLabel, RadioGroup, FormControl, withStyles } from "@material-ui/core";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { styles } from './ManagementGrid.styles';
+import { styles } from '../ManagementGrid.styles';
 
 class LicenseTypeRadio extends React.Component {
   state = {
@@ -15,12 +15,19 @@ class LicenseTypeRadio extends React.Component {
 
   render () {
     const { classes, license } = this.props;
-    let button;
+    let licenseButton;
+    let licenseTypeButton;
 
-    if (license === "Java SE Advanced Desktop") {
-      button = <FormControlLabel value="Processor" control={<Radio />} label="Processor" disabled/>
+    if (license === "Java SE Advanced Desktop" || license === "Oracle Database Personal Edition") {
+      licenseButton = <FormControlLabel value="Processor" control={<Radio />} label="Processor" disabled/>
     } else {
-      button = <FormControlLabel value="Processor" control={<Radio />} label="Processor"/>
+      licenseButton = <FormControlLabel value="Processor" control={<Radio />} label="Processor"/>
+    }
+
+    if (license === "Oracle Database Mobile Server") {
+      licenseTypeButton = <FormControlLabel value="NUP" control={<Radio />} label="NUP" disabled/>
+    } else {
+      licenseTypeButton = <FormControlLabel value="NUP" control={<Radio />} label="NUP"/>
     }
     return (
       <MuiThemeProvider>
@@ -34,8 +41,8 @@ class LicenseTypeRadio extends React.Component {
               value={this.state.value}
               onChange={this.handleChange}
             >
-              {button}
-              <FormControlLabel value="NUP" control={<Radio />} label="NUP"/>
+              {licenseButton}
+              {licenseTypeButton}
             </RadioGroup>
           </FormControl>
         </div>
