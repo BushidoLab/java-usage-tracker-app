@@ -6,7 +6,7 @@ export const styles = {
     height: '200px',
   },
   button: {
-    margin: '10px',
+    margin: '20px',
     float: 'left'
   },
   upload: {

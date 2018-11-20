@@ -14,7 +14,10 @@ class AuditContainer extends Component {
         {headerName: "Device", children: [
           {headerName: "Device Name", field: "deviceName", width: 130},
           {headerName: "IP", field: "IP", width: 130},
-          {headerName: "MAC Address", field: "MAC"}
+          {headerName: "MAC Address", field: "MAC", width: 130},
+          {headername: "Server Model", field: "subVendor", width: 130},
+          {headerName: "Server Name", field: "serverName", width: 130},
+          {headerName: "Standby Server Name", field: "standbyServer", width: 130},
         ]},
         {headerName: "Processor", children: [
           {headerName: "Processor", field: "model", width: 130},
@@ -23,7 +26,8 @@ class AuditContainer extends Component {
         {headerName: "Usage", children: [
           {headerName: "Instance Name", field: "appName", width: 130},
           {headerName: "Users", field: "userCount", width: 80},
-          {headerName: "Last Used", field: "dateTime", width: 130}
+          {headerName: "Last Used", field: "dateTime", width: 130},
+          {headerName: "Options Used", field: "optionsUsed", width: 80},
         ]},
         {headerName: "Product", children: [
           {headerName: "Publisher", field: "vendor", width: 130},

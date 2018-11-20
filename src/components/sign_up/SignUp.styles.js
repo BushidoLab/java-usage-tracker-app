@@ -35,11 +35,12 @@ export const styles = theme => ({
     signUpFormContainer: {
         display: 'flex',
         flexDirection: 'column',
-        height: '100%',
+        height: '150%',
         justifyContent: 'flex-start',
         alignItems: 'center',
         background: 'rgb(240,240,240)',
         borderRadius: 5,
+        padding: 20
     },
     inputRow: {
         display: 'flex',
@@ -59,7 +60,7 @@ export const styles = theme => ({
         display: 'flex',
         flexDirection: 'row-reverse',
         justifyContent: 'space-around',
-        marginTop: 40,
+        marginTop: 100,
         '& button': {fontWeight: 'unset',},
     },
     errorMessage: {
@@ -75,4 +76,9 @@ export const styles = theme => ({
             padding: '2px 5px',
         },
     },
+    input: {
+        paddingTop: 20,
+        paddingBottom: 20,
+        marginTop: 20
+    }
 });
