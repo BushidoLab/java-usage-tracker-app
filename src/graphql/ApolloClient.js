@@ -3,7 +3,7 @@ import { RestLink } from 'apollo-link-rest';
 
 //ToDO: Migrate away from apollo boost
 
-const httpUri = 'http://localhost:4000';
+const httpUri = process.env.JAVA_USAGE_TRACKER_API || 'http://localhost:4000/';
 // const restLink = new RestLink({ uri: httpUri })
 
 const token = sessionStorage.getItem('authToken');
