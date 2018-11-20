@@ -104,7 +104,7 @@ class AuditComponent extends Component {
             onGridReady={this.onGridReady.bind(this)}
           />
           <div style={{ paddingBottom: "4px" }}>
-            <Button onClick={this.onBtExport.bind(this)} variant="contained" color="primary">Export to CSV</Button>
+            <Button onClick={this.onBtExport.bind(this)} variant="contained" color="primary" className={classes.button}>Export to CSV</Button>
           </div>
       </div>
     </div>
