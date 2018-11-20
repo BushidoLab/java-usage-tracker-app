@@ -47,7 +47,7 @@ class AuditComponent extends Component {
       <div 
         className="ag-theme-balham"
         style={{ 
-          height: '525px', 
+          height: '500px', 
           width: '98%',
           marginLeft: '1%',
           marginRight: '1%',
@@ -104,7 +104,7 @@ class AuditComponent extends Component {
             onGridReady={this.onGridReady.bind(this)}
           />
           <div style={{ paddingBottom: "4px" }}>
-            <Button onClick={this.onBtExport.bind(this)} variant="contained" color="primary">Export to CSV</Button>
+            <Button onClick={this.onBtExport.bind(this)} variant="contained" color="primary" className={classes.button}>Export to CSV</Button>
           </div>
       </div>
     </div>

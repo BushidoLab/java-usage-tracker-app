@@ -6,20 +6,18 @@ import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
-import LicenseTypeRadio from './utils/license-type-radio';
 import { styles } from './ManagementGrid.styles';
 import { manageForm } from '../../graphql/mutations/manage';
-import Upload from '../upload/upload';
-import Delete from './utils/delete-button';
-import LicenseDropdown from './utils/license-menu';
-import VendorMenu from './utils/vendor-menu';
+import LicenseDropdown from './common/license-menu';
+import VendorMenu from './common/vendor-menu';
+import LicenseTypeDropdown from './common/license-type-menu';
 
 class ManagementGridForm extends Component {
   state = {
     open: false,
-    license: String(),
-    vendor: String(),
-    licenseType: String(),
+    license: "Java SE Advanced",
+    vendor: "Oracle",
+    licenseType: "Processor",
     version: String(),
     quantity: Number(),
     listFee: Number(),
@@ -35,6 +33,8 @@ class ManagementGridForm extends Component {
   }
 
   handleLicenseChange = dropdownValue => this.setState({ license: dropdownValue });
+
+  handleLicenseTypeChange = licenseTypeMenu => this.setState({ licenseType: licenseTypeMenu });
 
   handleVendorChange = vendorValue => this.setState({ vendor: vendorValue });
 
@@ -70,12 +70,10 @@ class ManagementGridForm extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Upload/>        
         <Button onClick={this.handleOpen} color="primary" variant="contained" className={classes.button}>Add new license</Button>
-        <Delete/>
         <Modal
-        open={this.state.open}
-        onClose={this.handleClose}
+          open={this.state.open}
+          onClose={this.handleClose}
         >
           <div className={classes.formContainer}>
           <form onSubmit={this.handleSubmit} autoComplete="off" className={classes.formContainer}>
@@ -83,12 +81,12 @@ class ManagementGridForm extends Component {
               <LicenseDropdown
                 onClick={this.handleLicenseChange}
               />
+              <LicenseTypeDropdown
+                onClick={this.handleLicenseTypeChange}
+                license={this.state.license}
+              />
               <VendorMenu
                 onClick={this.handleVendorChange}
-              />
-              <LicenseTypeRadio
-                onChange={this.handleLicenseTypeChange}
-                license={this.state.license}
               />
             </div>
             <Paper className={classes.fields}>

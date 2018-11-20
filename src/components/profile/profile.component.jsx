@@ -2,8 +2,10 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Button from "@material-ui/core/Button";
 import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
+import Input from "@material-ui/core/Input";
 import { styles } from './profile.styles';
 
 const ProfileComponent = ({ classes, firstName, lastName, email }) => (
@@ -25,14 +27,34 @@ const ProfileComponent = ({ classes, firstName, lastName, email }) => (
 
         </Typography>
       </CardContent>
-      {/* <div>
-      <form method="POST" action="https://btcpay1.eastus.cloudapp.azure.com/api/v1/invoices">
-          <input type="hidden" name="storeId" value="4Uag4Medx7RHdxBoHNvXExcjRPtx2VvvPyptAid8mijX" />
-          <input type="hidden" name="price" value=".02" />
-          <input type="hidden" name="currency" value="USD" />
-          <input type="image" src="https://btcpay1.eastus.cloudapp.azure.com/img/paybutton/pay.png" name="submit" alt="Pay with BtcPay, Self-Hosted Bitcoin Payment Processor" />
-      </form>
-      </div> */}
+      <Input
+        type="string"
+        name="URL"
+        placeholder="REST API Endpoint"  
+        className={classes.textField}
+        variant="outlined"
+        required
+      />
+      <Typography paragraph className={classes.credentials}>
+        Credentials (If any)
+      </Typography>
+      <Input
+        type="string"
+        name="username"
+        placeholder="Username"  
+        className={classes.username}
+        variant="outlined"
+        required
+      />
+      <Input
+        type="string"
+        name="password"
+        placeholder="Password"  
+        className={classes.password}
+        variant="outlined"
+        required
+      />
+      <Button color="primary" variant="contained" className={classes.button}>Submit</Button>
     </Card>
   </div>
 )

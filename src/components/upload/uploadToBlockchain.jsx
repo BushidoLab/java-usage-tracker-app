@@ -66,7 +66,10 @@ class UploadToBlockchain extends Component {
         >
           Import CSV
         </Button>
-        <Modal open={this.state.open} onClose={this.handleClose}>
+        <Modal 
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
           <Paper className={classes.paper}>
             <Typography variant="h6" className={classes.header}>
               Upload your CSV file

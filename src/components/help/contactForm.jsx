@@ -96,6 +96,8 @@ class ContactForm extends Component {
                 type="string"
                 name="feedback"
                 multiline
+                rowsMax="4"
+                rows="4"
                 value={this.feedback}
                 placeholder="Enter your feedback here"
                 onChange={this.handleChange}
@@ -104,8 +106,8 @@ class ContactForm extends Component {
                 required
               />
               <div className={classes.buttonGroup}>
-                <Button className={classes.send} type="submit" color="primary">Send</Button>
-                <Button className={classes.cancel} onClick={this.handleClose} color="secondary">Cancel</Button>
+                <Button className={classes.send} type="submit" variant="contained" color="primary">Send</Button>
+                <Button className={classes.cancel} onClick={this.handleClose} variant="contained" color="secondary">Cancel</Button>
               </div>
             </form>
           </Paper>

@@ -17,13 +17,13 @@ class ReconcileContainer extends Component {
           {headerName: "Licenses Available", field: "difference", width: 180,
           cellStyle: function(params) {
             if (params.value < 0) {
-              return { backgroundColor: '#d16262' }
+              return { backgroundColor: '#f66' }
             }}
           },
-          {headerName: "Support Expiry Date", field: "supported", width: 180, 
+          {headerName: "Support Date End", field: "supported", width: 180, 
           cellStyle: function(params) {
             if (params.value === "No support" || params.value === "Expired") {
-              return { backgroundColor: '#d16262' }
+              return { backgroundColor: '#f66' }
             }}
           },
           {headerName: "Compliance Cost", field: "amount", width: 180, valueFormatter: currencyFormatter,
@@ -31,7 +31,7 @@ class ReconcileContainer extends Component {
             if (params.value < 0) {
               return { backgroundColor: '#6dc45e' }
             } else if (params.value > 0) {
-              return { backgroundColor: '#d16262'}
+              return { backgroundColor: '#f66'}
             }}
           },
       ],
