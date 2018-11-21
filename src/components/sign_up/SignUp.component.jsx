@@ -3,8 +3,6 @@ import injectSheet from 'react-jss';
 import { Input, Button } from '@material-ui/core';
 import { styles } from './SignUp.styles';
 
-//SIGN UP PAGE HAS NOT BEEN WIRED INTO APP
-
 const SignUp = ({
     classes,
     cancelSignUp,
@@ -31,42 +29,50 @@ const SignUp = ({
             >
                 <div className={classes.inputRow}>
                     <Input
+                        id="firstNameInput"
+                        name="firstName"
+                        label="First Name"
+                        placeholder="First Name"
+                        onChange={handleInputChange}
+                        value={firstNameValue}
+                        className={classes.input}
+                    />
+                    <Input
+                        id="lastNameInput"
+                        name="lastName"
+                        label="Last Name"
+                        placeholder="Last Name"
+                        onChange={handleInputChange}
+                        value={lastNameValue}
+                        className={classes.input}
+                    />
+                    <Input
                         id="emailInput"
                         name="email"
                         label="Email"
+                        placeholder="Email"
                         onChange={handleChange}
                         error={errorInput}
                         helperText={errorInputText}
                         value={emailValue}
+                        className={classes.input}
                     />
                     <Input
                         id="passwordInput"
                         name="password"
                         label="Password"
                         type="password"
+                        placeholder="Password"
                         error={passwordError}
                         helperText={passwordErrorText}
-                    />
-                    <Input
-                        id="firstNameInput"
-                        name="firstName"
-                        label="First Name"
-                        onChange={handleInputChange}
-                        value={firstNameValue}
-                    />
-                    <Input
-                        id="lastNameInput"
-                        name="lastName"
-                        label="Last Name"
-                        onChange={handleInputChange}
-                        value={lastNameValue}
+                        className={classes.input}
                     />
                 </div>
                 <div className={classes.submitRow}>
-                    <Button type="submit" variant="raised">
+                    <Button type="submit" variant="contained" color="primary">
                         Submit
                     </Button>
-                    <Button variant="raised" onClick={cancelSignUp}>
+                    <Button variant="contained" color="primary" onClick={cancelSignUp}>
                         Cancel
                     </Button>
                 </div>
