@@ -58,6 +58,7 @@ class AuditContainer extends Component {
   render() {
     const { gridOptions, gridOptions: { columnDefs }, logModalOpen, modalData } = this.state;
     const { data: { getAllLogs }} = this.props;
+    
     return (
       <div>
         <AuditComponent
