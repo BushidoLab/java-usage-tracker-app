@@ -23,9 +23,9 @@ const AppBarComponent = ({ classes, value, handleClick, anchorEl, openProfileTab
             </Typography>
             <Tabs value={value} onChange={handleClick}>
                 <Tab label="Home" component={Link} to="/" className={classes.tab} />
-                <Tab label="Audit" component={Link} to="/audit" className={classes.tab} />
-                <Tab label="Manage" component={Link} to="/management" className={classes.tab} />
                 <Tab label="Deploy" component={Link} to="/deploy" className={classes.tab} />
+                <Tab label="Entitlement" component={Link} to="/entitlement" className={classes.tab} />
+                <Tab label="Reconcile" component={Link} to="/reconcile" className={classes.tab} />
                 <Tab aria-owns={anchorEl ? 'simple-menu' : null} label="Account" onClick={openProfileTab} className={classes.tab} />
                 <Menu
                     id="simple-menu"

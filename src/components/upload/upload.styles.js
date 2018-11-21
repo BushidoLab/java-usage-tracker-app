@@ -6,20 +6,27 @@ export const styles = {
     height: '200px',
   },
   button: {
-    margin: '10px',
+    margin: '20px',
     float: 'left'
   },
   upload: {
     margin: 'auto',
-    marginTop: '120px',
+    marginTop: '30px',
+    marginLeft: '400px'
   },
   input: {
     margin: "0 auto",
     textSize: "20px",
-    marginLeft: "150px"
+    marginLeft: "30%",
+    marginTop: "5%"
   },
   header: {
     textAlign: "center",
-    marginTop: "200px",
+    margin: "10px"
   },
+  formHeader: {
+    textAlign: "center",
+    margin: "10px",
+    padding: "10px",
+  }
 }

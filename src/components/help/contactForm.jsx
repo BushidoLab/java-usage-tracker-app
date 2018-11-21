@@ -18,6 +18,7 @@ class ContactForm extends Component {
     formSubmitted: false
   }
 
+  // handleOpen and handleClose methods are used to open and close modal
   handleOpen = () => {
     this.setState({ open: true });
   }
@@ -32,6 +33,7 @@ class ContactForm extends Component {
     })
   }
 
+  // Handles sending email in contact form
   handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, feedback } = this.state;
@@ -44,35 +46,16 @@ class ContactForm extends Component {
     }
     emailjs.init('user_sRWdFbSeea1KuySISxsua');
 
+    // send method requires service id, the email's template id and whatever variables needed to write in the body of the email
     emailjs.send('gmail', 'contact_form', templateParams)
       .then(res => {
-        console.log('Successfully sent contact email', res.status, res.text);
         alert('Email sent successfully');
       }, err => {
-        console.log('Failed to send contact email', err);
+        console.error('Failed to send contact email', err);
       });
 
     this.handleClose();
   }
-  
-  // sendFeedback = (templateId, senderEmail, receiverEmail, feedback) => {
-  //   emailjs.send(
-  //     'gmail',
-  //     templateId,
-  //     process.env.EMAILJS_USERID,
-  //     {
-  //       senderEmail,
-  //       receiverEmail,
-  //       feedback
-  //     }
-  //   )
-  //     .then(res => {
-  //       this.setState({ formEmailSent: true });
-  //     })
-  //     .catch(err => {
-  //       console.error('There was a problem sending feedback: ', err);
-  //     })
-  // }
 
   render() {
     const { classes } = this.props;
@@ -113,6 +96,8 @@ class ContactForm extends Component {
                 type="string"
                 name="feedback"
                 multiline
+                rowsMax="4"
+                rows="4"
                 value={this.feedback}
                 placeholder="Enter your feedback here"
                 onChange={this.handleChange}
@@ -121,8 +106,8 @@ class ContactForm extends Component {
                 required
               />
               <div className={classes.buttonGroup}>
-                <Button className={classes.send} type="submit" color="primary">Send</Button>
-                <Button className={classes.cancel} onClick={this.handleClose} color="secondary">Cancel</Button>
+                <Button className={classes.send} type="submit" variant="contained" color="primary">Send</Button>
+                <Button className={classes.cancel} onClick={this.handleClose} variant="contained" color="secondary">Cancel</Button>
               </div>
             </form>
           </Paper>

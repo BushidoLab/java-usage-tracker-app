@@ -28,12 +28,13 @@ export const styles = {
     marginTop: '200px',
     marginLeft: 'auto',
     marginRight: 'auto',
-    width: '300px'
+    padding: '20px',
+    width: '300px',
+    
   },
   formHeader: {
     textAlign: 'center',
-    marginTop: '20px',
-    marginBottom: '10px',
+    margin: '10px auto',
   },
   textField: {
     width: '200px',

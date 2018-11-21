@@ -3,8 +3,6 @@ import injectSheet from 'react-jss';
 import { Input, Button } from '@material-ui/core';
 import { styles } from './SignUp.styles';
 
-//SIGN UP PAGE HAS NOT BEEN WIRED INTO APP
-
 const SignUp = ({
     classes,
     cancelSignUp,
@@ -31,6 +29,24 @@ const SignUp = ({
             >
                 <div className={classes.inputRow}>
                     <Input
+                        id="firstNameInput"
+                        name="firstName"
+                        label="First Name"
+                        placeholder="First Name"
+                        onChange={handleInputChange}
+                        value={firstNameValue}
+                        className={classes.input}
+                    />
+                    <Input
+                        id="lastNameInput"
+                        name="lastName"
+                        label="Last Name"
+                        placeholder="Last Name"
+                        onChange={handleInputChange}
+                        value={lastNameValue}
+                        className={classes.input}
+                    />
+                    <Input
                         id="emailInput"
                         name="email"
                         label="Email"
@@ -39,6 +55,7 @@ const SignUp = ({
                         error={errorInput}
                         helperText={errorInputText}
                         value={emailValue}
+                        className={classes.input}
                     />
                     <Input
                         id="passwordInput"
@@ -48,22 +65,7 @@ const SignUp = ({
                         placeholder="Password"
                         error={passwordError}
                         helperText={passwordErrorText}
-                    />
-                    <Input
-                        id="firstNameInput"
-                        name="firstName"
-                        label="First Name"
-                        placeholder="First Name"
-                        onChange={handleInputChange}
-                        value={firstNameValue}
-                    />
-                    <Input
-                        id="lastNameInput"
-                        name="lastName"
-                        label="Last Name"
-                        placeholder="Last Name"
-                        onChange={handleInputChange}
-                        value={lastNameValue}
+                        className={classes.input}
                     />
                 </div>
                 <div className={classes.submitRow}>

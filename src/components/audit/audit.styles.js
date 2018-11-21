@@ -21,5 +21,9 @@ export const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
+  },
+  button: {
+    marginLeft: "15px",
+    marginTop: "50px",
   }
 })

@@ -1,9 +1,12 @@
 import gql from 'graphql-tag';
 
+// GraphQL Mutation that writes a management object to mongoDB
 export const manageForm = gql `
   mutation manage(
     $license: String!,
+    $vendor: String!
     $licenseType: String!,
+    $version: String!,
     $quantity: Int!,
     $listFee: Float!,
     $discount: Float,
@@ -13,11 +16,15 @@ export const manageForm = gql `
     $otherFees: Float,
     $cdPackFee: Float,
     $unitPrice: Float,
+    $csi: Float,
+    $vendorNumber: String,
     $user: String
   ) {
     manage(
       license: $license,
+      vendor: $vendor,
       licenseType: $licenseType,
+      version: $version,
       quantity: $quantity,
       listFee: $listFee,
       discount: $discount,
@@ -27,6 +34,8 @@ export const manageForm = gql `
       otherFees: $otherFees,
       cdPackFee: $cdPackFee,
       unitPrice: $unitPrice,
+      csi: $csi,
+      vendorNumber: $vendorNumber,
       user: $user
     ) {
       license
