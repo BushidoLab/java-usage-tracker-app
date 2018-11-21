@@ -48,6 +48,7 @@ class Upload extends Component {
   handleChange = (e) => {
     this.setState({ file: e.target.value });
     console.log(this.state.file);
+    //hello
   }
 
   onChange(e) {
