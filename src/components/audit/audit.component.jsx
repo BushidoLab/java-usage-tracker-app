@@ -6,15 +6,14 @@ import 'ag-grid-enterprise';
 import injectSheet from 'react-jss';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import { styles } from './audit.styles';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -26,10 +25,11 @@ function getModalStyle() {
 const AuditComponent = ({ columnDefs, rowData, gridOptions, classes, onRowDoubleClicked, logModalOpen, handleModalClose, modalData }) => (
   <div>
     <Typography className={classes.header} variant="h4" gutterBottom>Audit</Typography>
+    <Typography className={classes.subHeader} variant="body1" gutterBottom>Inspect all logs recorded logs from your Hyperledger Fabric channel</Typography>
     <div 
       className="ag-theme-balham"
       style={{ 
-        height: '400px', 
+        height: '525px', 
         width: '98%',
         marginLeft: '1%',
         marginRight: '1%',
@@ -42,13 +42,30 @@ const AuditComponent = ({ columnDefs, rowData, gridOptions, classes, onRowDouble
           onClose={handleModalClose}
         >
           <div style={getModalStyle()} className={classes.paper} >
-            {modalData &&
-            <Fragment>
-              <Typography variant="h6" id="modal-title">{`Vendor: ${modalData.vendor}`}</Typography>
-              <Typography variant="h6" id="modal-title">{`Operating System: ${modalData.operatingSystem}`}</Typography>
-              <Typography variant="h6" id="modal-title">{`Model: ${modalData.model}`}</Typography>
-            </Fragment>
-            }
+            {modalData && 
+              <Fragment>
+                {modalData.category === "Processor" ?
+                <Fragment>
+                  <Typography variant="h6" id="modal-title">{`Vendor: ${modalData.vendor}`}</Typography>
+                  <Typography variant="h6" id="modal-title">{`Operating System: ${modalData.operatingSystem}`}</Typography>
+                  <Typography variant="h6" id="modal-title">{`Model: ${modalData.model}`}</Typography>
+                </Fragment>
+                :
+                <Fragment>
+                  <Typography variant="h6" id="modal-title">{`Device: ${modalData.deviceName}`}</Typography>
+                  <Typography variant="body1" id="modal-title">{`IP: ${modalData.IP}`}</Typography>
+                  <Typography variant="body1" id="modal-title">{`Uses: ${modalData.uses}`}</Typography>
+                  <List>
+                    {modalData.logs.map((data, index) => (
+                      <ListItem key={index}>
+                        <Typography>Log #{index + 1}</Typography>
+                        <ListItemText secondary={["Date used: ", data.dateTime, " App: ", data.appName]} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Fragment>
+                }
+              </Fragment>}
           </div>
         </Modal>
         <AgGridReact
@@ -56,7 +73,8 @@ const AuditComponent = ({ columnDefs, rowData, gridOptions, classes, onRowDouble
           enableSorting
           enableFilter
           pagination
-          paginationPageSize="10"
+          enableRangeSelection
+          paginationPageSize="15"
           rowSelection="multiple"
           rowData={rowData}
           columnDefs={columnDefs}

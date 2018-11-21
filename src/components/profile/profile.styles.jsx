@@ -7,6 +7,5 @@ export const styles = {
   },
   header: {
     textAlign: 'center',
-    textDecoration: 'underline'
   }
 }

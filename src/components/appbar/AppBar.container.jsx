@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
-import AppBarComponent from './AppBar1.component';
+import AppBarComponent from './AppBar.component';
 
 class AppBarContainer extends Component {
     state = {
         value: 0,
         anchorEl: null,
+        openDrawer: false,
     }
 
     openProfileTab = ({ currentTarget }, value) => {
-        this.setState({ value, anchorEl: currentTarget })
-    }
+        this.setState({ value, anchorEl: currentTarget });
+    };
+
+    handleDrawerOpen = () => {
+        this.setState({ openDrawer: true });
+    };
 
     closeProfileTab = _ => this.setState({ anchorEl: null })
 
@@ -19,7 +24,7 @@ class AppBarContainer extends Component {
 
     render() {
         const { classes } = this.props;
-        const { value, anchorEl } = this.state;
+        const { value, anchorEl, openDrawer } = this.state;
 
         return (
             <AppBarComponent
@@ -27,8 +32,10 @@ class AppBarContainer extends Component {
                 value={value}
                 classes={classes}
                 anchorEl={anchorEl}
+                openDrawer={openDrawer}
                 openProfileTab={this.openProfileTab}
                 closeProfileTab={this.closeProfileTab}
+                handleDrawerOpen={this.handleDrawerOpen}
             />
         );
     }

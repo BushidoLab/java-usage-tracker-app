@@ -4,7 +4,7 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import { compose, withApollo, graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import AuditComponent from './audit.component';
-import { getAllProcLogs } from '../../graphql/queries/logs';
+import { getAllLogs } from '../../graphql/queries/logs';
 
 class AuditContainer extends Component {
   state = {
@@ -18,6 +18,7 @@ class AuditContainer extends Component {
         {headerName: "Processor", children: [
           {headerName: "Processor", field: "model", width: 130},
           {headerName: "Cores", field: "cores", width: 80},
+          {headerName: "Subvendor", field: "subVendor", width: 100},
         ]},
         {headerName: "Usage", children: [
           {headerName: "App Name", field: "appName", width: 130},
@@ -32,7 +33,7 @@ class AuditContainer extends Component {
         ]},
         {headerName: "Operating Environment", children: [
           {headerName: "Operating System", field: "operatingSystem", width: 150},
-          // {headerName: "Virtual Machine", field: "virtualMachine", width: 130},
+          {headerName: "Virtual Machine", field: "virtualMachine", width: 130},
         ]},
       ],
       overlayLoadingTemplate: '<span>Loading...</span>',
@@ -44,7 +45,6 @@ class AuditContainer extends Component {
   handleModalClose = () => this.setState({ logModalOpen: false })
 
   handleRowDoubleClick = ({ data }) => {
-    console.log(data);
     this.setState({ 
       logModalOpen: true,
       modalData: data,
@@ -53,12 +53,12 @@ class AuditContainer extends Component {
 
   render() {
     const { gridOptions, gridOptions: { columnDefs }, logModalOpen, modalData } = this.state;
-    const { data: { getAllProcLogs }} = this.props;
+    const { data: { getAllLogs }} = this.props;
     return (
       <div>
         <AuditComponent
         columnDefs={columnDefs}
-        rowData={getAllProcLogs}
+        rowData={getAllLogs}
         gridOptions={gridOptions}
         onRowDoubleClicked={this.handleRowDoubleClick}
         logModalOpen={logModalOpen}
@@ -73,7 +73,7 @@ class AuditContainer extends Component {
 const enhancer = compose(
   withApollo,
   withRouter,
-  graphql(getAllProcLogs),
+  graphql(getAllLogs),
 )
 
 export default enhancer(AuditContainer);

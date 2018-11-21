@@ -10,7 +10,7 @@ const ProfileComponent = ({ classes, firstName, lastName, email }) => (
   <div>
     <Card className={classes.card}>
       <CardHeader
-        title="Profile"
+        title={firstName + "'s Profile"}
         subheader=""
         className={classes.header}
       />

@@ -5,3 +5,11 @@ export const getReconcile = gql`
     getReconcile
   }
 `;
+
+export const getEmail = gql`
+  query getEmail($email: String!) {
+      getEmail(email: $email) {
+        email
+      }
+    }
+`;

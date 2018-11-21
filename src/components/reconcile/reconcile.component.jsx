@@ -10,6 +10,7 @@ import { styles } from './reconcile.styles';
 const ReconcileComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
   <div>
     <Typography className={classes.header} variant="h4" gutterBottom>Deploy</Typography>
+    <Typography className={classes.subHeader} variant="body1" gutterBottom>View how your owned licenses compare to your usage</Typography>
     <div 
       className="ag-theme-balham"
       style={{ 
@@ -26,14 +27,14 @@ const ReconcileComponent = ({ columnDefs, rowData, gridOptions, classes }) => (
           enableSorting
           enableFilter
           pagination
+          enableRangeSelection
           paginationPageSize="15"
           rowSelection="multiple"
           rowData={rowData}
           columnDefs={columnDefs}
           gridOptions={gridOptions}
           suppressNoRowsOverlay={true}
-          >
-        </AgGridReact>
+        />
     </div>
   </div>
 );
