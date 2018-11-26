@@ -2,7 +2,7 @@ import ApolloClient from 'apollo-boost';
 
 //ToDO: Migrate away from apollo boost
 
-const httpUri = process.env.JAVA_USAGE_TRACKER_API || 'http://localhost:4000/';
+const httpUri = 'http://java-usage-tracker-api.herokuapp.com/';
 // const restLink = new RestLink({ uri: httpUri })
 
 const token = sessionStorage.getItem('authToken');
