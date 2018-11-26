@@ -12,9 +12,10 @@ class ProfileContainer extends Component {
   
   componentWillMount() {
     const accountInfo = sessionStorage.getItem('acctInfo').trim();
+    const email = accountInfo.substring(0, accountInfo.indexOf('.') + 4)
 
     this.setState ({
-      email: accountInfo
+      email: email
     })
   }
 

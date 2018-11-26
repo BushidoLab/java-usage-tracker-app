@@ -17,15 +17,16 @@ export const styles = theme => ({
     },
     logo: {
         postion: 'relative',
-        width: 170,
+        width: 250,
         marginLeft: 10,
         marginBottom: 5,
+        marignTop: -150
     },
     signUpComponent: {
         background: '#fff',
         boxShadow: '0 0 4px 0 rgba(60,69,73,0.25)',
         width: 390,
-        height: 280,
+        height: 350,
         display: 'block',
         margin: '30px auto',
     },
@@ -47,7 +48,7 @@ export const styles = theme => ({
         flexDirection: 'column',
         justifyContent: 'space-around',
         height: '50%',
-        paddingTop: 20,
+        marginTop: -20,
         '& input': {
             color: theme.palette.grey[500],
             paddingTop: 2,
@@ -60,7 +61,7 @@ export const styles = theme => ({
         display: 'flex',
         flexDirection: 'row-reverse',
         justifyContent: 'space-around',
-        marginTop: 100,
+        marginTop: 50,
         '& button': {fontWeight: 'unset',},
     },
     errorMessage: {

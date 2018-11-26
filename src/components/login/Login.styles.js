@@ -2,7 +2,7 @@ export const styles = theme => ({
     login: {
         display: 'flex',
         width: '100vw',
-        height: '100vh',
+        height: '200vh',
         background: `linear-gradient(-45deg, #0F4D8A,
             ${theme.palette.primary[900]},
             ${theme.palette.primary[700]},
@@ -16,16 +16,17 @@ export const styles = theme => ({
         alignSelf: 'center',
     },
     logo: {
-        width: 170,
+        width: 250,
         position: 'relative',
         marginLeft: 10,
-        marginBottom: 5
+        marginBottom: 5,
+        marginTop: -50,
     },
     loginComponent: {
         boxShadow: '0 0 4px 0 rgba(60,69,73,0.25)',
         borderRadius: 5,
         width: 390,
-        height: 250,
+        height: 350,
         margin: 50,
         padding: 20,
         background: 'rgb(240,240,240)'
@@ -51,7 +52,10 @@ export const styles = theme => ({
         '& button:first-child': { paddingLeft: 0, textTransform: 'capitalize'}
     },
     submitBtn: {
-        marginBottom: 50
+        marginTop: -20,
+        marginBottom: 50,
+        width: '100%',
+        display: 'block',
     },
     formContainer: {
         display: 'flex',
@@ -64,10 +68,10 @@ export const styles = theme => ({
     footer: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
         alignItems: 'center',
         color: theme.palette.grey[100],
-        margin: '20px'
+        marginTop: '-20px',
+        marginLeft: '-40px'
     },
     errorMessage: {
         margin: '0 auto',
@@ -81,20 +85,33 @@ export const styles = theme => ({
     },
     forgotPasswordBtn: {
         textAlign: 'center',
-        marginBottom: 50,
+        marginTop: 20,
+        marginBottom: 10,
+        display: 'block',
+        textTransform: 'none',
+        marginLeft: -25,
     },
     footerText: {
         color: 'black',
-        margin: '30px'
+        marginTop: '30px',
+        marginLeft: '30px',
     },
     email: {
-        paddingTop: 20,
         paddingBottom: 20,
-        margin: 20
+        marginBottom: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: -50,
     },
     password: {
         paddingTop: 20,
         paddingBottom: 20,
-        margin: 20
+        marginBottom: 20,
+        marginLeft: 20,
+        marginRight: 20
+    },
+    signup: {
+        marginTop: 8,
+        textTransform: 'none',
     }
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import { Input, Button } from '@material-ui/core';
 import { styles } from './Login.styles';
+import Logo from '../../assets/veratrust.png';
 
 const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText, handleClick, emailValue, forgotPassword, errorMessages = [] }) => (
     <div className={classes.loginComponent}>
@@ -10,6 +11,7 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                 {errorMessages.join() && <p>{ errorMessages.join() }</p>}
             </div>
             <form className={classes.formContainer} onSubmit={handleLogin}>
+                <img src={Logo} alt="Veratrust: Inspect, Verify, Validate and Trust" className={classes.logo} />
                 <div className={classes.inputRow}>
                     <Input
                         id="emailInput"
@@ -33,12 +35,6 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                 </div>
                 <div className={classes.submitRow}>
                     <Button
-                        className={classes.forgotPasswordBtn}
-                        onClick={forgotPassword}
-                    >
-                        Forgot Password?
-                    </Button>
-                    <Button
                         className={classes.submitBtn}
                         variant="contained"
                         type="submit"
@@ -49,9 +45,16 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                 </div>
             </form>
         </div>
+            <Button
+                className={classes.forgotPasswordBtn}
+                onClick={forgotPassword}
+                variant="text"
+            >
+                Forgot Password?
+            </Button>
         <div className={classes.footer}>
             <h5 className={classes.footerText}>Don't have an account?</h5>
-            <Button onClick={handleClick}  color="primary" variant="contained">Sign Up</Button>
+            <Button onClick={handleClick}  color="primary" variant="text" className={classes.signup}>Sign Up</Button>
         </div>
     </div>
 );

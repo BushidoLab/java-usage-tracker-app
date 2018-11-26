@@ -2,6 +2,7 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import { Input, Button } from '@material-ui/core';
 import { styles } from './SignUp.styles';
+import Logo from '../../assets/veratrust.png';
 
 const SignUp = ({
     classes,
@@ -27,6 +28,7 @@ const SignUp = ({
                 className={classes.signUpFormContainer}
                 onSubmit={handleSignUp}
             >
+                <img src={Logo} alt="Veratrust: Inspect, Verify, Validate and Trust" className={classes.logo} />
                 <div className={classes.inputRow}>
                     <Input
                         id="firstNameInput"

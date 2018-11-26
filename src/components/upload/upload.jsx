@@ -16,7 +16,11 @@ class Upload extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
-}
+  }
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  }
 
   onChange(e) {
       this.setState({ file: e.target.files[0] });
@@ -25,7 +29,7 @@ class Upload extends Component {
   }
 
   fileUpload(file) {
-      const url = 'http:';
+      const url = 'http://java-usage-tracker-api.herokuapp.com/upload';
       const formData = new FormData();
       formData.append('file', file);
       const token = sessionStorage.getItem('authToken');

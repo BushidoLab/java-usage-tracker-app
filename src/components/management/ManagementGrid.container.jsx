@@ -27,6 +27,7 @@ class ManagementGridContainer extends Component {
                 { headerName: 'Other Fees', field: 'otherFees', width: 130, valueFormatter: currencyFormatter },
                 { headerName: 'CD Pack Fee', field: 'cdPackFee', width: 130, valueFormatter: currencyFormatter },
                 { headerName: 'Net Fee', field: 'netFee', width: 130 , valueFormatter: currencyFormatter },
+                { headerName: 'Unit Price', field: 'unitPrice', width: 130, valueFormatter: currencyFormatter }
                 // Add editable: true when we can manage cells updating
             ],
             overlayLoadingTemplate: '<span>Loading...</span>'
