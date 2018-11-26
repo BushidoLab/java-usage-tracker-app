@@ -1,5 +1,5 @@
 import ApolloClient from 'apollo-boost';
-import {RestLink,} from 'apollo-link-rest';
+// import {RestLink,} from 'apollo-link-rest';
 
 //ToDO: Migrate away from apollo boost
 
