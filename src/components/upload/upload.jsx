@@ -25,7 +25,7 @@ class Upload extends Component {
   }
 
   fileUpload(file) {
-      const url = 'http://localhost:4000/upload';
+      const url = 'http:';
       const formData = new FormData();
       formData.append('file', file);
       const token = sessionStorage.getItem('authToken');
