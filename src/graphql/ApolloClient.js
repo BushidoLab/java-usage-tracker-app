@@ -10,6 +10,8 @@ const token = sessionStorage.getItem('authToken');
 export default new ApolloClient({
     uri: httpUri,
     request: async operation => {
-        operation.setContext({ headers: { authorization: token } });
+        operation.setContext({
+            headers: { authorization: token },
+        });
     },
 });
