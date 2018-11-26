@@ -1,8 +1,5 @@
 # Todo
 - Update manage fields on mongodb when cell is edited
-- Delete management forms
-- Add account button
-  - Dropdown with profile and sign out
 - Refresh button on audit and reconcile grids
 
 # Java Usage Tracker App

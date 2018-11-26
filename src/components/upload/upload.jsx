@@ -44,12 +44,6 @@ class Upload extends Component {
     console.log(this.state.file);
   }
 
-  onChange(e) {
-    this.setState({ file: e.target.files[0] });
-    e.preventDefault();
-    this.fileUpload(e.target.files[0]).then(response => console.log(response.data));
-  }
-
   render() {
     const { classes } = this.props;
     return (
@@ -88,4 +82,4 @@ class Upload extends Component {
 
 const enhancer = compose(withApollo);
 
-export default enhancer(Upload);
+export default injectSheet(styles)(enhancer(Upload));
