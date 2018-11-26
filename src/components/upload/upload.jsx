@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import injectSheet from "react-jss";
-import { withApollo } from 'react-apollo';
+import { withApollo, compose } from 'react-apollo';
 import Button from "@material-ui/core/Button";
 import Modal from '@material-ui/core/Modal';
 import Paper from "@material-ui/core/Paper";
@@ -18,17 +18,11 @@ class Upload extends Component {
     this.fileUpload = this.fileUpload.bind(this);
 }
 
-    // onFormSubmit({ preventDefault }) {
-    //     const { file } = this.state;
-    //     preventDefault();
-    //     this.fileUpload(file).then(response => console.log(response.data));
-    // }
-
-    onChange(e) {
-        this.setState({ file: e.target.files[0] });
-        e.preventDefault();
-        this.fileUpload(e.target.files[0]).then(response => console.log(response.data));
-    }
+  onChange(e) {
+      this.setState({ file: e.target.files[0] });
+      e.preventDefault();
+      this.fileUpload(e.target.files[0]).then(response => console.log(response.data));
+  }
 
   fileUpload(file) {
       const url = 'http://localhost:4000/upload';
@@ -67,7 +61,7 @@ class Upload extends Component {
           onClose={this.handleClose}
         >
           <Paper className={classes.paper}>
-            <Typography variant="h6" className={classes.formHeader}>Upload your CSV file</Typography>
+            <Typography variant="h6" className={classes.header}>Upload your CSV file</Typography>
             <form onSubmit={this.onFormSubmit}>
               <div>
                   <div>
@@ -85,6 +79,9 @@ class Upload extends Component {
                 <Button className={classes.upload} color="primary" variant="contained" type="submit">Upload</Button>
               </div>
             </form>
+          </Paper>
+        </Modal>
+      </div>
         );
     }
 }
