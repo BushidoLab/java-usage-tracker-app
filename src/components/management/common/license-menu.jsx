@@ -11,7 +11,7 @@ const options = [
   'Java SE Advanced',
   'Java SE Advanced Desktop',
   'Java SE Suite',
-  'Oracle Database Standard Edition',
+  'Oracle Database Standard Edition 2',
   'Oracle Database Personal Edition',
   'Oracle Database Enterprise Edition',
   'Oracle Database Mobile Server',

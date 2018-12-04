@@ -45,13 +45,13 @@ const Login = ({ classes, handleLogin, handleChange, handleError, errorInputText
                 </div>
             </form>
         </div>
-            <Button
+            {/* <Button
                 className={classes.forgotPasswordBtn}
                 onClick={forgotPassword}
                 variant="text"
             >
                 Forgot Password?
-            </Button>
+            </Button> */}
         <div className={classes.footer}>
             <h5 className={classes.footerText}>Don't have an account?</h5>
             <Button onClick={handleClick}  color="primary" variant="text" className={classes.signup}>Sign Up</Button>

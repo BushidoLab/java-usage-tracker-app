@@ -20,8 +20,8 @@ export const styles = {
     background: 'black'
   },
   logo: {
-    height: '150px',
-    width: '200px',
+    height: '100px',
+    width: '166px',
     marginTop: 10
   },
   tabs: {

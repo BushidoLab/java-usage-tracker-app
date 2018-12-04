@@ -18,9 +18,9 @@ export const styles = theme => ({
     logo: {
         width: 250,
         position: 'relative',
-        marginLeft: 10,
+        marginLeft: 0,
         marginBottom: 5,
-        marginTop: -50,
+        marginTop: -30,
     },
     loginComponent: {
         boxShadow: '0 0 4px 0 rgba(60,69,73,0.25)',
@@ -70,7 +70,7 @@ export const styles = theme => ({
         flexDirection: 'row',
         alignItems: 'center',
         color: theme.palette.grey[100],
-        marginTop: '-20px',
+        marginTop: '20px',
         marginLeft: '-40px'
     },
     errorMessage: {
@@ -95,6 +95,7 @@ export const styles = theme => ({
         color: 'black',
         marginTop: '30px',
         marginLeft: '30px',
+        textDecoration: 'none'
     },
     email: {
         paddingBottom: 20,

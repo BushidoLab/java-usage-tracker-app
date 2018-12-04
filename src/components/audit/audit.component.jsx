@@ -47,7 +47,7 @@ class AuditComponent extends Component {
       <div 
         className="ag-theme-balham"
         style={{ 
-          height: '500px', 
+          height: '550px', 
           width: '98%',
           marginLeft: '1%',
           marginRight: '1%',

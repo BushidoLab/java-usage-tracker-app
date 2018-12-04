@@ -42,8 +42,10 @@ class LoginContainer extends Component {
         const password = e.target.password.value;
         const firstName = e.target.firstName.value;
         const lastName = e.target.lastName.value;
+        const confirmPassword = e.target.confirmPassword.value;
         const { client } = this.props;
-        if (!email || !password || !firstName || !lastName) return;
+        if (!email || !password || !firstName || !lastName || !confirmPassword) return;
+        if (password !== confirmPassword) return;
         if (password.length < 6) {
             this.setState({
                 passwordError: true,

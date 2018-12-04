@@ -20,7 +20,7 @@ export const styles = theme => ({
         width: 250,
         marginLeft: 10,
         marginBottom: 5,
-        marignTop: -150
+        marignTop: -250
     },
     signUpComponent: {
         background: '#fff',
@@ -34,6 +34,7 @@ export const styles = theme => ({
         height: '100%',
     },
     signUpFormContainer: {
+        marginTop: -100,
         display: 'flex',
         flexDirection: 'column',
         height: '150%',

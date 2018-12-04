@@ -28,7 +28,7 @@ const SignUp = ({
                 className={classes.signUpFormContainer}
                 onSubmit={handleSignUp}
             >
-                <img src={Logo} alt="Veratrust: Inspect, Verify, Validate and Trust" className={classes.logo} />
+            <img src={Logo} alt="Veratrust: Inspect, Verify, Validate and Trust" className={classes.logo} />
                 <div className={classes.inputRow}>
                     <Input
                         id="firstNameInput"
@@ -67,6 +67,12 @@ const SignUp = ({
                         placeholder="Password"
                         error={passwordError}
                         helperText={passwordErrorText}
+                        className={classes.input}
+                    />
+                    <Input
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="Confirm Password"
                         className={classes.input}
                     />
                 </div>

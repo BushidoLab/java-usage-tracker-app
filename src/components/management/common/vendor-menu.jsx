@@ -9,7 +9,8 @@ import Menu from '@material-ui/core/Menu';
 
 const options = [
   'Oracle',
-  'Google'
+  'Google',
+  'IBM'
 ];
 
 class VendorMenu extends Component {

@@ -22,7 +22,7 @@ const AppBarComponent = ({ classes, value, handleClick, anchorEl, openProfileTab
                 <img src={Logo} alt="Veratrust: Inspect, Verify, Validate and Trust" className={classes.logo} />
             </Typography>
             <Tabs value={value} onChange={handleClick}>
-                <Tab label="Home" component={Link} to="/" className={classes.tab} />
+                {/* <Tab label="Home" component={Link} to="/" className={classes.tab} /> */}
                 <Tab label="Deploy" component={Link} to="/deploy" className={classes.tab} />
                 <Tab label="Entitlement" component={Link} to="/entitlement" className={classes.tab} />
                 <Tab label="Reconcile" component={Link} to="/reconcile" className={classes.tab} />

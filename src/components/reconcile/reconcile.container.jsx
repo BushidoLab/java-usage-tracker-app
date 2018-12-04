@@ -9,7 +9,7 @@ class ReconcileContainer extends Component {
   state = {
     gridOptions: {
       columnDefs: [
-          {headerName: "Product Name", field: "productName", width: 180},
+          {headerName: "Product Name", field: "productName", width: 220},
           {headerName: "License Type", field: "licenseType", width: 180},
           {headerName: "Version", field: "version", width: 180},
           {headerName: "Licenses Owned", field: "quantity", width: 180},

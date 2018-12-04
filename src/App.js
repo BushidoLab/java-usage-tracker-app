@@ -33,7 +33,7 @@ const App = _ => (
                         <Route path="/login" exact component={AuthContainer} />
                         <Auth>
                             <Dashboard>
-                                <Route exact path="/" render={() => <Redirect to="/management" />} />
+                                <Route exact path="/" render={() => <Redirect to="/deploy" />} />
                                 <Routes />
                             </Dashboard>
                         </Auth>
