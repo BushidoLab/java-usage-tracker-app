@@ -58,12 +58,12 @@ class Help extends Component {
             </Typography>
             <ExpansionPanel className={classes.expansionPanel}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography className={classes.heading}>Audit</Typography>
-                <Typography className={classes.subHeading}>Get more detailed information about the audit grid</Typography>
+                <Typography className={classes.heading}>Deploy</Typography>
+                <Typography className={classes.subHeading}>Get more detailed information about the deploy grid</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <Typography>
-                  In the Audit view you can view all logs stored in your hyperledger fabric channel. All of this data is fetched directly from the blockchain and is gathered differently depeding on the product.
+                  In the Deploy view you can view all logs stored in your hyperledger fabric channel. All of this data is fetched directly from the blockchain and is gathered differently depeding on the product.
                   <br/>
                   Here you can double click a row to view a popup to see relevant information such as other entries of related to the same device.
                 </Typography>
@@ -71,12 +71,12 @@ class Help extends Component {
             </ExpansionPanel>
             <ExpansionPanel className={classes.expansionPanel}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography className={classes.heading}>Manage</Typography>
+                <Typography className={classes.heading}>Entitlement</Typography>
                 <Typography className={classes.subHeading}>Learn how to submit your purchased licenses</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <div className={classes.manage}>
-                  <p>If you wish to upload your Excel worksheet into the management grid form, the following headers are expected:</p>
+                  <p>If you wish to upload your Excel worksheet into the entitlements grid form, the following headers are expected:</p>
                   <ul>
                     <li>OrderID</li>
                     <li>Description</li>
@@ -89,7 +89,7 @@ class Help extends Component {
                     <li>CD Pack Fee</li>
                     <li>Net Fee</li>
                   </ul>
-                  If you have payed for support please also include a Support Date field in YYYY-MM-DD format
+                  If you have payed for support please also include a Support Date field in YYYY-MM-DD format, you can also leave it blank and it will default to todays date
                   <br/>
                   While filling out the management form the user email is tracked for the purpose of sending emails reminding to renew their support. If you would like this feature include a user email under a user header.
                 </div>
@@ -97,12 +97,12 @@ class Help extends Component {
             </ExpansionPanel>
             <ExpansionPanel className={classes.expansionPanel}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography className={classes.heading}>Deploy</Typography>
+                <Typography className={classes.heading}>Reconcile</Typography>
                 <Typography className={classes.subHeading}>Understand what this grid's information means</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <Typography>
-                  In this view, each row represented in the management form is compared with the logs shown in the Audit tab and total amount over/under of licenses and its sum cost is displayed.
+                  In this view, each row represented in the entitlements form is compared with the logs shown in the deploy tab and total amount over/under of licenses and its sum cost is displayed.
                 </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
